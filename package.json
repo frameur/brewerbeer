@@ -1,0 +1,23 @@
+{
+  "name": "brewerbeer",
+  "version": "1.0.0",
+  "description": "brasseurs de biere, type de biere.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frameur/brewerbeer.git"
+  },
+  "author": "françois",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frameur/brewerbeer/issues"
+  },
+  "homepage": "https://github.com/frameur/brewerbeer#readme",
+  "dependencies": {
+    "ejs": "^3.1.3",
+    "express": "^4.17.1"
+  }
+}
