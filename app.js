@@ -22,6 +22,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.listen(port, () => {
-    console.log(`lancer sur le port ${port}`);
+    console.log(`lancé sur le port ${port}`);
     
 });
