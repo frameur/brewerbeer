@@ -43,7 +43,7 @@ exports.register = (req, res) => {
       bcrypt.hash(password, 10, function (err, hash) {
 
         let query =
-          "INSERT INTO `users` (firstname, lastname, email, password, age, role, created_on, last_login) VALUES ('" +
+          "INSERT INTO `users` (firstname, lastname, email, password, age, created_on, last_login) VALUES ('" +
           firstname +
           "', '" +
           lastname +
@@ -64,6 +64,7 @@ exports.register = (req, res) => {
         db.query(query, (err, result) => {
           if (err) {
             return res.status(500).send(err);
+            message = 'formulaire mal rempli'
           }
           res.redirect("/");
         });

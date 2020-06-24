@@ -42,16 +42,16 @@ db.connect((err) => {
 global.db = db;
 
 // Controller
-// const homeRoutes = require('./routes/home');
+const homeRoutes = require('./routes/home');
 //admin
 // const adminRoutes = require('./routes/admin');
-// const authRoutes = require('./routes/auth');
+const authRoutes = require('./routes/auth');
 
 // Admin
 // app.use('/admin', auth,  adminRoutes);
 
 // Authentification
-// app.use('/auth',  authRoutes);
+app.use('/auth',  authRoutes);
 
 // Route
 const { getHomePage} = require('./routes/home');
