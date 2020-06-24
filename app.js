@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
 // Route
-const { getHomePage} = require('./routes/index');
+const { getHomePage} = require('./routes/home');
 
 //api
 app.get('/', getHomePage)
