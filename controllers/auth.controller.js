@@ -19,7 +19,12 @@ exports.register = (req, res) => {
   let firstname = req.body.firstname;
   let lastname = req.body.lastname;
   let email = req.body.email;
+  let age = req.body.age;
   let password = req.body.password;
+  let created_on = req.body.created_on;
+  let last_login = req.body.last_login;
+  let role = req.body.role;
+
 
   let emailQuery = "SELECT * FROM `users` WHERE email = '" + email + "'";
 
@@ -30,15 +35,15 @@ exports.register = (req, res) => {
     if (result.length > 0) {
       message = "Le compte existe déjà";
       res.redirect("auth/register", {
-        message,
-        title: "Ajouter un utilisateur",
+      message,
+       title: "Ajouter un utilisateur",
       });
     } else {
 
       bcrypt.hash(password, 10, function (err, hash) {
 
         let query =
-          "INSERT INTO `users` (firstname, lastname, email, password) VALUES ('" +
+          "INSERT INTO `users` (firstname, lastname, email, password, age, role, created_on, last_login) VALUES ('" +
           firstname +
           "', '" +
           lastname +
@@ -46,6 +51,14 @@ exports.register = (req, res) => {
           email +
           "', '" +
           hash +
+          "', '" +
+          age +
+          "', '" +
+          role +
+          "', '" +
+          created_on +
+          "', '" +
+          last_login +
           "')";
 
         db.query(query, (err, result) => {
@@ -54,8 +67,7 @@ exports.register = (req, res) => {
           }
           res.redirect("/");
         });
-      }
-      );
+      });
     }
   })
 }
@@ -68,9 +80,9 @@ exports.login = (req, res) => {
 
   db.query('SELECT * FROM users WHERE email= ?', [email], (err, result) => {
 
-    if (err || result.length === 0) {   
+    if (err || result.length === 0) {
       console.log("result :", result);
-         
+
       return res.status(401).json({
         error: `Vous n'êtes pas inscrit`
       });
@@ -92,11 +104,10 @@ exports.login = (req, res) => {
               req.session.userId = result[0].id;
 
 
-              res.redirect('/admin/'
-              );
+              res.redirect('/admin/');
 
               console.log("req.session :", req.session)
-              
+
             } else {
               res.send('Email ou mot de passe incorrect !');
             }
@@ -112,13 +123,13 @@ exports.login = (req, res) => {
 
 
 exports.logout = (req, res) => {
-  req.session.destroy( (err) => {
-    if(err){
-       console.log(err);
-    }else{
-        res.redirect('/auth/login');
+  req.session.destroy((err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect('/auth/login');
     }
- });
+  });
 
-  
+
 };
