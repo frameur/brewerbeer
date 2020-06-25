@@ -101,11 +101,11 @@ exports.login = (req, res) => {
 
             if (results.length) {
               req.session.loggedin = true;
-              req.session.firstname = result[0].firstname;
-              req.session.userId = result[0].id;
+              req.session.firstname = results[0].firstname;
+              req.session.userId = SpeechRecognitionResultList[0].id;
 
 
-              res.redirect('/admin/');
+              res.redirect('/');
 
               console.log("req.session :", req.session)
 
