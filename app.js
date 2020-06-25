@@ -27,15 +27,15 @@ app.use(session({
   }))
   
   // MySQL
-const db = mysql.createConnection ({
-    host: 'localhost',
-    port:'3031',
-    user: 'root',
-    password: '',
-    database: 'brewerbeer',
-    multipleStatements: true
+// const db = mysql.createConnection ({
+//     host: 'localhost',
+//     port: '3301,
+//     user: 'root',
+//     password: '',
+//     database: 'brewerbeer',
+//     multipleStatements: true
     
-});
+// });
 
 // db.connect((err) => {
 //     if (err) { throw err;}

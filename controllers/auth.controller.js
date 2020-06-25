@@ -21,9 +21,9 @@ exports.register = (req, res) => {
   let email = req.body.email;
   let age = req.body.age;
   let password = req.body.password;
-  let created_on = req.body.created_on;
-  let last_login = req.body.last_login;
-  let role = req.body.role;
+  // let created_on = req.body.created_on;
+  // let last_login = req.body.last_login;
+  // let role = req.body.role;
 
 
   let emailQuery = "SELECT * FROM `users` WHERE email = '" + email + "'";
@@ -43,7 +43,7 @@ exports.register = (req, res) => {
       bcrypt.hash(password, 10, function (err, hash) {
 
         let query =
-          "INSERT INTO `users` (firstname, lastname, email, password, age, created_on, last_login) VALUES ('" +
+          "INSERT INTO `users` (firstname, lastname, email, password, age) VALUES ('" +
           firstname +
           "', '" +
           lastname +
@@ -53,12 +53,6 @@ exports.register = (req, res) => {
           hash +
           "', '" +
           age +
-          "', '" +
-          role +
-          "', '" +
-          created_on +
-          "', '" +
-          last_login +
           "')";
 
         db.query(query, (err, result) => {
