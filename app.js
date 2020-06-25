@@ -58,6 +58,7 @@ app.use('/auth',  authRoutes);
 // Route
 const { getHomePage} = require('./routes/home');
 
+
 //api
 app.get('/', getHomePage)
 
