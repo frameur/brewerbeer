@@ -19,7 +19,7 @@ app.use(express.urlencoded({extended: false}));
 
 // Express-session
 app.use(session({
-    secret: 'brewerbeer',
+    secret: 'beerbeerbeer',
     resave: false,
     saveUninitialized: true,
     name: 'biscuit',
@@ -33,6 +33,7 @@ const db = mysql.createConnection ({
     password: '',
     database: 'brewerbeer',
     multipleStatements: true
+    
 });
 
 db.connect((err) => {
