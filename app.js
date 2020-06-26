@@ -26,12 +26,12 @@ app.use(session({
     cookie: { maxAge: 60000 }
   }))
   
-  // MySQL
+//   MySQL
 // const db = mysql.createConnection ({
 //     host: 'localhost',
 //     user: 'root',
-//     password: 'julclesim1961',
-//     database: 'brewerbeer',
+//     password: '',
+//     database: 'sakila',
 //     multipleStatements: true
     
 // });
@@ -46,6 +46,7 @@ app.use(session({
 const homeRoutes = require('./routes/home');
 //admin
 // const adminRoutes = require('./routes/admin');
+
 const authRoutes = require('./routes/auth');
 
 // Admin
