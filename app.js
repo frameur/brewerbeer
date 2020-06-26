@@ -27,21 +27,20 @@ app.use(session({
   }))
   
   // MySQL
-// const db = mysql.createConnection ({
-//     host: 'localhost',
-//     port: '3301,
-//     user: 'root',
-//     password: '',
-//     database: 'brewerbeer',
-//     multipleStatements: true
+const db = mysql.createConnection ({
+    host: 'localhost',
+    user: 'root',
+    password: 'julclesim1961',
+    database: 'brewerbeer',
+    multipleStatements: true
     
-// });
+});
 
-// db.connect((err) => {
-//     if (err) { throw err;}
-//     console.log('Connecté à la base MySQL');
-// });
-// global.db = db;
+db.connect((err) => {
+    if (err) { throw err;}
+    console.log('Connecté à la base MySQL');
+});
+global.db = db;
 
 // Controller
 const homeRoutes = require('./routes/home');
