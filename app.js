@@ -46,6 +46,7 @@ app.use(express.urlencoded({extended: false}));
 const homeRoutes = require('./routes/home');
 //admin
 // const adminRoutes = require('./routes/admin');
+
 const authRoutes = require('./routes/auth');
 
 // Admin
