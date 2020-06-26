@@ -21,9 +21,7 @@ exports.register = (req, res) => {
   let email = req.body.email;
   let age = req.body.age;
   let password = req.body.password;
-  // let created_on = req.body.created_on;
-  // let last_login = req.body.last_login;
-  // let role = req.body.role;
+ 
 
 
   let emailQuery = "SELECT * FROM `users` WHERE email = '" + email + "'";
