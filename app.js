@@ -17,14 +17,14 @@ app.use(fileUpload());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-// Express-session
-// app.use(session({
-//     secret: 'beerbeerbeer',
-//     resave: false,
-//     saveUninitialized: true,
-//     name: 'biscuit',
-//     cookie: { maxAge: 60000 }
-//   }))
+express-session
+app.use(session({
+    secret: 'beerbeerbeer!',
+    resave: false,
+    saveUninitialized: true,
+    name: 'biscuit',
+    cookie: { maxAge: 60000 }
+  }))
   
 //   MySQL
 // const db = mysql.createConnection ({
