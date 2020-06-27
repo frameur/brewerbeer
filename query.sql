@@ -1,0 +1,1 @@
+ALTER TABLE users ADD author varchar(50) NOT NULL;
