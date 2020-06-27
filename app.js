@@ -26,21 +26,21 @@ app.use(session({
     cookie: { maxAge: 60000 }
   }))
   
-//   MySQL
-// const db = mysql.createConnection ({
-//     host: 'localhost',
-//     user: 'root',
-//     password: '',
-//     database: 'brewerbeer',
-//     multipleStatements: true
+  
+const db = mysql.createConnection ({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'brewerbeer',
+    multipleStatements: true
     
-// });
+});
 
-// db.connect((err) => {
-//     if (err) { throw err;}
-//     console.log('Connecté à la base MySQL');
-// });
-// global.db = db;
+db.connect((err) => {
+    if (err) { throw err;}
+    console.log('Connecté à la base MySQL');
+});
+global.db = db;
 
 // Controller
 const homeRoutes = require('./routes/home');
