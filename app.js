@@ -17,7 +17,7 @@ app.use(fileUpload());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-express-session
+//express-session
 app.use(session({
     secret: 'beerbeerbeer!',
     resave: false,
@@ -26,21 +26,21 @@ app.use(session({
     cookie: { maxAge: 60000 }
   }))
   
-//   MySQL
-// const db = mysql.createConnection ({
-//     host: 'localhost',
-//     user: 'root',
-//     password: '',
-//     database: 'brewerbeer',
-//     multipleStatements: true
+//mysql
+const db = mysql.createConnection ({
+    host: '127.0.0.1',
+    user: 'root',
+    password: '',
+    database: 'brewerbeer',
+    multipleStatements: true
     
-// });
+});
 
-// db.connect((err) => {
-//     if (err) { throw err;}
-//     console.log('Connecté à la base MySQL');
-// });
-// global.db = db;
+db.connect((err) => {
+    if (err) { throw err;}
+    console.log('Connecté à la base MySQL');
+});
+global.db = db;
 
 // Controller
 const homeRoutes = require('./routes/home');
