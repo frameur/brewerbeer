@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
 
-// Get
+
+// affichage page get
 exports.loginPage = (req, res) => {
   res.render('auth/login', {
     title: "Page de connexion",
@@ -13,16 +14,10 @@ exports.registerPage = (req, res) => {
   });
 };
 
-// Post
+// Post insription
 exports.register = (req, res) => {
-
-  let firstname = req.body.firstname;
-  let lastname = req.body.lastname;
-  let email = req.body.email;
-  let age = req.body.age;
-  let password = req.body.password;
- 
-
+  
+  let {firstname, lastname, email, age, password, passwordConfirm} = req.body;
 
   let emailQuery = "SELECT * FROM `users` WHERE email = '" + email + "'";
 
@@ -35,8 +30,13 @@ exports.register = (req, res) => {
       res.redirect("auth/register", {
       message,
        title: "Ajouter un utilisateur",
+      }); 
+    
+    } else if(password !== passwordConfirm){
+      return res.render('register', {
+          message: 'Password different'
       });
-    } else {
+  } else {
 
       bcrypt.hash(password, 10, function (err, hash) {
 
@@ -58,7 +58,7 @@ exports.register = (req, res) => {
             return res.status(500).send(err);
             message = 'formulaire mal rempli'
           }
-          res.redirect("/");
+          res.redirect("/auth/login");
         });
       });
     }
@@ -70,8 +70,8 @@ exports.register = (req, res) => {
 exports.login = (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
-
-  db.query('SELECT * FROM users WHERE email= ?', [email], (err, result) => {
+  
+  db.query('SELECT user_id FROM users WHERE email = ?', [email], (err, result) => {
 
     if (err || result.length === 0) {
       console.log("result :", result);

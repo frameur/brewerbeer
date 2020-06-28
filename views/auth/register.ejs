@@ -31,19 +31,19 @@
                                 <div class="main-menu f-right d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation" style="font-weight: 700;">
-                                            <li><a href="/">Accueil</a></li>
-                                            <li><a href="*">Histoire</a></li>
-                                            <li><a href="*">Fabrication</a></li>
-                                            <li><a href="*">Biéres</a></li>
-                                            <li><a href="*">galleries</a></li>
-                                            <li><a href="*">Blog</a>
-                                                <ul class="submenu">
+                                            <li><a href="/">ACCUEIL</a></li>
+                                            <li><a href="*"></a></li>
+                                            <li><a href="*"></a></li>
+                                            <li><a href="*"></a></li>
+                                            <li><a href="*"></a></li>
+                                            <li><a href="*"></a>
+                                                <!-- <ul class="submenu">
                                                     <li><a href="*">Blog</a></li>
                                                     <li><a href="*">Blog Details</a></li>
                                                     <li><a href="*">Element</a></li>
-                                                </ul>
+                                                </ul> -->
                                             </li>
-                                            <li><a href="*">Contact</a></li>
+                                            <li><a href="*"></a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -96,19 +96,22 @@
                                 </div>
                             </div>
                             <!--End Section Tittle  -->
-                            <form id="contact-form" action="#" method="POST">
+                           
+                            <form style="font-size: 20px; " id="contact-form" action="#" method="POST" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6">
                                         <div class="form-box user-icon mb-30">
-                                            <input type="text" name="firstname" placeholder="nom" required>
+                                            <label  for="firstname">NOM</label>
+                                            <input style="text-transform: lowercase;" type="text" id="firstname" name="firstname" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <div class="form-box email-icon mb-30">
-                                            <input type="text" name="lastname" placeholder="prenom"required>
+                                            <label for="lastname">PRENOM</label>
+                                            <input style="text-transform: lowercase;" type="text" id="lastname" name="lastname"required>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-6 mb-30">
+                                    <!-- <div class="col-lg-6 col-md-6 mb-30">
                                         <div class="select-itms">
                                             <select name="select" id="select2">
                                                 <option value="">admin</option>
@@ -116,20 +119,29 @@
                                                
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="col-lg-6 col-md-6">
                                         <div class="form-box subject-icon mb-30">
-                                            <input type="email" name="email" placeholder="email" required>
+                                            <label for="email">EMAIL</label>
+                                            <input style="text-transform: lowercase;" type="email" id="email" name="email"required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <div class="form-box subject-icon mb-30">
-                                            <input type="age" name="age" placeholder="Date de naissance" required>
+                                            <label for="age">AGE</label>
+                                            <input style="text-transform: lowercase;" type="age" id="age" name="age" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <div class="form-box subject-icon mb-30">
-                                            <input type="password" name="password" placeholder="password" required>
+                                            <label for="password">PASSWORD</label>
+                                            <input style="text-transform: lowercase;" type="password" id="password" name="password" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-box subject-icon mb-30">
+                                            <label for="passwordConfirm">CONFIRMER PASSWORD</label>
+                                            <input  style="text-transform: lowercase;" type="password" id="passwordConfirm" name="passwordConfirm" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">

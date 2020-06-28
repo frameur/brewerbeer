@@ -3,6 +3,7 @@ const fileUpload = require('express-fileupload');
 const path = require('path');
 const session = require('express-session');
 const mysql = require('mysql');
+const dotenv = require ('dotenv');
 const port = 1998;
 const app = express();
 
@@ -17,6 +18,25 @@ app.use(fileUpload());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
+
+dotenv.config({path: './.env'})
+  
+//mysql
+const db = mysql.createConnection ({
+    host: process.env.DATABASE_HOST,
+    user: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASSWORD,
+    database:  process.env.DATABASE,
+    multipleStatements: true
+    
+});
+
+db.connect((err) => {
+    if (err) { throw err;}
+    console.log('Connecté à la base MySQL: brewerbeer');
+});
+global.db = db;
+
 //express-session
 app.use(session({
     secret: 'beerbeerbeer!',
@@ -25,22 +45,7 @@ app.use(session({
     name: 'biscuit',
     cookie: { maxAge: 60000 }
   }))
-  
-//mysql
-const db = mysql.createConnection ({
-    host: '127.0.0.1',
-    user: 'root',
-    password: '',
-    database: 'brewerbeer',
-    multipleStatements: true
-    
-});
 
-db.connect((err) => {
-    if (err) { throw err;}
-    console.log('Connecté à la base MySQL');
-});
-global.db = db;
 
 // Controller
 const homeRoutes = require('./routes/home');
