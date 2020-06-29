@@ -63,9 +63,10 @@ CREATE TABLE IF NOT EXISTS users(
 );
 
 CREATE TABLE role(
-      role_id INT,
-      role_name VARCHAR(255) UNIQUE NOT NULL,
-      CONSTRAINT pkRole PRIMARY KEY(role_id)
+      name_id INT,
+      role_admin VARCHAR(255) UNIQUE NOT NULL,
+      role_members VARCHAR(255) UNIQUE NOT NULL,
+      CONSTRAINT pkRole PRIMARY KEY(name_id)
 );
 
 

@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 
 
-// affichage page get
+// affichage page login et register
 exports.loginPage = (req, res) => {
   res.render('auth/login', {
     title: "Page de connexion",
@@ -14,9 +14,9 @@ exports.registerPage = (req, res) => {
   });
 };
 
-// Post insription
+// Register
 exports.register = (req, res) => {
-  
+
   let {firstname, lastname, email, age, password, passwordConfirm} = req.body;
 
   let emailQuery = "SELECT * FROM `users` WHERE email = '" + email + "'";
@@ -28,30 +28,19 @@ exports.register = (req, res) => {
     if (result.length > 0) {
       message = "Le compte existe déjà";
       res.redirect("auth/register", {
-      message,
-       title: "Ajouter un utilisateur",
-      }); 
-    
-    } else if(password !== passwordConfirm){
-      return res.render('register', {
-          message: 'Password different'
+        message,
+        title: "Ajouter un utilisateur",
       });
-  } else {
+
+    } else if (password !== passwordConfirm) {
+      return res.render('register', {
+        message: 'Password different'
+      });
+    } else {
 
       bcrypt.hash(password, 10, function (err, hash) {
 
-        let query =
-          "INSERT INTO `users` (firstname, lastname, email, password, age) VALUES ('" +
-          firstname +
-          "', '" +
-          lastname +
-          "', '" +
-          email +
-          "', '" +
-          hash +
-          "', '" +
-          age +
-          "')";
+        let query = "INSERT INTO `users` (firstname, lastname, email, password, age) VALUES ('" + firstname + "', '" + lastname + "', '" + email + "', '" + hash + "', '" + age + "')";
 
         db.query(query, (err, result) => {
           if (err) {
@@ -68,11 +57,10 @@ exports.register = (req, res) => {
 // Login
 
 exports.login = (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
-  
-  db.query('SELECT user_id FROM users WHERE email = ?', [email], (err, result) => {
+  const {email, password} = req.body
 
+  db.query('SELECT user_id FROM users WHERE email = ?', [email], (err, result) => {
+    
     if (err || result.length === 0) {
       console.log("result :", result);
 
@@ -94,12 +82,9 @@ exports.login = (req, res) => {
             if (results.length) {
               req.session.loggedin = true;
               req.session.firstname = results[0].firstname;
-              req.session.userId = SpeechRecognitionResultList[0].id;
-
+              req.session.user_id = SpeechRecognitionResultList[0].id;
 
               res.redirect('/');
-
-              console.log("req.session :", req.session)
 
             } else {
               res.send('Email ou mot de passe incorrect !');
@@ -108,12 +93,12 @@ exports.login = (req, res) => {
         } else {
           res.send('Ajouter un email ou un mot de passe !');
         }
-      })
+      });
     }
-  })
+  });
 };
 
-
+//deconnection
 
 exports.logout = (req, res) => {
   req.session.destroy((err) => {
