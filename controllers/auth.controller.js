@@ -54,8 +54,8 @@ exports.register = (req, res) => {
   })
 }
 
-// Login
 
+// Login
 exports.login = (req, res) => {
   const {email, password} = req.body
 
