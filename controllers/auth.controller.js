@@ -59,10 +59,10 @@ exports.register = (req, res) => {
 exports.login = (req, res) => {
   const {email, password} = req.body
 
-  db.query('SELECT user_id FROM users WHERE email = ?', [email], (err, result) => {
+  db.query('SELECT * FROM users WHERE email = ?', [email], (err, result) => {
     
     if (err || result.length === 0) {
-      console.log("result :", result);
+      // console.log("result :", result);
 
       return res.status(401).json({
         error: `Vous n'êtes pas inscrit`
@@ -85,6 +85,7 @@ exports.login = (req, res) => {
               req.session.user_id = SpeechRecognitionResultList[0].id;
 
               res.redirect('/');
+              
 
             } else {
               res.send('Email ou mot de passe incorrect !');
