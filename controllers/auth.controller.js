@@ -85,12 +85,8 @@ exports.login = (req, res) => {
               req.session.user_id = result[0].id;
               
               res.redirect('/');
-<<<<<<< HEAD
               
 
-=======
-              console.log("result :", result)
->>>>>>> 85c7ee58a3f0824efcb3f32d171db4457af1407a
             } else {
               res.send('Email ou mot de passe incorrect !');
             }
