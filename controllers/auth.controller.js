@@ -57,13 +57,13 @@ exports.register = (req, res) => {
 
 // Login
 exports.login = (req, res) => {
-  const {email, password} = req.body
+  const { email, password} = req.body
 
-  db.query('SELECT user_id FROM users WHERE email = ?', [email], (err, result) => {
-    
+  db.query('SELECT * FROM users WHERE email = ?', [email], (err, result) => {
+  
     if (err || result.length === 0) {
-      console.log("result :", result);
-
+      
+      
       return res.status(401).json({
         error: `Vous n'êtes pas inscrit`
       });
@@ -77,22 +77,25 @@ exports.login = (req, res) => {
         }
         if (success) {
 
-          db.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, result[0].password], function (err, results) {
+          db.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, result[0].password], function (err, result) {
 
-            if (results.length) {
+            if (result.length) {
               req.session.loggedin = true;
-              req.session.firstname = results[0].firstname;
-              req.session.user_id = SpeechRecognitionResultList[0].id;
-
+              req.session.firstname = result[0].firstname;
+              req.session.user_id = result[0].id;
+              
               res.redirect('/');
-
+              console.log("result :", result)
             } else {
               res.send('Email ou mot de passe incorrect !');
             }
           });
         } else {
+
+          
           res.send('Ajouter un email ou un mot de passe !');
         }
+      
       });
     }
   });
