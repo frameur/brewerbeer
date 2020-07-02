@@ -27,7 +27,7 @@ app.use(session({
     secret: 'beerbeerbeer!',
     resave: false,
     saveUninitialized: true,
-    name: 'biscuit',
+    name: 'pasteis_de_nata',
     cookie: { maxAge: 60000 }
   }));
   
