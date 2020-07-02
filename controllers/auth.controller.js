@@ -19,9 +19,9 @@ exports.register = (req, res) => {
 
   let {firstname, lastname, email, age, password, passwordConfirm} = req.body;
 
-  let emailQuery = "SELECT * FROM `users` WHERE email = '" + email + "'";
+  let datasql = "SELECT * FROM `users` WHERE email = '" + email + "'";
 
-  db.query(emailQuery, (err, result) => {
+  db.query(datasql, (err, result) => {
     if (err) {
       return res.status(500).send(err);
     }
@@ -45,9 +45,11 @@ exports.register = (req, res) => {
         db.query(query, (err, result) => {
           if (err) {
             return res.status(500).send(err);
-            message = 'formulaire mal rempli'
+            message:'formulaire mal rempli'
+          }else{
+            res.redirect("/auth/login");
           }
-          res.redirect("/auth/login");
+
         });
       });
     }
@@ -62,13 +64,13 @@ exports.login = (req, res) => {
   db.query('SELECT * FROM users WHERE email = ?', [email], (err, result) => {
     
     if (err || result.length === 0) {
-      // console.log("result :", result);
-
+      
+     
       return res.status(401).json({
         error: `Vous n'êtes pas inscrit`
       });
     } else {
-
+      
       bcrypt.compare(password, result[0].password, (err, success) => {
         if (err) {
           return res.status(401).json({
@@ -78,7 +80,7 @@ exports.login = (req, res) => {
         if (success) {
 
           db.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, result[0].password], function (err, result) {
-
+           
             if (result.length) {
               req.session.loggedin = true;
               req.session.firstname = result[0].firstname;
@@ -92,9 +94,9 @@ exports.login = (req, res) => {
             }
           });
         } else {
-
+          console.log("result :", result);
           
-          res.send('Ajouter un email ou un mot de passe !');
+          res.render('index');
         }
       
       });

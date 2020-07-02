@@ -1,11 +1,11 @@
 exports.getAdminPage = (req, res) => {
     let query = [
-        "SELECT * FROM brasseurs ORDER BY id ASC",
-        "SELECT * FROM users ORDER BY id ASC",
-        "SELECT COUNT(*) AS count FROM users"
+        // "SELECT * FROM brasseurs ORDER BY id ASC",
+        // "SELECT * FROM users ORDER BY user_id ASC",
+        // "SELECT COUNT(*) AS count FROM users"
       ]
     
-    // let query = "SELECT * FROM brasseurs INNER JOIN club ON club_id = club.id;"
+    // let query = "SELECT * FROM brasseurs INNER JOIN brewersfrench ON brewer_id = brewersfrench.id;"
     db.query(query.join(';'), (err, result) => {
       
         if (err) {
