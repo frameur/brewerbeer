@@ -78,7 +78,7 @@
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 Copyright &copy;<script>
                                     document.write(new Date().getFullYear());
-                                </script> Brewer & Beer <i class="" aria-hidden="true"></i> 
+                                </script> Brewer & Beer <i class="" aria-hidden="true"></i>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </p>
                         </div>
@@ -89,6 +89,36 @@
     </div>
     <!-- Footer End-->
 </footer>
+
+<!-- formulaire de recherche -->
+<script>
+    $(document).ready(function () {
+        $('.mdb-select.validate').materialSelect({
+            validate: true,
+            labels: {
+                validFeedback: 'Correct choice',
+                invalidFeedback: 'Wrong choice'
+            }
+        });
+
+        function validateSelect(e) {
+            e.preventDefault();
+            $('.needs-validation').addClass('was-validated');
+            if ($('.needs-validation select').val() === null) {
+                $('.needs-validation').find('.valid-feedback').hide();
+                $('.needs-validation').find('.invalid-feedback').show();
+                $('.needs-validation').find('.select-dropdown').val('').prop('placeholder',
+                    'No countries selected')
+            } else {
+                $('.needs-validation').find('.valid-feedback').show();
+                $('.needs-validation').find('.invalid-feedback').hide();
+            }
+        }
+        $('.needs-validation select').on('change', e => validateSelect(e))
+        $('.needs-validation').on('submit', e => validateSelect(e))
+    });
+</script>
+
 <!-- Scroll Up -->
 <div id="back-top">
     <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
@@ -130,11 +160,10 @@
 <script src="/assets/js/mail-script.js"></script>
 <script src="/assets/js/jquery.ajaxchimp.min.js"></script>
 
-<!-- Jquery Plugins, main Jquery -->	
+<!-- Jquery Plugins, main Jquery -->
 <script src="/assets/js/plugins.js"></script>
 <script src="/assets/js/main.js"></script>
 
 </body>
 
 </html>
-
