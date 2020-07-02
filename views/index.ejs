@@ -1,4 +1,4 @@
-<%- include('partial/header.ejs')%>
+<%- include('partial/head.ejs')%>
 
 <body>
     <!-- ? Preloader Start -->
@@ -31,23 +31,30 @@
                                 <!-- Main-menu -->
                                 <div class="main-menu f-right d-none d-lg-block">
                                     <nav>
+                                        
+                                        
                                         <ul id="navigation" style="font-weight: 700;">
                                             <li><a href="/"></a></li>
-                                            <li><a href="about.html">Histoire</a></li>
-                                            <li><a href="services.html">Fabrication</a></li>
-                                            <li><a href="/admin/dashboard">Biéres</a></li>
+                                            <li><a href="about.html"></a></li>
+                                            <li><a href="services.html">les Brasseurs</a></li>
                                             <li><a href="gallery.html">galleries</a></li>
-                                            <li><a href="blog.html">Blog</a>
+                                            <li><a href="blog.html">divers</a>
                                                 <ul class="submenu">
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="blog_details.html">Blog Details</a></li>
-                                                    <li><a href="elements.html">Element</a></li>
+                                                    <li><a href="blog.html">Histoire</a></li>
+                                                    <li><a href="blog_details.html">Fabrication</a></li>
+                                                    <li><a href="elements.html">La Biére</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="./admin/dashbord">dashboard</a></li>
                                         </ul>
                                     </nav>
                                 </div>
+                                <!-- <div class="header-right-btn f-right d-none d-lg-block ml-30">
+
+                                    <a href="/auth/logout" class="btn header-btn">Se deconnecter</a>
+                                </div>
+                                 -->
                                 <div class="header-right-btn f-right d-none d-lg-block ml-30">
                                     <a href="/auth/register" class="btn header-btn">S'inscrire</a>
                                 </div>
@@ -55,9 +62,11 @@
 
                                     <a href="/auth/login" class="btn header-btn">Se connecter</a>
                                 </div>
+                                     
                                 <!-- Modal se connecter -->
                             </div>
                         </div>
+                        
 
                         <!-- Mobile Menu -->
                         <div class="col-12">
