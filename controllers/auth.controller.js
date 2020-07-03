@@ -40,7 +40,7 @@ exports.register = (req, res) => {
 
       bcrypt.hash(password, 10, function (err, hash) {
 
-        let query = "INSERT INTO `users` (firstname, lastname, email, password, age) VALUES ('" + firstname + "', '" + lastname + "', '" + email + "', '" + hash + "', '" + age + "')";
+        let query = "INSERT INTO `users` (firstname, lastname, email, password, age, role_id) VALUES ('" + firstname + "', '" + lastname + "', '" + email + "', '" + hash + "', '" + age + "', '" + 2 +"')";
 
         db.query(query, (err, result) => {
           if (err) {
@@ -85,7 +85,7 @@ exports.login = (req, res) => {
               req.session.loggedin = true;
               req.session.firstname = result[0].firstname;
               req.session.user_id = result[0].id;
-              
+              req.session.role= result[0].role;
               res.redirect('/');
               
 
@@ -95,6 +95,7 @@ exports.login = (req, res) => {
           });
         } else {
           console.log("result :", result);
+          console.log(req.session.role);
           
           res.render('index');
         }

@@ -34,6 +34,7 @@
                                         
                                         
                                         <ul id="navigation" style="font-weight: 700;">
+                                            
                                             <li><a href="/"></a></li>
                                             <li><a href="about.html"></a></li>
                                             <li><a href="services.html">les Brasseurs</a></li>
@@ -46,15 +47,17 @@
                                                 </ul>
                                             </li>
                                             <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="/auth/dashboard">dashboard</a></li>
+                                       if(req.session.role === 2) {
+                                                <li><a href="/auth/dashboard">dashboard</a></li>
+                                            }
                                         </ul>
                                     </nav>
                                 </div>
                                 <!-- <div class="header-right-btn f-right d-none d-lg-block ml-30">
 
                                     <a href="/auth/logout" class="btn header-btn">Se deconnecter</a>
-                                </div>
-                                 -->
+                                </div> -->
+                                
                                 <div class="header-right-btn f-right d-none d-lg-block ml-30">
                                     <a href="/auth/register" class="btn header-btn">S'inscrire</a>
                                 </div>
@@ -62,7 +65,7 @@
 
                                     <a href="/auth/login" class="btn header-btn">Se connecter</a>
                                 </div>
-                                     
+                            
                                 <!-- Modal se connecter -->
                             </div>
                         </div>

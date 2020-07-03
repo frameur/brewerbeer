@@ -52,30 +52,32 @@ ADD CONSTRAINT fkProductbrewer foreign key (brewer_id) references  brewersfrench
 
 CREATE TABLE IF NOT EXISTS users(
       user_id INT AUTO_INCREMENT,
-      firstname VARCHAR(50) UNIQUE NOT NULL,
-      lastname VARCHAR(50) UNIQUE NOT NULL,
-      email VARCHAR(255) UNIQUE NOT NULL,
+      firstname VARCHAR(50) NOT NULL,
+      lastname VARCHAR(50) NOT NULL,
+      email VARCHAR(50)  UNIQUE NOT NULL,
       age INT CHECK (age>=18),
       password VARCHAR(50) NOT NULL,
-      created_on TIMESTAMP NOT NULL,
-      last_login TIMESTAMP,
+      role int,
+      foreign key (role_id) references  role(role_id);
       CONSTRAINT pkUser PRIMARY KEY(user_id)
 );
 
+ALTER table role
+ADD CONSTRAINT fkRole foreign key (role) references  role(role_id);
+
 CREATE TABLE role(
-      name_id INT,
-      role_admin VARCHAR(255) UNIQUE NOT NULL,
-      role_members VARCHAR(255) UNIQUE NOT NULL,
-      CONSTRAINT pkRole PRIMARY KEY(name_id)
+      role_id INT,
+      name VARCHAR(10) NOT NULL,
+      CONSTRAINT pkRole PRIMARY KEY(role_id)
 );
 
 
-CREATE TABLE user_role(
-      user_id INT NOT NULL,
-      role_id INT NOT NULL,
-      grant_date TIMESTAMP,
-      PRIMARY KEY (user_id, role_id)
-);
+-- CREATE TABLE user_role(
+--       user_id INT NOT NULL,
+--       role_id INT NOT NULL,
+--       grant_date TIMESTAMP,
+--       PRIMARY KEY (user_id, role_id)
+-- );
 CREATE TABLE IF NOT EXISTS feedback(
       feed_id INT AUTO_INCREMENT,
       nameUser VARCHAR(255) NOT NULL,
