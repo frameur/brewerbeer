@@ -31,10 +31,10 @@
                                 <!-- Main-menu -->
                                 <div class="main-menu f-right d-none d-lg-block">
                                     <nav>
-                                        
-                                        
+
                                         <ul id="navigation" style="font-weight: 700;">
-                                            
+
+
                                             <li><a href="/"></a></li>
                                             <li><a href="about.html"></a></li>
                                             <li><a href="services.html">les Brasseurs</a></li>
@@ -46,10 +46,11 @@
                                                     <li><a href="elements.html">La Biére</a></li>
                                                 </ul>
                                             </li>
+
                                             <li><a href="contact.html">Contact</a></li>
-                                       if(req.session.role === 2) {
-                                                <li><a href="/auth/dashboard">dashboard</a></li>
-                                            }
+
+                                            <li><a href="admin/dashboard">dashboard</a></li>
+
                                         </ul>
                                     </nav>
                                 </div>
@@ -57,7 +58,9 @@
 
                                     <a href="/auth/logout" class="btn header-btn">Se deconnecter</a>
                                 </div> -->
-                                
+                                if(req.session.role_id === 2) {
+
+
                                 <div class="header-right-btn f-right d-none d-lg-block ml-30">
                                     <a href="/auth/register" class="btn header-btn">S'inscrire</a>
                                 </div>
@@ -65,11 +68,13 @@
 
                                     <a href="/auth/login" class="btn header-btn">Se connecter</a>
                                 </div>
-                            
+                                }
+
+
                                 <!-- Modal se connecter -->
                             </div>
                         </div>
-                        
+
 
                         <!-- Mobile Menu -->
                         <div class="col-12">
@@ -110,7 +115,7 @@
                                 <div class="hero__caption">
                                     <span data-animation="fadeInLeft" data-delay="0.1s">BREWER & BEER</span>
                                     <h1 data-animation="fadeInLeft" data-delay="0.4s">L'ABUS D'ALCOOL EST DANGEREUX POUR
-                                        LA SANTÉ, BIEN SUR... À CONSOMMER AVEC MODÉRATION.</h1>
+                                        LA SANTÉ, À CONSOMMER AVEC MODÉRATION.</h1>
                                     <a href="/auth/register" class="btn hero-btn" data-animation="fadeInLeft"
                                         data-delay="0.8s">S'inscrire</a>
                                 </div>

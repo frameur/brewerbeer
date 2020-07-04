@@ -95,7 +95,7 @@ exports.login = (req, res) => {
           });
         } else {
           console.log("result :", result);
-          console.log(req.session.role);
+          console.log(req.session.role_id);
           
           res.render('index');
         }
