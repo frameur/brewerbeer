@@ -1,5 +1,6 @@
  CREATE DATABASE IF NOT EXISTS brewerbeer;
 USE brewerbeer;
+
 CREATE TABLE IF NOT EXISTS brewersfrench(
        brewer_id INT AUTO_INCREMENT,
        nameBrass VARCHAR(255) NOT NULL,
@@ -57,13 +58,12 @@ CREATE TABLE IF NOT EXISTS users(
       email VARCHAR(50)  UNIQUE NOT NULL,
       age INT CHECK (age>=18),
       password VARCHAR(50) NOT NULL,
-      role int,
+      role_id int,
       foreign key (role_id) references  role(role_id);
       CONSTRAINT pkUser PRIMARY KEY(user_id)
 );
 
-ALTER table role
-ADD CONSTRAINT fkRole foreign key (role) references  role(role_id);
+
 
 CREATE TABLE role(
       role_id INT,
