@@ -51,16 +51,20 @@ global.db = db;
 const {getHomePage} = require('./routes/home');
 const adminRoutes = require('./routes/admin');
 const authRoutes = require('./routes/auth');
-const auth = require("./middleware/auth.middleware")
+const auth = require("./middleware/auth.middleware");
+// const brassRoutes = require('./routes/brasseur');
+const { getAdminPage } = require('./controllers/admin.controller');
 
 // Admin
-app.use('/admin', auth,  adminRoutes);
+app.use('/admin', auth, adminRoutes);
 
-// Authentification
+// Authentification 
 app.use('/auth',  authRoutes);
+// app.use('/brasseur', brassRoutes);
 
 // Routes
 app.get('/', getHomePage)
+app.get('/admin', getAdminPage)
 
 //Page erreur
 app.get('*', function(req, res, next){

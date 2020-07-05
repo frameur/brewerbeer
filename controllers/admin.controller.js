@@ -1,29 +1,28 @@
 exports.getAdminPage = (req, res) => {
-    let query = [
-        // "SELECT * FROM brasseurs ORDER BY id ASC",
+    // let query = [
+        // "SELECT * FROM firstname ORDER BY id ASC",
         // "SELECT * FROM users ORDER BY user_id ASC",
         // "SELECT COUNT(*) AS count FROM users"
-      ]
-    
-    // let query = "SELECT * FROM brasseurs INNER JOIN brewersfrench ON brewer_id = brewersfrench.id;"
-    db.query(query.join(';'), (err, result) => {
+      // ]
+   
+    // db.query(query.join(';'), (err, result) => {
       
-        if (err) {
-            res.redirect('/');
-        }
+    //     if (err) {
+    //         res.redirect('/');
+    //     }
   
       
         
-        res.render('admin/dashboard', {
+    //     res.render('/admin/dashboard', {
   
-            title: "Bienvenue",
-            brasseurs: result[0],
-            users: result[1],
-            totalUsers: result[2][0].count,
-            firstname: req.session.firstname,
-            breadcrumb: "Tableau de bord"
-        });
-    });
+    //         title: "Bienvenue",
+    //         brasseurs: result[0],
+    //         users: result[1],
+    //         totalUsers: result[2][0].count,
+    //         firstname: req.session.firstname,
+    //         breadcrumb: "Tableau de bord"
+    //     });
+    // });
     
   
     /*

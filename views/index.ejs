@@ -35,9 +35,9 @@
                                         <ul id="navigation" style="font-weight: 700;">
 
 
-                                            <li><a href="/"></a></li>
+                                     <li><a href="/"></a></li>
                                             <li><a href="about.html"></a></li>
-                                            <li><a href="services.html">les Brasseurs</a></li>
+                                            <li><a href="brasseurs.ejs">les Brasseurs</a></li>
                                             <li><a href="gallery.html">galleries</a></li>
                                             <li><a href="blog.html">divers</a>
                                                 <ul class="submenu">
@@ -48,28 +48,30 @@
                                             </li>
 
                                             <li><a href="contact.html">Contact</a></li>
-
-                                            <li><a href="admin/dashboard">dashboard</a></li>
-
+                                            <!-- if(!req.session.role_id === 2) { -->   
+                                            <li><a href="/admin/dashboard">dashboard</a></li>
+                                         <!-- { -->
                                         </ul>
                                     </nav>
                                 </div>
+                               
                                 <!-- <div class="header-right-btn f-right d-none d-lg-block ml-30">
 
                                     <a href="/auth/logout" class="btn header-btn">Se deconnecter</a>
                                 </div> -->
-                                if(req.session.role_id === 2) {
-
-
+                                
+                                
+                              
                                 <div class="header-right-btn f-right d-none d-lg-block ml-30">
                                     <a href="/auth/register" class="btn header-btn">S'inscrire</a>
                                 </div>
+                            
+                            
                                 <div class="header-right-btn f-right d-none d-lg-block ml-30">
 
                                     <a href="/auth/login" class="btn header-btn">Se connecter</a>
                                 </div>
-                                }
-
+                            
 
                                 <!-- Modal se connecter -->
                             </div>
