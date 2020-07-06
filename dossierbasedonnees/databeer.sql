@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS brewersfrench(
        address VARCHAR(255) NOT NULL,
        nameCp VARCHAR(255) NOT NULL,
        nameTown VARCHAR(255) NOT NULL,
-       NameWeb VARCHAR(255) NOT NULL,
+       nameWeb VARCHAR(255) NOT NULL,
        nameFacebook VARCHAR(255) NOT NULL,
        email VARCHAR(255) NOT NULL,
        phone VARCHAR(255) NOT NULL,
