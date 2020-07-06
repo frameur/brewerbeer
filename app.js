@@ -47,32 +47,20 @@ db.connect((err) => {
 });
 global.db = db;
 
-
 // Controller
-const {getHomePage} = require('./routes/home');
+const homeRoutes = require('./routes/home');
 const adminRoutes = require('./routes/admin');
 const authRoutes = require('./routes/auth');
 const auth = require("./middleware/auth.middleware");
 // const brassRoutes = require('./routes/brasseur');
-const { getAdminPage } = require('./controllers/admin.controller');
 
+// Routes
+app.use('/', homeRoutes);
 // Admin
 app.use('/admin', auth, adminRoutes);
-
 // Authentification 
 app.use('/auth',  authRoutes);
 // app.use('/brasseur', brassRoutes);
-
-// Routes
-app.get('/', getHomePage);
-app.get('/admin', getAdminPage);
-app.get('/gallery', (req, res) =>{
-    res.render('gallery.ejs')
-})
-app.get('/brasseurs', (req, res) =>{
-    res.render('brasseurs.ejs')
-})
-
 
 //Page erreur
 app.get('*', function(req, res, next){
@@ -81,8 +69,6 @@ app.get('*', function(req, res, next){
       title: "Cette page n'existe pas.",
   });
 });
-
-
 
 app.listen(port, () => {
     console.log(`lancé sur le port ${port}`);
