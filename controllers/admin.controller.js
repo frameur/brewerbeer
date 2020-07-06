@@ -1,4 +1,6 @@
 exports.getAdminPage = (req, res) => {
+
+ 
     // let query = [
         // "SELECT * FROM firstname ORDER BY id ASC",
         // "SELECT * FROM users ORDER BY user_id ASC",

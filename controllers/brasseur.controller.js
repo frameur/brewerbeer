@@ -1,15 +1,22 @@
 const fs = require('fs');
 
-exports.addBrasseurPage = (req, res) =>{
+exports.addBrasseurPage = (err, res) =>{
 
-    let query = "SELECT * FROM `brewersfrench` ORDER BY nameBrass ASC";
+    if(err){
+        res.redirect('/')
+    }
 
-    debugger.query(query, (err, result) =>{
-        if(err) {
-            res.redirect('/');
-        }
-        res.render('brasseur.ejs', {
-            
-        })
-    })
+    res.render('brasseur.ejs');
+
+    // let query = "SELECT * FROM `brewersfrench` ORDER BY nameBrass ASC";
+
+    // debugger.query(query, (err, result) =>{
+        // if(err) {
+        //             res.redirect('/');
+        //         }
+        //         res.render('brasseur.ejs', {
+                    
+        //         })
+    //     
+    // })
 }

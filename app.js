@@ -47,6 +47,7 @@ db.connect((err) => {
 });
 global.db = db;
 
+
 // Controller
 const {getHomePage} = require('./routes/home');
 const adminRoutes = require('./routes/admin');
@@ -63,8 +64,15 @@ app.use('/auth',  authRoutes);
 // app.use('/brasseur', brassRoutes);
 
 // Routes
-app.get('/', getHomePage)
-app.get('/admin', getAdminPage)
+app.get('/', getHomePage);
+app.get('/admin', getAdminPage);
+app.get('/gallery', (req, res) =>{
+    res.render('gallery.ejs')
+})
+app.get('/brasseurs', (req, res) =>{
+    res.render('brasseurs.ejs')
+})
+
 
 //Page erreur
 app.get('*', function(req, res, next){
