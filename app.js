@@ -52,15 +52,15 @@ const homeRoutes = require('./routes/home');
 const adminRoutes = require('./routes/admin');
 const authRoutes = require('./routes/auth');
 const auth = require("./middleware/auth.middleware");
-// const brassRoutes = require('./routes/brasseur');
+const brassRoutes = require('./routes/brasseur');
 
-// Routes
-app.use('/', homeRoutes);
 // Admin
-app.use('/admin', auth, adminRoutes);
+app.use('/admin', adminRoutes);
 // Authentification 
 app.use('/auth',  authRoutes);
-// app.use('/brasseur', brassRoutes);
+app.use('/admin/brasseurs', brassRoutes);
+// Routes
+app.use('/', homeRoutes);
 
 //Page erreur
 app.get('*', function(req, res, next){

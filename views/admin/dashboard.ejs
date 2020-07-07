@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="utf-8">
@@ -7,25 +8,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../dashboard/plugins/images/favicon.png">
     <title>Ample Admin Template - The Ultimate Multipurpose admin template</title>
     <!-- Bootstrap Core CSS -->
-    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../dashboard/html/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Menu CSS -->
-    <link href="../dasboard/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
+    <link href="../dashboard/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
     <!-- toast CSS -->
-    <link href="../dasboard/plugins/bower_components/toast-master/css/jquery.toast.css" rel="stylesheet">
+    <link href="../dashboard/plugins/bower_components/toast-master/css/jquery.toast.css" rel="stylesheet">
     <!-- morris CSS -->
-    <link href="../dasboard/plugins/bower_components/morrisjs/morris.css" rel="stylesheet">
+    <link href="../dashboard/plugins/bower_components/morrisjs/morris.css" rel="stylesheet">
     <!-- chartist CSS -->
-    <link href="../dasboard/plugins/bower_components/chartist-js/dist/chartist.min.css" rel="stylesheet">
-    <link href="../dasboard/plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+    <link href="../dashboard/plugins/bower_components/chartist-js/dist/chartist.min.css" rel="stylesheet">
+    <link href="../dashboard/plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
     <!-- animation CSS -->
-    <link href="/dasboard/css/animate.css" rel="stylesheet">
+    <link href="../dashboard/html/css/animate.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="/dasboard/css/style.css" rel="stylesheet">
+    <link href="../dashboard/html/css/style.css" rel="stylesheet">
     <!-- color CSS -->
-    <link href="/dasboard/css/colors/default.css" id="theme" rel="stylesheet">
+    <link href="../dashboard/html/css/colors/default.css" id="theme" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -33,6 +34,8 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
+
+    
 
 <body class="fix-header">
     <!-- ============================================================== -->
@@ -58,16 +61,16 @@
                         <!-- Logo icon image, you can use font-icon also -->
                         <b>
                             <!--This is dark logo icon-->
-                            <img src="../dasboard/plugins/images/admin-logo.png" alt="home" class="dark-logo" />
+                            <img src="../dashboard/plugins/images/admin-logo.png" alt="home" class="dark-logo" />
                             <!--This is light logo icon-->
-                            <img src="../dasboard/plugins/images/admin-logo-dark.png" alt="home" class="light-logo" />
+                            <img src="../dashboard/plugins/images/admin-logo-dark.png" alt="home" class="light-logo" />
                         </b>
                         <!-- Logo text image you can use text also -->
                         <span class="hidden-xs">
                             <!--This is dark logo text-->
-                            <img src="../dasboard/plugins/images/admin-text.png" alt="home" class="dark-logo" />
+                            <img src="../dashboard/plugins/images/admin-text.png" alt="home" class="dark-logo" />
                             <!--This is light logo text-->
-                            <img src="../dasboard/plugins/images/admin-text-dark.png" alt="home" class="light-logo" />
+                            <img src="../dashboard/plugins/images/admin-text-dark.png" alt="home" class="light-logo" />
                         </span> 
                     </a>
                 </div>
@@ -85,7 +88,7 @@
                         </form>
                     </li>
                     <li>
-                        <a class="profile-pic" href="#"> <img src="../dasboard/plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Steave</b></a>
+                        <a class="profile-pic" href="#"> <img src="../dashboard/plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">François</b></a>
                     </li>
                 </ul>
             </div>
@@ -104,11 +107,11 @@
                 </div>
                 <ul class="nav" id="side-menu">
                     <li style="padding: 70px 0 0;">
-                        <a href="users.html" class="waves-effect"><i class="fa fa-clock-o fa-fw"
+                        <a href="/admin/dashboard" class="waves-effect"><i class="fa fa-clock-o fa-fw"
                                 aria-hidden="true"></i>Utilisateurs</a>
                     </li>
                     <li>
-                        <a href="brasseurs.html" class="waves-effect"><i class="fa fa-columns fa-fw"
+                        <a href="/admin/brasseurs" class="waves-effect"><i class="fa fa-columns fa-fw"
                                 aria-hidden="true"></i>Les Brasseurs</a>
                     </li>
                     <li>
@@ -239,7 +242,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <% users.forEach((user, index) => { %>
+                                        <% users.forEach(function(user){ %>
                                         <tr>
                                             <td><%= user.user_id %></td>
                                             <td><%= user.firstname %></td>
@@ -265,7 +268,7 @@
                             <h3 class="box-title">Commentaire</h3>
                             <div class="comment-center p-t-10">
                                 <div class="comment-body">
-                                    <div class="user-img"> <img src="../dasboard/plugins/images/users/pawandeep.jpg" alt="user" class="img-circle">
+                                    <div class="user-img"> <img src="../dashboard/plugins/images/users/pawandeep.jpg" alt="user" class="img-circle">
                                     </div>
                                     <div class="mail-contnet">
                                         <h5>Pavan kumar</h5><span class="time">10:20 AM   20  may 2016</span>
@@ -273,7 +276,7 @@
                                     </div>
                                 </div>
                                 <div class="comment-body">
-                                    <div class="user-img"> <img src="../dasboard/plugins/images/users/sonu.jpg" alt="user" class="img-circle">
+                                    <div class="user-img"> <img src="../dashboard/plugins/images/users/sonu.jpg" alt="user" class="img-circle">
                                     </div>
                                     <div class="mail-contnet">
                                         <h5>Sonu Nigam</h5><span class="time">10:20 AM   20  may 2016</span>
@@ -281,7 +284,7 @@
                                     </div>
                                 </div>
                                 <div class="comment-body b-none">
-                                    <div class="user-img"> <img src="../dasboard/plugins/images/users/arijit.jpg" alt="user" class="img-circle">
+                                    <div class="user-img"> <img src="../dashboard/plugins/images/users/arijit.jpg" alt="user" class="img-circle">
                                     </div>
                                     <div class="mail-contnet">
                                         <h5>Arijit singh</h5><span class="time">10:20 AM   20  may 2016</span>
@@ -305,49 +308,49 @@
                                                     <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
                                                     <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
                                                 </div>
-                                                <a href="javascript:void(0)"><img src="../dasboard/plugins/images/users/varun.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
+                                                <a href="javascript:void(0)"><img src="../dashboard/plugins/images/users/varun.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
                                             </li>
                                             <li>
                                                 <div class="call-chat">
                                                     <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
                                                     <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
                                                 </div>
-                                                <a href="javascript:void(0)"><img src="../dasboard/plugins/images/users/genu.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
+                                                <a href="javascript:void(0)"><img src="../dashboard/plugins/images/users/genu.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
                                             </li>
                                             <li>
                                                 <div class="call-chat">
                                                     <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
                                                     <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
                                                 </div>
-                                                <a href="javascript:void(0)"><img src="../dasboard/plugins/images/users/ritesh.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
+                                                <a href="javascript:void(0)"><img src="../dashboard/plugins/images/users/ritesh.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
                                             </li>
                                             <li>
                                                 <div class="call-chat">
                                                     <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
                                                     <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
                                                 </div>
-                                                <a href="javascript:void(0)"><img src="../dasboard/plugins/images/users/arijit.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
+                                                <a href="javascript:void(0)"><img src="../dashboard/plugins/images/users/arijit.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
                                             </li>
                                             <li>
                                                 <div class="call-chat">
                                                     <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
                                                     <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
                                                 </div>
-                                                <a href="javascript:void(0)"><img src="../dasboard/plugins/images/users/govinda.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
+                                                <a href="javascript:void(0)"><img src="../dashboard/plugins/images/users/govinda.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
                                             </li>
                                             <li>
                                                 <div class="call-chat">
                                                     <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
                                                     <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
                                                 </div>
-                                                <a href="javascript:void(0)"><img src="../dasboard/plugins/images/users/hritik.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
+                                                <a href="javascript:void(0)"><img src="../dashboard/plugins/images/users/hritik.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
                                             </li>
                                             <li>
                                                 <div class="call-chat">
                                                     <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
                                                     <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
                                                 </div>
-                                                <a href="javascript:void(0)"><img src="../dasboard/plugins/images/users/varun.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
+                                                <a href="javascript:void(0)"><img src="../dashboard/plugins/images/users/varun.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
                                             </li>
                                         </ul>
                                     </div>
@@ -364,34 +367,34 @@
         <!-- ============================================================== -->
         <!-- End Page Content -->
         <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
-    <script src="../dasboard/plugins/bower_components/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="/dasboard/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- Menu Plugin JavaScript -->
-    <script src="../dasboard/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
-    <!--slimscroll JavaScript -->
-    <script src="/dasboard/js/jquery.slimscroll.js"></script>
-    <!--Wave Effects -->
-    <script src="/dasboard/js/waves.js"></script>
-    <!--Counter js -->
-    <script src="../dasboard/plugins/bower_components/waypoints/lib/jquery.waypoints.js"></script>
-    <script src="../dasboard/plugins/bower_components/counterup/jquery.counterup.min.js"></script>
-    <!-- chartist chart -->
-    <script src="../dasboard/dasboard/plugins/bower_components/chartist-js/dist/chartist.min.js"></script>
-    <script src="../dasboard/plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
-    <!-- Sparkline chart JavaScript -->
-    <script src="../dasboard/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
-    <!-- Custom Theme JavaScript -->
-    <script src="/dasboard/js/custom.min.js"></script>
-    <script src="/dasboard/js/dashboard1.js"></script>
-    <script src="../dasboard/plugins/bower_components/toast-master/js/jquery.toast.js"></script>
-</body>
-
-</html>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Wrapper -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- All Jquery -->
+        <!-- ============================================================== -->
+        <script src="../dashboard/plugins/bower_components/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../dashboard/html/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- Menu Plugin JavaScript -->
+        <script src="../dashboard/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
+        <!--slimscroll JavaScript -->
+        <script src="../dashboard/html/js/jquery.slimscroll.js"></script>
+        <!--Wave Effects -->
+        <script src="../dashboard/html/js/waves.js"></script>
+        <!--Counter js -->
+        <script src="../dashboard/plugins/bower_components/waypoints/lib/jquery.waypoints.js"></script>
+        <script src="../dashboard/plugins/bower_components/counterup/jquery.counterup.min.js"></script>
+        <!-- chartist chart -->
+        <script src="../dashboard//plugins/bower_components/chartist-js/dist/chartist.min.js"></script>
+        <script src="../dashboard/plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
+        <!-- Sparkline chart JavaScript -->
+        <script src="../dashboard/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
+        <!-- Custom Theme JavaScript -->
+        <script src="../dashboard/html/js/custom.min.js"></script>
+        <script src="../dashboard/html/js/dashboard1.js"></script>
+        <script src="../dashboard/plugins/bower_components/toast-master/js/jquery.toast.js"></script>
+        </body>
+        
+        </html>
