@@ -1,17 +1,19 @@
 const fs = require('fs');
 
-exports.addBrasseurPage = (err, res) =>{
+exports.addBrasseurPage = (req, res) =>{
 
-    res.render('brasseur.ejs');
-    // let query = "SELECT * FROM `brewersfrench` ORDER BY nameBrass ASC";
+    
+    let query = "SELECT nameBrass FROM `brewersfrench` ORDER BY brewer_id ASC";
 
-    // debugger.query(query, (err, result) =>{
-        // if(err) {
-        //             res.redirect('/');
-        //         }
-        //         res.render('brasseur.ejs', {
+    db.query(query, (err, result) =>{
+        if(err) {
+                    res.redirect('/');
+                }
+                res.render('admin/dashboard', {
+                    title: 'affiche nom brasseur',
+                    brewersfrench: result
                     
-        //         })
-    //     
-    // })
+                })
+        
+    })
 }
