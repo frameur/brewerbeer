@@ -1,6 +1,7 @@
 const express = require('express')
 ,     fileUpload = require('express-fileupload')
 ,     path = require('path')
+,     viewsPath = path.join(__dirname, '../views') 
 ,     session = require('express-session')
 ,     mysql = require('mysql')
 ,     dotenv = require ('dotenv')
@@ -25,22 +26,21 @@ db.connect((err) => {
 });
 global.db = db;
 
+//fonctionnement environnement
 app.set('port', process.env.port || port);
-app.set('views', __dirname + '/views');
+app.set('views', viewsPath);
 app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload());
 
-
-
 //express-session
 app.use(session({
     secret: 'beerbeerbeer!',
     resave: false,
     saveUninitialized: true,
-    name: 'pasteis_de_nata',
+    name: 'pasteis',
     cookie: { maxAge: 60000 }
   }));
   
