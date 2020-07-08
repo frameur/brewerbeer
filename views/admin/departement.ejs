@@ -1,5 +1,6 @@
 <%- include('../partial/admin/head.ejs') %>
 
+
 <body class="fix-header">
     <!-- ============================================================== -->
     <!-- Preloader -->
@@ -34,7 +35,7 @@
                                 alt="home" class="light-logo" />
                         </span> </a>
                 </div>
-                <!-- /Logo -->h
+                <!-- /Logo -->
                 <ul class="nav navbar-top-links navbar-right pull-right">
                     <li>
                         <a class="nav-toggler open-close waves-effect waves-light hidden-md hidden-lg"
@@ -68,7 +69,7 @@
                 <ul class="nav" id="side-menu">
                     <li style="padding: 70px 0 0;">
                         <a href="/admin/dashboard" class="waves-effect"><i class="fa fa-clock-o fa-fw"
-                                aria-hidden="true"></i>Utilisateurs</a>
+                                aria-hidden="true"></i>Membres</a>
                     </li>
                     <li>
                         <a href="/brass/brasseurs" class="waves-effect"><i class="fa fa-columns fa-fw"
@@ -120,13 +121,13 @@
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Brasseurs</h4>
+                        <h4 class="page-title">Departements</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">Brasseurs</li>
+                            <li class="active">departement</li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -143,41 +144,28 @@
                                     <option>July 2017</option>
                                 </select>
                             </div>
-                            <h3 class="box-title">les brasseurs</h3>
+                            <h3 class="box-title">les Departements</h3>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
                                         <tr>
                                             <th>id</th>
-                                            <th>nom brasseurs</th>
-                                            <th>adresse</th>
                                             <th>code postal</th>
-                                            <th>nom ville</th>
-                                            <th>page web</th>
-                                            <th>page facebook</th>
-                                            <th>email</th>
-                                            <th>télèphone</th>
-                                            <th>date</th>
+                                            <th>nom departement</th>
+                                            <th>nom departement majuscule</th>
+                                            <th>nom departement miniscule</th>
+                                            <th>nom en soundex</th>
                                         </tr>
-
                                     </thead>
                                     <tbody>
-                                        <% brewersfrench.forEach(fonction(brewer){ %>
+                                        <% departement.forEach(function(departement){ %>
                                         <tr>
-                                            <td><%= brewer.brewer_id %></td>
-                                            <td><%= brewer.nameBrass %></td>
-                                            <td><%= brewer.address %></td>
-                                            <td><%= brewer.nameCp %></td>
-                                            <td><%= brewer.nameTown %></td>
-                                            <td><%= brewer.nameWeb %></td>
-                                            <td><%= brewer.nameFacebook %></td>
-                                            <td><%= brewer.email %></td>
-                                            <td><%= brewer.phone %></td>
-                                            <td><%= brewer.logo %></td>
-                                            <td><%= brewer.content %></td>
-                                            <td><%= brewer.listBeer %></td>
-                                            <td><%= brewer.created_at %></td>
-
+                                            <td><%= departement.departement_id %></td>
+                                            <td><%= departement.departement_code %></td>
+                                            <td><%= departement.departement_nom %></td>
+                                            <td><%= departement.departement_nom_uppercase %></td>
+                                            <td><%= departement.departement_slug %></td>
+                                            <td><%= departement.departement_nom_soundex %></td>
                                             <td class="txt-oflo">April 18, 2017</td>
                                         </tr>
                                         <% }) %>
@@ -189,5 +177,4 @@
                 </div>
             </div>
 
-            <!-- /.container-fluid -->
             <%- include('../partial/admin/footer.ejs') %>
