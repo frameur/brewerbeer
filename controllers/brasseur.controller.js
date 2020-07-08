@@ -7,12 +7,12 @@ exports.getBrasseurPage = (req, res) => {
     db.query(query.join(';'), (err, result) => {
        
         if (err) {
-            res.redirect('/dashboard');
+            res.redirect('admin/dashboard');
         }
         console.log("result :", result[1][0].count)
       
         
-        res.render('brasseurs', {
+        res.render('admin/brasseurs', {
           
             
            title: "affiche les brasseurs",

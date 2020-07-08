@@ -7,12 +7,12 @@ exports.getDepartementPage = (req, res) => {
     db.query(query.join(';'), (err, result) => {
        
         if (err) {
-            res.redirect('/dashboard');
+            res.redirect('admin/dashboard');
         }
         console.log("result :", result[1][0].count)
       
         
-        res.render('departement', {
+        res.render('admin/departement', {
           
             
            title: "affiche les departements",
