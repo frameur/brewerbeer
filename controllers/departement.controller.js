@@ -7,7 +7,7 @@ exports.getDepartementPage = (req, res) => {
     db.query(query.join(';'), (err, result) => {
        
         if (err) {
-            res.redirect('admin/dashboard');
+            res.redirect('/admin/dashboard');
         }
         console.log("result :", result[1][0].count)
       
@@ -15,7 +15,7 @@ exports.getDepartementPage = (req, res) => {
         res.render('admin/departement', {
           
             
-           title: "affiche les departements",
+           title: "liste des departements",
            departement: result,
            totalDepartements: result[1][0].count
             

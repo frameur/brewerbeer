@@ -84,7 +84,7 @@
                                 aria-hidden="true"></i>Les Departements</a>
                     </li>
                     <li>
-                        <a href="/townfrench/villefrance" class="waves-effect"><i class="fa fa-columns fa-fw"
+                        <a href="/town/villefrance" class="waves-effect"><i class="fa fa-columns fa-fw"
                                 aria-hidden="true"></i>Les villes de France</a>
                     </li>
                     <li>
@@ -92,8 +92,8 @@
                                 aria-hidden="true"></i>Actualités</a>
                     </li>
                     <li>
-                        <a href="profile.html" class="waves-effect"><i class="fa fa-user fa-fw"
-                                aria-hidden="true"></i>Profile</a>
+                        <a href="../" class="waves-effect"><i class="fa fa-user fa-fw"
+                                aria-hidden="true"></i>Accueil</a>
                     </li>
                     <li>
                         <a href="fontawesome.html" class="waves-effect"><i class="fa fa-font fa-fw"
@@ -182,15 +182,7 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12">
                         <div class="white-box">
-                            <div class="col-md-3 col-sm-4 col-xs-6 pull-right">
-                                <select class="form-control pull-right row b-none">
-                                    <option>March 2017</option>
-                                    <option>April 2017</option>
-                                    <option>May 2017</option>
-                                    <option>June 2017</option>
-                                    <option>July 2017</option>
-                                </select>
-                            </div>
+                           
                             <h3 class="box-title">membres</h3>
                             <div class="table-responsive">
                                 <table class="table">
@@ -206,7 +198,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <% users.forEach(function(user){ %>
+                                        <% users.forEach((user, index) =>{ %>
                                         <tr>
                                             <td><%= user.user_id %></td>
                                             <td><%= user.firstname %></td>

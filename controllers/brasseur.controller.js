@@ -7,7 +7,7 @@ exports.getBrasseurPage = (req, res) => {
     db.query(query.join(';'), (err, result) => {
        
         if (err) {
-            res.redirect('admin/dashboard');
+            res.redirect('/admin/dashboard');
         }
         console.log("result :", result[1][0].count)
       
@@ -15,7 +15,7 @@ exports.getBrasseurPage = (req, res) => {
         res.render('admin/brasseurs', {
           
             
-           title: "affiche les brasseurs",
+           title: "liste des brasseurs",
            brewersfrench: result,
            totalBrewers: result[1][0].count
             

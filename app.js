@@ -59,7 +59,7 @@ const auth = require("./middleware/auth.middleware");
 app.use('/admin', adminRoutes);
 app.use('/brass',  brassRoutes);
 app.use('/depart', departementRoutes);
-app.use('/townfrench', villesDeFranceRoutes)
+app.use('/townfrench', villesDeFranceRoutes);
 
 app.use('/actu', articleRoutes);
 // Authentification 

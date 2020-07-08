@@ -5,17 +5,15 @@ exports.getVilleFrancePage = (req, res) => {
       ]
     
     db.query(query.join(';'), (err, result) => {
-       
-        if (err) {
-            res.redirect('/dashboard');
-        }
         console.log("result :", result[1][0].count)
-      
+        if (err) {
+            res.redirect('/admin/dashboard');
+        }
         
-        res.render('villefrance', {
-          
-            
-           title: "affiche les villes de France",
+       
+        res.render('admin/villefrance', {
+                     
+           title: "liste des villes de France",
            villedefrance: result,
            totalVilledefrance: result[1][0].count
             

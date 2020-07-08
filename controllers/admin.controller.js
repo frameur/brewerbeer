@@ -15,7 +15,7 @@ exports.getAdminPage = (req, res) => {
       
       res.render('admin/dashboard', {
         
-          title: "Bienvenue",
+          title: "liste des membres",
           users: result[0],
           totalUsers: result[1][0].count,
           firstname: req.session.firstname,
