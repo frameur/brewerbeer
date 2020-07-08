@@ -1,7 +1,7 @@
 const express = require('express')
 ,     fileUpload = require('express-fileupload')
 ,     path = require('path')
-,     viewsPath = path.join(__dirname, '../views') 
+,     viewsPath = path.join(__dirname, '/views') 
 ,     session = require('express-session')
 ,     mysql = require('mysql')
 ,     dotenv = require ('dotenv')
