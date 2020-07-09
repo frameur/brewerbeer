@@ -50,7 +50,7 @@ app.use(session({
 const homeRoutes = require('./routes/home');
 const adminRoutes = require('./routes/admin');
 const authRoutes = require('./routes/auth');
-const auth = require("./middleware/auth.middleware");
+const auth = require('./middleware/auth.middleware');
 const brassRoutes = require('./routes/brasseur');
 const departementRoutes = require('./routes/departement');
 const villesDeFranceRoutes = require('./routes/villefrance');
@@ -64,7 +64,7 @@ app.use('/townfrench', villesDeFranceRoutes);
 app.use('/actu', articleRoutes);
 
 // Authentification 
-app.use('/auth',  authRoutes);
+app.use('/auth',  authRoutes)
 // Routes
 app.use('/', homeRoutes);
 //Page erreur

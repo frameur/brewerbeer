@@ -20,7 +20,7 @@ exports.getBrasseurPage = (req, res) => {
            totalBrewers: result[1][0].count
             
   
-        });
+        })
     });
      }
   
