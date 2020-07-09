@@ -185,13 +185,7 @@
                     <div class="col-md-12 col-lg-12 col-sm-12">
                         <div class="white-box">
                             <div class="col-md-3 col-sm-4 col-xs-6 pull-right">
-                                <select class="form-control pull-right row b-none">
-                                    <option>March 2017</option>
-                                    <option>April 2017</option>
-                                    <option>May 2017</option>
-                                    <option>June 2017</option>
-                                    <option>July 2017</option>
-                                </select>
+                             
                             </div>
                             <h3 class="box-title">Utilisateurs</h3>
                             <div class="table-responsive">
@@ -199,25 +193,26 @@
                                     <thead>
                                         <tr>
                                             <th>id</th>
-                                            <th>Nom</th>
-                                            <th>Prenom</th>
-                                            <th>Email</th>
-                                            <th>Role</th>
-                                            <th>Date de naissance</th>
+                                            <th>Titre</th>
+                                            <th>Contenu</th>
+                                            <th>Auteur de l'article</th>
+                                            <th>Date de l'article</th>
+                                            <th>Date de publication</th>
                                         </tr>
                                     </thead>
-                                    <!-- <tbody>
-                                        <% users.forEach((user, index) => { %>
+                                    <tbody>
+                                        <% actubeer.forEach((actu, index) => { %>
                                         <tr>
-                                            <td><%= user_id %></td>
-                                            <td><%= user.firstname %></td>
-                                            <td><%= user.lastname %></td>
-                                            <td><%= user.email %></td>
-                                            <td><%= user.role_id %></td>
-                                            <td><%= user.age %></td>
+                                            <td><%= actu.actu_id %></td>
+                                            <td><%= actu.actuTitle %></td>
+                                            <td><%= actu.actuContent %></td>
+                                            <td><%= actu.author %></td>
+                                            <td><%= actu.Date %></td>
+                                            <td><%= actu.created_at %></td>
+                                            
                                         </tr>
                                         <% }) %>
-                                    </tbody> -->
+                                    </tbody> 
                                 </table>
                             </div>
                         </div>

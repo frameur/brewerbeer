@@ -9,7 +9,17 @@ const express = require('express')
 ,     app = express()
 
 
+//fonctionnement environnement
+app.set('port', process.env.port || port);
+app.set('views', viewsPath);
+app.set('view engine', 'ejs');
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(fileUpload());
+
 dotenv.config({path: './.env'})
+
 //mysql
 const db = mysql.createConnection ({
     host: process.env.DATABASE_HOST,
@@ -26,15 +36,6 @@ db.connect((err) => {
 });
 global.db = db;
 
-//fonctionnement environnement
-app.set('port', process.env.port || port);
-app.set('views', viewsPath);
-app.set('view engine', 'ejs');
-app.use(express.json());
-app.use(express.urlencoded({extended: false}));
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(fileUpload());
-
 //express-session
 app.use(session({
     secret: 'beerbeerbeer!',
@@ -46,22 +47,22 @@ app.use(session({
   
 
 // Controller
-const brassRoutes = require('./routes/brasseur');
-const departementRoutes = require('./routes/departement');
-const villesDeFranceRoutes = require('./routes/villefrance');
-const articleRoutes = require('./routes/article');
 const homeRoutes = require('./routes/home');
 const adminRoutes = require('./routes/admin');
 const authRoutes = require('./routes/auth');
 const auth = require("./middleware/auth.middleware");
+const brassRoutes = require('./routes/brasseur');
+const departementRoutes = require('./routes/departement');
+const villesDeFranceRoutes = require('./routes/villefrance');
+// const articleRoutes = require('./routes/article');
 
-// Admin
+// Dashboard
 app.use('/admin', adminRoutes);
 app.use('/brass',  brassRoutes);
 app.use('/depart', departementRoutes);
 app.use('/townfrench', villesDeFranceRoutes);
+// app.use('/actu', articleRoutes);
 
-app.use('/actu', articleRoutes);
 // Authentification 
 app.use('/auth',  authRoutes);
 // Routes
