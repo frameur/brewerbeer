@@ -54,14 +54,14 @@ const auth = require("./middleware/auth.middleware");
 const brassRoutes = require('./routes/brasseur');
 const departementRoutes = require('./routes/departement');
 const villesDeFranceRoutes = require('./routes/villefrance');
-// const articleRoutes = require('./routes/article');
+const articleRoutes = require('./routes/article');
 
 // Dashboard
 app.use('/admin', adminRoutes);
 app.use('/brass',  brassRoutes);
 app.use('/depart', departementRoutes);
 app.use('/townfrench', villesDeFranceRoutes);
-// app.use('/actu', articleRoutes);
+app.use('/actu', articleRoutes);
 
 // Authentification 
 app.use('/auth',  authRoutes);

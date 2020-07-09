@@ -1,6 +1,7 @@
 <%- include('../partial/admin/head.ejs') %>
 
 
+
 <body class="fix-header">
     <!-- ============================================================== -->
     <!-- Preloader -->
@@ -84,7 +85,7 @@
                                 aria-hidden="true"></i>Les villes de France</a>
                     </li>
                     <li>
-                        <a href="articles.html" class="waves-effect"><i class="fa fa-table fa-fw"
+                        <a href="/actu/article" class="waves-effect"><i class="fa fa-table fa-fw"
                                 aria-hidden="true"></i>Actualités</a>
                     </li>
                     <li>
@@ -105,7 +106,7 @@
                     </li>
 
                 </ul>
-              
+
             </div>
         </div>
         <!-- ============================================================== -->
@@ -137,7 +138,8 @@
                                 <li>
                                     <div id="sparklinedash"></div>
                                 </li>
-                                <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter text-success"><%= totalDepartements %></span></li>
+                                <li class="text-right"><i class="ti-arrow-up text-success"></i> <span
+                                        class="counter text-success"><%= totalDepartements %></span></li>
                             </ul>
                         </div>
                     </div>
@@ -167,14 +169,19 @@
                                             <td><%= departement.departement_nom_uppercase %></td>
                                             <td><%= departement.departement_slug %></td>
                                             <td><%= departement.departement_nom_soundex %></td>
+
                                         </tr>
+                                    
                                         <% }) %>
                                     </tbody>
                                 </table>
+                                    
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+        
 
             <%- include('../partial/admin/footer.ejs') %>

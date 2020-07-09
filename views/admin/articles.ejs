@@ -87,7 +87,7 @@
                                 aria-hidden="true"></i>Les villes de France</a>
                     </li>
                     <li>
-                        <a href="articles" class="waves-effect"><i class="fa fa-table fa-fw"
+                        <a href="/actu/article" class="waves-effect"><i class="fa fa-table fa-fw"
                                 aria-hidden="true"></i>Actualités</a>
                     </li>
                     <li>
@@ -142,7 +142,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-sm-6 col-xs-12">
                         <div class="white-box analytics-info">
-                            <h3 class="box-title">Total Visit</h3>
+                            <h3 class="box-title">Total Actualités</h3>
                             <ul class="list-inline two-part">
                                 <li>
                                     <div id="sparklinedash"></div>
@@ -151,28 +151,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-sm-6 col-xs-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">Total Page Views</h3>
-                            <ul class="list-inline two-part">
-                                <li>
-                                    <div id="sparklinedash2"></div>
-                                </li>
-                                <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple">869</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 col-xs-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">Unique Visitor</h3>
-                            <ul class="list-inline two-part">
-                                <li>
-                                    <div id="sparklinedash3"></div>
-                                </li>
-                                <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter text-info">911</span></li>
-                            </ul>
-                        </div>
-                    </div>
+                   
                 </div>
                 <!--/.row -->
                 <!--row -->
@@ -209,7 +188,6 @@
                                             <td><%= actu.author %></td>
                                             <td><%= actu.Date %></td>
                                             <td><%= actu.created_at %></td>
-                                            
                                         </tr>
                                         <% }) %>
                                     </tbody> 

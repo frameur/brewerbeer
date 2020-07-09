@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const articleController = require('../controllers/article.controller');
 
+router.get('/article', articleController.getArticlePage);
+
 // // Get
 // router.get('/add', articleController.addArticlePage);
 // router.get('/edit/:id', articleController.editArticlePage);
