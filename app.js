@@ -7,6 +7,7 @@ const express = require('express')
 ,     dotenv = require ('dotenv')
 ,     port = 1998
 ,     app = express()
+,     util = require('util')
 
 
 //fonctionnement environnement
@@ -35,6 +36,8 @@ db.connect((err) => {
     console.log('Connecté à la base MySQL: brewerbeer');
 });
 global.db = db;
+const queryAsync = util.promisify(db.query).bind(db);
+global.queryAsync = queryAsync
 
 //express-session
 app.use(session({

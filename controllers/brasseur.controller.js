@@ -1,28 +1,32 @@
-exports.addBrasseurPage = (req, res) => {
-    let query = [
-        "SELECT `brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, `created_at` FROM `brewersfrench` ORDER BY brewer_id ASC LIMIT 25",
-        "SELECT COUNT(*) AS count FROM brewersfrench"
-      ]
+exports.addBrasseurPage = async (req, res) => {
     
-    db.query(query.join(';'), (err, result) => {
+    const listbrewer = await queryAsync("SELECT `brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, `created_at` FROM `brewersfrench` ORDER BY brewer_id ASC LIMIT 25")
+    const totalBrewers = await queryAsync ("SELECT COUNT(*) AS count FROM brewersfrench")
+        
+        
+      
+    
+    // db.query(query.join(';'), (err, result) => {
        
-        if (err) {
-            res.redirect('/admin/dashboard');
-        }
-        console.log("result :", result[1][0].count)
+    //     if (err) {
+    //         res.redirect('/admin/dashboard');
+    //     }
+    //     console.log("result :", result[1][0].count)
       
         
         res.render('admin/brasseurs', {
           
             
            title: "liste des brasseurs",
-           brewersfrench: result,
-           totalBrewers: result[1][0].count
+           brewersfrench: listbrewer,
+           totalBrewers: totalBrewers[0].count
+
+
             
   
         })
-    });
-     }
+    
+       }
   
 
 
