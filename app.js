@@ -36,6 +36,8 @@ db.connect((err) => {
     console.log('Connecté à la base MySQL: brewerbeer');
 });
 global.db = db;
+
+//Declaration méthode async await
 const queryAsync = util.promisify(db.query).bind(db);
 global.queryAsync = queryAsync
 
