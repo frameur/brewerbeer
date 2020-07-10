@@ -1,7 +1,7 @@
 exports.getAdminPage = (req, res) => {
   let query = [
       // "SELECT * FROM brewersfrench ORDER BY brewer_id ASC",
-      "SELECT `user_id`, `firstname`, `lastname`, `email`, `age`, `password`, `role_id` FROM users ORDER BY firstname ASC",
+      "SELECT `user_id`, `firstname`, `lastname`, `email`, `age`, `password`, `role_id` FROM users ORDER BY firstname ASC LIMIT 10",
       "SELECT COUNT(*) AS count FROM users"
     ]
   

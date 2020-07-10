@@ -1,6 +1,6 @@
 exports.getDepartementPage = (req, res) => {
     let query = [
-        "SELECT `departement_id`, `departement_code`, `departement_nom`, `departement_nom_uppercase`, `departement_slug`, `departement_nom_soundex` FROM `departement`  ORDER BY departement_id ASC",
+        "SELECT `departement_id`, `departement_code`, `departement_nom`, `departement_nom_uppercase`, `departement_slug`, `departement_nom_soundex` FROM `departement`  ORDER BY departement_id ASC LIMIT 25",
         "SELECT COUNT(*) AS count FROM departement"
       ]
     
