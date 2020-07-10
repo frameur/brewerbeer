@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const brasseurController = require('../controllers/brasseur.controller');
 
-router.get('/brasseurs', brasseurController.getBrasseurPage);
+
 
 // // Get
-// router.get('/add', brasseurController.addBrasseurPage);
+router.get('/add', brasseurController.addBrasseurPage);
 // router.get('/edit/:id', brasseurController.editBrasseurPage);
 
 // // Post

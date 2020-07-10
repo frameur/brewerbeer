@@ -1,4 +1,4 @@
-exports.getBrasseurPage = (req, res) => {
+exports.addBrasseurPage = (req, res) => {
     let query = [
         "SELECT `brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, `created_at` FROM `brewersfrench` ORDER BY brewer_id ASC",
         "SELECT COUNT(*) AS count FROM brewersfrench"

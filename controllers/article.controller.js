@@ -1,4 +1,4 @@
-exports.getArticlePage = (req, res) => {
+exports.addArticlePage = (req, res) => {
     let query = [
         "SELECT `actu_id`, `actuTitle`, `actuContent`, `Date`, `created_at` FROM `actubeer` ORDER BY actu_id ASC",
         "SELECT COUNT(*) AS count FROM actubeer"
