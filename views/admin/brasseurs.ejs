@@ -104,7 +104,7 @@
                     </li>
 
                 </ul>
-               
+
             </div>
         </div>
         <!-- ============================================================== -->
@@ -136,7 +136,8 @@
                                 <li>
                                     <div id="sparklinedash"></div>
                                 </li>
-                                <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter text-success"><%= totalBrewers %></span></li>
+                                <li class="text-right"><i class="ti-arrow-up text-success"></i> <span
+                                        class="counter text-success"><%= totalBrewers %></span></li>
                             </ul>
                         </div>
                     </div>
@@ -169,7 +170,7 @@
                                         <% brewersfrench.forEach((brewer, index) =>{ %>
                                         <tr>
                                             <td><%= brewer.brewer_id %></td>
-                                            <td><%= brewer.nameBrass %></td>
+                                            <td><a href="/edit/<%=  %>" ><%= brewer.nameBrass %></a></td>
                                             <td><%= brewer.address %></td>
                                             <td><%= brewer.nameCp %></td>
                                             <td><%= brewer.nameTown %></td>
@@ -190,6 +191,60 @@
                     </div>
                 </div>
             </div>
-
+            <div class="row justify-content-center">
+                <div class="col-sm-5 ">
+                    <img src="/uploads/" alt="" style="width: 100%;">
+            
+                </div>
+            </div><br>
+            <div class="container">
+            <div class="row justify-content-center">
+            
+            
+                <div class="col-sm-11">
+            
+                    <a href="/add/" class="btn btn-success">Editer</a>
+                    <a href="/delete/" class="btn btn-danger">Supprimer</a><br><br>
+            
+            
+                 
+                    <h2 style="text-decoration: underline;">Nom brasseur</h2>
+                    <p class="lead" style="font-size: 30px;">
+                        
+                    </p>
+                    
+            
+                    
+                    <hr>
+                   
+                   
+            
+                    <h3>Adresse : </h3>
+                    <br>
+            
+                    <h3>Code postal : </h3>
+            
+                    <br>
+                    <h3>Ville : </h3>
+            
+                    <br>
+                    <br>
+                    <h3>web : </h3>
+            
+                    <br>
+                    <br>
+                    <h3>facebook : </h3>
+            
+                    <br>
+                    <br>
+                    <h3>date de creation : </h3>
+            
+                    <br>
+                  
+            
+            
+                </div>
+            </div>
+        </div>
             <!-- /.container-fluid -->
             <%- include('../partial/admin/footer.ejs') %>

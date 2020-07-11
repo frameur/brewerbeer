@@ -5,7 +5,7 @@ const brasseurController = require('../controllers/brasseur.controller');
 
 // // Get
 router.get('/add', brasseurController.addBrasseurPage);
-// router.get('/edit/:id', brasseurController.editBrasseurPage);
+router.get('/edit/:id', brasseurController.editBrasseurPage);
 
 // // Post
 // router.post('/add', brasseurController.addBrasseur);
