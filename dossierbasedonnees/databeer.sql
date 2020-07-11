@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS users(
       age INT CHECK (age>=18),
       password VARCHAR(50) NOT NULL,
       role_id int,
-      foreign key (role_id) references  role(role_id);
+      foreign key (role_id) references  role(role_id),
       CONSTRAINT pkUser PRIMARY KEY(user_id)
 );
 
@@ -78,6 +78,7 @@ CREATE TABLE role(
 --       grant_date TIMESTAMP,
 --       PRIMARY KEY (user_id, role_id)
 -- );
+
 CREATE TABLE IF NOT EXISTS feedback(
       feed_id INT AUTO_INCREMENT,
       nameUser VARCHAR(255) NOT NULL,
