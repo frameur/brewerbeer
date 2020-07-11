@@ -22,8 +22,8 @@ exports.editBrasseurPage = async(req, res) =>{
     let brewerid = req.params.brewer_id;
     const fichebrewer = await queryAsync ("SELECT * FROM `brewersfrench` WHERE brewer_id = '" + brewerid + "' ")
 
-        res.render('admin/brewerone', {
-        title: "fiche d'un brasseur",
+        res.render('admin/brasseurone', {
+        title: "fiche brasseur",
         brewerone:fichebrewer[0]   
         
     })

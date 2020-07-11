@@ -10,3 +10,5 @@ let query = "SELECT * FROM users INNER JOIN club ON user_id = user.id;"
     <%} else { %>
     <p> Not Allowed </p>
     <% } %>
+
+
