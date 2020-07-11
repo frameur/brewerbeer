@@ -170,9 +170,9 @@
                                         <% brewersfrench.forEach((brewer, index) =>{ %>
                                         <tr>
                                             <td><%= brewer.brewer_id %></td>
-                                            <td><a href="/brass/edit/<%= brewer.brewer_id  %>">Brasseur<%= brewer.nameBrass %></a></td>
+                                            <td><a href="/brass/edit/<%= brewer.brewer_id  %>">Brasseur <%= brewer.nameBrass %></a></td>
                                             <td><%= brewer.address %></td>
-                                            <td><%= brewer.nameCp %></td>
+                                            <td><%= brewer.nameCp %></td> 
                                             <td><%= brewer.nameTown %></td>
                                             <td><%= brewer.nameWeb %></td>
                                             <td><%= brewer.nameFacebook %></td>
