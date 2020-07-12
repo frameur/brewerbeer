@@ -19,8 +19,8 @@
 
 <div class="row justify-content-center">
     <ul class="nav" id="side-menu">
-        <li style="text-align:center">
-            <a href="/admin/dashboard" class="btn btn-success"><i class="fa fa-clock-o fa-fw"></i>accueil</a>
+        <li>
+            <a href="/admin/dashboard" class="btn btn-secondary"><i class="fa fa-clock-o fa-fw"></i>Accueil</a>
         </li>
     </ul>
 </div>
@@ -37,39 +37,40 @@
 
             <div class="col-md-12 col-lg-12 col-sm-12">
                 <div class="white-box">
-                    <a href="/add/" class="btn btn-success">Editer</a>
-                    <a href="/delete/" class="btn btn-danger">Supprimer</a><br><br>
+                    <a href="/brass/add/" class="btn btn-success">Editer</a>
+                    <a href="/brass/delete/" class="btn btn-danger">Supprimer</a><br><br>
 
-
-
+                   
                     <h2 style="text-decoration: underline; text-align:center"> <%= title %> </h2>
+
+                   
                     <p class="lead" style="font-size: 30px;">
-                        <h1>Brasseur <%=  %>  </h1>
+                        <h1>Brasseur <%= brewerone.nameBrass %>  </h1>
                     </p>
 
                     <hr>
-                    <h3>Adresse : </h3>
+                    <h3>Adresse : <%= brewerone.address %></h3>
                     <br>
 
-                    <h3>Code postal : </h3>
+                    <h3>Code postal : <%= brewerone.nameCp %></h3>
 
                     <br>
-                    <h3>Ville : </h3>
+                    <h3>Ville : <%= brewerone.nameTown %></h3>
 
                     
                     <br>
-                    <h3>web : </h3>
+                    <h3>web : <%= brewerone.nameWeb %> </h3>
 
                     
                     <br>
-                    <h3>facebook : </h3>
+                    <h3>facebook : <%= brewerone.nameFacebook %></h3>
 
                     
                     <br>
-                    <h3>date de creation : </h3>
+                    <h3>date de creation : <%= brewerone.created_at %> </h3>
 
                     <br>
-
+                
                 </div>
 
             </div>
