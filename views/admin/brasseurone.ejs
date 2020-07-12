@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -7,34 +7,30 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        
+
     <title>fiche individuel brasseur de biere</title>
 </head>
 <style>
     body {
-    
-    width:100%;
-    height:100vh;
-    overflow-x: hidden;
-    background-color: burlywood;
-    object-fit: contain;
-      
-}
+
+        width: 100%;
+        height: 100vh;
+        overflow-x: hidden;
+        background-color: burlywood;
+        object-fit: contain;
+
+    }
 </style>
-
-
-
-
 
 <body class="fix-header">
 
-<div class="row justify-content-center">
-    <ul class="nav" id="side-menu">
-        <li>
-            <a href="/admin/dashboard" class="btn btn-secondary"><i class="fa fa-clock-o fa-fw"></i>Accueil</a>
-        </li>
-    </ul>
-</div>
+    <div class="row justify-content-center">
+        <ul class="nav" id="side-menu">
+            <li>
+                <a href="/admin/dashboard" class="btn btn-secondary"><i class="fa fa-clock-o fa-fw"></i>Accueil</a>
+            </li>
+        </ul>
+    </div>
 
     <div class="row justify-content-center">
         <div class="col-sm-5 ">
@@ -48,15 +44,15 @@
 
             <div class="col-md-12 col-lg-12 col-sm-12">
                 <div class="white-box">
-                    <a href="/brass/add/" class="btn btn-success">Editer</a>
-                    <a href="/brass/delete/" class="btn btn-danger">Supprimer</a><br><br>
+                    <a href="/brass/edit" class="btn btn-success">Editer</a>
+                    <a href="/brass/delete/:id" class="btn btn-danger">Supprimer</a><br><br>
 
-                   
+
                     <h2 style="text-decoration: underline; text-align:center"> <%= title %> </h2>
 
-                   
+
                     <p class="lead" style="font-size: 30px;">
-                        <h1>Brasseur <%= brewerone.nameBrass %>  </h1>
+                        <h1>Brasseur <%= brewerone.nameBrass %> </h1>
                     </p>
 
                     <hr>
@@ -68,20 +64,20 @@
                     <br>
                     <h3>Ville : <%= brewerone.nameTown %></h3>
 
-                    
+
                     <br>
                     <h3>web : <%= brewerone.nameWeb %> </h3>
 
-                    
+
                     <br>
                     <h3>facebook : <%= brewerone.nameFacebook %></h3>
 
-                    
+
                     <br>
                     <h3>date de creation : <%= brewerone.created_at %> </h3>
 
                     <br>
-                
+
                 </div>
 
             </div>

@@ -4,12 +4,12 @@ const brasseurController = require('../controllers/brasseur.controller');
 
 
 // // Get
-router.get('/add', brasseurController.addBrasseurPage);
+router.get('/list', brasseurController.addBrasseurPage);
 router.get('/edit/:id', brasseurController.editBrasseurPage);
 
 // // Post
-// router.post('/add', brasseurController.addBrasseur);
-// router.post('/edit/:id', brasseurController.editBrasseur);
-// router.get('/delete/:id', brasseurController.deleteBrasseur);
+router.post('/add', brasseurController.addBrasseur);
+router.post('/edit/:id', brasseurController.editBrasseur);
+router.get('/delete/:id', brasseurController.deleteBrasseur);
 
 module.exports = router;
