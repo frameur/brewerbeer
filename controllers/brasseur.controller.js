@@ -5,7 +5,7 @@ exports.addBrasseurPage = async (req, res) => {
     const listbrewer = await queryAsync("SELECT `brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, `created_at` FROM `brewersfrench` ORDER BY brewer_id ASC LIMIT 25")
     const totalBrewers = await queryAsync("SELECT COUNT(*) AS count FROM brewersfrench")
 
-
+    console.log("result :", listbrewer);
     res.render('admin/brasseurs', {
 
 
@@ -33,17 +33,17 @@ exports.addBrasseur = async (req, res) => {
         listBeer,
         created_at
     } = req.body;
+    
+ 
+    const brewerajout = await queryAsync ("INSERT INTO `brewersfrench`(`brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, `created_at`) VALUES ('" + brewer_id + "', '" + nameBrass + "', '" + address + "', '" + nameCp + "', '" + nameTown + "', '" + nameWeb + "', '" + nameFacebook + +"', '" + email + "', '" + phone + "', '" + logo + "', '" + content + "', '" + listBeer + "', '" + created_at + "')")
 
-    const ajoutbrewer = await queryAsync("INSERT INTO `brewersfrench`(`brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, `created_at`) VALUES ('" +
-        brewer_id + "', '" + nameBrass + "', '" + address + "', '" + nameCp + "', '" + nameTown + "', '" + nameWeb + "', '" + nameFacebook + +"', '" + email + "', '" + phone + "', '" + logo + "', '" + content + "', '" + listBeer + "', '" + created_at + "')")
-
-
+    // message = "Fichier image invalide";
     res.render('admin/brasseuradd', {
-        title: "ajout brasseur",
-        breweradd: ajoutbrewer[0]
+        message,
+        title: "Ajouter un brasseur",
+        breweradd:brewerajout
 
-    })
-
+    });
 }
 
 //affiche un brasseur
@@ -60,8 +60,8 @@ exports.editBrasseurPage = async (req, res) => {
     })
 
 }
-
-exports.editBrasseur = (req, res) => {
+//modifier une fiche brasseur
+exports.editBrasseur = async (req, res) => {
     let brewerId = req.params.id;
 
     let {
@@ -80,26 +80,27 @@ exports.editBrasseur = (req, res) => {
     } = req.body;
 
 
-    let query = "UPDATE `players` SET `nameBrass` = '" + nameBrass + "', `address` = '" + address + "', `nameCp` = '" + nameCp + "', `nameTown` = '" + nameTown + "' , `nameWeb` = '" + nameWeb + "' , `nameFacebook` = '" + nameFacebook + "' , `email` = '" + email + "' , `phone` = '" + phone + "' , `logo` = '" + logo + "' , `content` = '" + content + "' , `listBeer` = '" + listBeer + "' , `created_at` = '" + created_at + "' WHERE `brewersfrench`.`brewer_id` = '" + brewerId + "'";
+    const brewermodif = await queryAsync("UPDATE `players` SET `nameBrass` = '" + nameBrass + "', `address` = '" + address + "', `nameCp` = '" + nameCp + "', `nameTown` = '" + nameTown + "' , `nameWeb` = '" + nameWeb + "' , `nameFacebook` = '" + nameFacebook + "' , `email` = '" + email + "' , `phone` = '" + phone + "' , `logo` = '" + logo + "' , `content` = '" + content + "' , `listBeer` = '" + listBeer + "' , `created_at` = '" + created_at + "' WHERE `brewersfrench`.`brewer_id` = '" + brewerId + "'");
+    
+        
+        res.redirect('/brass/list', {
+            brewermodif:brewermodif
+        });
 
-    db.query(query, (err, result) => {
-        if (err) {
-            return res.status(500).send(err);
-        }
-        res.render('admin/brasseuredit');
-    });
-
-
+    
 }
-
+//supprimer un fichier brasseur
 exports.deleteBrasseur = async (req, res) => {
     let brewerId = req.params.id;
-    const deletebrewer = await queryAsync('DELETE FROM brewerfrench WHERE brewerid = "' + brewerId + '"')
-    console.log("result :", deletbrewer);
-    res.render('/admin/brasseurs', {
-        delbrewer: deletebrewer
-    })
-
-
-
+    let brewerdelete = await queryAsync ('DELETE FROM brewerfrench WHERE brewer_id = "' + brewerId + '"')
+    
+ 
+        res.redirect('/brass/list', {
+                    
+            message,
+            title: 'fiche brasseur supprimer',
+            brewerdel:brewerdelete
+        });
+            
+    
 }

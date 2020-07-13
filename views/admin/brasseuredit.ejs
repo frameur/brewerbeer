@@ -10,6 +10,7 @@
 
     <title>modifier fiche brasseur de biere</title>
 </head>
+
 <style>
     body {
 
@@ -31,7 +32,7 @@
     <div class="row justify-content-center">
         <ul class="nav" id="side-menu">
             <li>
-                <a href="/admin/dashboard" class="btn btn-secondary"><i class="fa fa-clock-o fa-fw"></i>Accueil</a>
+                <a href="/brass/list" class="btn btn-secondary"><i class="fa fa-clock-o fa-fw"></i>Accueil</a>
             </li>
         </ul>
     </div>
@@ -42,85 +43,96 @@
 
         </div>
     </div><br>
-    <form method="POST" action="{{endpoint}}" enctype="multipart/form-data">
-        <div class="form-group input-group-lg">
-            <label for="name">
-                <h4>Nom du brasseur</h4>
-            </label>
-            <input type="text" class="form-control one" id="name" name="name" value="{{recette.name}}">
-
-        </div>
-        <div class="form-group">
-            <label for="nbpersonne">
-            </label>
-            <h4>adresse</h4>
-            <input type="text" class="form-control" id="nbpersonne" name="nbpersonne" value="{{recette.nbpersonne}}">
-        </div>
-        <div class="form-group">
-            <label for="préparation">
-
-            </label>
-            <h4>code postal</h4>
-            <input type="text" class="form-control" id="préparation" name="préparation" value="{{recette.préparation}}">
-        </div>
-        <div class="form-group">
-            <label for="cuisson">
-            </label>
-            <h4>la ville</h4>
-            <input type="text" class="form-control" id="cuisson" name="cuisson" value="{{recette.cuisson}}">
-        </div>
-        <div class="form-group">
-            <label for="repos">
-            </label>
-            <h4>adresse facebook</h4>
-            <input type="text" class="form-control" id="repos" name="repos" value="{{recette.repos}}">
-        </div>
-
-        <div class="form-group">
-            <label for="repos">
-            </label>
-            <h4>email</h4>
-            <input type="text" class="form-control" id="repos" name="repos" value="{{recette.repos}}">
-        </div>
-        <div class="form-group">
-            <label for="repos">
-            </label>
-            <h4>telephone</h4>
-            <input type="text" class="form-control" id="repos" name="repos" value="{{recette.repos}}">
-        </div>
-        <div class="form-group">
-            <label for="timing">
-                <h4>nom des bieres</h4>
-            </label>
-            <textarea class="form-control" type="text" name="timing" id="timing"
-                value="{{recette.timing}}">{{recette.timing}}</textarea>
-        </div>
-        <div class="form-group">
-            <label for="timing">
-                <h4>contenu</h4>
-            </label>
-            <textarea class="form-control" type="text" name="timing" id="timing"
-                value="{{recette.timing}}">{{recette.timing}}</textarea>
-        </div>
-
-        <div class="form-group">
-            <label for="file">
-                <h5>logo</h5>
-            </label><br>
-            <input type="file" id="file" name="file">
-            <br><br>
-            <!-- <div class="form-group">
-                {% for type in types %}
-                <label>
-                    <input type="checkbox" name="types[]" value="{{type._id}}"
-                        {% if recette.types.indexOf(type._id) != -1 %}checked{% endif %}>
-                    {{type.name}}
+    <% if (brewerone) { %>
+        <form method="POST" action="" enctype="multipart/form-data">
+            <div class="form-group input-group-lg">
+                <label for="nameBrass">
+                    <h4>Nom du brasseur</h4>
                 </label>
-                {% endfor %}
-            </div> -->
-            <input type="submit" class="btn btn-primary" value="Enregistrer">
-        </div>
-    </form>
+                <input type="text" class="form-control one" id="nameBrass" name="nameBrass" value=" <%= brewerone.nameBrass %>  ">
+    
+            </div>
+            <div class="form-group">
+                <label for="address">
+                </label>
+                <h4>adresse</h4>
+                <input type="text" class="form-control" id="address" name="address" value="{<%= brewerone.address %> ">
+            </div>
+            <div class="form-group">
+                <label for="nameCp">
+    
+                </label>
+                <h4>code postal</h4>
+                <input type="text" class="form-control" id="nameCp" name="nameCp" value="<%= brewerone.nameCp %> ">
+            </div>
+            <div class="form-group">
+                <label for="nameTown">
+                </label>
+                <h4>la ville</h4>
+                <input type="text" class="form-control" id="nameTown" name="nameTown" value="<%= brewerone.nameTown %> ">
+            </div>
+            <div class="form-group">
+                <label for="nameWeb">
+                </label>
+                <h4>adresse web</h4>
+                <input type="text" class="form-control" id="nameWeb" name="nameWeb" value="<%= brewerone.nameWeb %> ">
+            </div>
+            <div class="form-group">
+                <label for="nameFacebook">
+                </label>
+                <h4>adresse facebook</h4>
+                <input type="text" class="form-control" id="nameFacebook" name="nameFacebook" value="<%= brewerone.nameFacebook %> ">
+            </div>
+    
+            <div class="form-group">
+                <label for="email">
+                </label>
+                <h4>email</h4>
+                <input type="text" class="form-control" id="email" name="email" value="<%= brewerone.email %> ">
+            </div>
+            <div class="form-group">
+                <label for="phone">
+                </label>
+                <h4>telephone</h4>
+                <input type="text" class="form-control" id="phone" name="phone" value="<%= brewerone.phone %> }">
+            </div>
+            <div class="form-group">
+                <label for="listbeer">
+                    <h4>nom des bieres</h4>
+                </label>
+                <textarea class="form-control" type="text" name="listbeer" id="listbeer"
+                    value="<%= brewerone.listbeer %>"><%= brewerone.listbeer %></textarea>
+            </div>
+            <div class="form-group">
+                <label for="content">
+                    <h4>contenu</h4>
+                </label>
+                <textarea class="form-control" type="text" name="content" id="content"
+                    value="<%= brewerone.content %>"><%= brewerone.content %></textarea>
+            </div>
+    
+            <div class="form-group">
+                <label for="file">
+                    <h5>logo</h5>
+                </label><br>
+                <input type="file" id="file" name="file">
+                <br><br>
+                <!-- <div class="form-group">
+                    {% for type in types %}
+                    <label>
+                        <input type="checkbox" name="types[]" value="{{type._id}}"
+                            {% if recette.types.indexOf(type._id) != -1 %}checked{% endif %}>
+                        {{type.name}}
+                    </label>
+                    {% endfor %}
+                </div> -->
+                <input type="submit" class="btn btn-primary" value="Modifier fiche">
+            </div>
+        </form>
+        <% } else { %>
+            <p class="text-center">Pas de brasseur.<a href="/brass/add">Ajouter un brasseur.</a></p>
+        <% } %>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>

@@ -9,7 +9,7 @@ router.get('/edit/:id', brasseurController.editBrasseurPage);
 
 // // Post
 router.post('/add', brasseurController.addBrasseur);
-router.post('/edit/:id', brasseurController.editBrasseur);
+router.post('/modif/:id', brasseurController.editBrasseur);
 router.get('/delete/:id', brasseurController.deleteBrasseur);
 
 module.exports = router;

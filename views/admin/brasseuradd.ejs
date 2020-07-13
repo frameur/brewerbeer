@@ -31,70 +31,74 @@
     <div class="row justify-content-center">
         <ul class="nav" id="side-menu">
             <li>
-                <a href="/admin/dashboard" class="btn btn-secondary"><i class="fa fa-clock-o fa-fw"></i>Accueil</a>
+                <a href="/brass/list" class="btn btn-secondary"><i class="fa fa-clock-o fa-fw"></i>Accueil</a>
             </li>
         </ul>
     </div>
 
-    <form method="POST" action="{{endpoint}}" enctype="multipart/form-data">
+    <form method="POST" action="" enctype="multipart/form-data">
         <div class="form-group input-group-lg">
-            <label for="name">
+            <label for="nameBrass">
                 <h4>Nom du brasseur</h4>
             </label>
-            <input type="text" class="form-control one" id="name" name="name" value="{{recette.name}}">
+            <input type="text" class="form-control one" id="nameBrass" name="nameBrass">
 
         </div>
         <div class="form-group">
-            <label for="nbpersonne">
+            <label for="address">
             </label>
             <h4>adresse</h4>
-            <input type="text" class="form-control" id="nbpersonne" name="nbpersonne" value="{{recette.nbpersonne}}">
+            <input type="text" class="form-control" id="address" name="address" >
         </div>
         <div class="form-group">
-            <label for="préparation">
+            <label for="nameCp">
 
             </label>
             <h4>code postal</h4>
-            <input type="text" class="form-control" id="préparation" name="préparation" value="{{recette.préparation}}">
+            <input type="text" class="form-control" id="nameCp" name="nameCp" >
         </div>
         <div class="form-group">
-            <label for="cuisson">
+            <label for="nameTown">
             </label>
             <h4>la ville</h4>
-            <input type="text" class="form-control" id="cuisson" name="cuisson" value="{{recette.cuisson}}">
+            <input type="text" class="form-control" id="nameTown" name="nameTown" >
         </div>
         <div class="form-group">
-            <label for="repos">
+            <label for="nameWeb">
+            </label>
+            <h4>adresse web</h4>
+            <input type="text" class="form-control" id="nameWeb" name="nameWeb">
+        </div>
+        <div class="form-group">
+            <label for="nameFacebook">
             </label>
             <h4>adresse facebook</h4>
-            <input type="text" class="form-control" id="repos" name="repos" value="{{recette.repos}}">
+            <input type="text" class="form-control" id="nameFacebook" name="nameFacebook">
         </div>
 
         <div class="form-group">
-            <label for="repos">
+            <label for="email">
             </label>
             <h4>email</h4>
-            <input type="text" class="form-control" id="repos" name="repos" value="{{recette.repos}}">
+            <input type="text" class="form-control" id="email" name="email">
         </div>
         <div class="form-group">
-            <label for="repos">
+            <label for="phone">
             </label>
             <h4>telephone</h4>
-            <input type="text" class="form-control" id="repos" name="repos" value="{{recette.repos}}">
+            <input type="text" class="form-control" id="phone" name="phone">
         </div>
         <div class="form-group">
-            <label for="timing">
+            <label for="listbeer">
                 <h4>nom des bieres</h4>
             </label>
-            <textarea class="form-control" type="text" name="timing" id="timing"
-                value="{{recette.timing}}">{{recette.timing}}</textarea>
+            <textarea class="form-control" type="text" name="listbeer" id="listbeer"></textarea>
         </div>
         <div class="form-group">
-            <label for="timing">
+            <label for="content">
                 <h4>contenu</h4>
             </label>
-            <textarea class="form-control" type="text" name="timing" id="timing"
-                value="{{recette.timing}}">{{recette.timing}}</textarea>
+            <textarea class="form-control" type="text" name="content" id="content"></textarea>
         </div>
 
         <div class="form-group">
@@ -104,15 +108,15 @@
             <input type="file" id="file" name="file">
             <br><br>
             <!-- <div class="form-group">
-            {% for type in types %}
-            <label>
-                <input type="checkbox" name="types[]" value="{{type._id}}"
-                    {% if recette.types.indexOf(type._id) != -1 %}checked{% endif %}>
-                {{type.name}}
-            </label>
-            {% endfor %}
-        </div> -->
-            <input type="submit" class="btn btn-primary" value="Ajouter">
+                {% for type in types %}
+                <label>
+                    <input type="checkbox" name="types[]" value="{{type._id}}"
+                        {% if recette.types.indexOf(type._id) != -1 %}checked{% endif %}>
+                    {{type.name}}
+                </label>
+                {% endfor %}
+            </div> -->
+            <input type="submit" class="btn btn-primary" value="Ajouter un brasseur">
         </div>
     </form>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
