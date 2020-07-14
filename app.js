@@ -72,6 +72,12 @@ app.use('/actu', articleRoutes);
 app.use('/auth',  authRoutes);
 // Routes
 app.use('/', homeRoutes);
+app.get('/brasseurs',(req, res) =>{
+    res.render('brasseurs')
+})
+app.get('/gallery',(req, res) =>{
+    res.render('gallery')
+})
 //Page erreur
 app.get('*', function(req, res){
   res.status(404);

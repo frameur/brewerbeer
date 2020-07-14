@@ -15,8 +15,7 @@
 
         width: 100%;
         height: 100vh;
-        overflow-x: hidden;
-        background-color: burlywood;
+        overflow-x: hidden;  
         object-fit: contain;
 
     }
@@ -44,7 +43,7 @@
 
             <div class="col-md-12 col-lg-12 col-sm-12">
                 <div class="white-box">
-                    <a href="/brass/modif/<%= brewerone.brewer_id  %>  " class="btn btn-success">Editer</a>
+                    <a href="/brass/modif/<%= brewerone.brewer_id %>  " class="btn btn-success">Editer</a>
                     <a href="/brass/delete/ <%= brewerone.brewer_id  %>   " class="btn btn-danger">Supprimer</a><br><br>
 
 
@@ -66,16 +65,16 @@
 
 
                     <br>
-                    <h3>web : <%= brewerone.nameWeb %> </h3>
+                    <h3>web : <a href="https://<%= brewerone.nameWeb %>"> <%= brewerone.nameWeb %></a> </h3>
 
 
                     <br>
-                    <h3>facebook : <%= brewerone.nameFacebook %></h3>
+                    <h3>facebook : <a href="https://<%= brewerone.nameFacebook %>"> <%= brewerone.nameFacebook %></a></h3>
 
 
                     <br>
                     <br>
-                    <h3>email : <%= brewerone.email %></h3>
+                    <h3>email : <a href="mailto:<%= brewerone.email %>"> <%= brewerone.email %></a></h3>
 
 
                     <br>
@@ -86,7 +85,7 @@
                     <br>
                     
                     <br>
-                    <h3>nom bieres : <%= brewerone.listbeer %></h3>
+                    <h3>nom bieres : <%= brewerone.listBeer %></h3>
 
 
                     <br>

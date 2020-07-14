@@ -1,4 +1,5 @@
 const fs = require('fs');
+
 //affiche les brasseurs
 exports.addBrasseurPage = async (req, res) => {
 
@@ -30,7 +31,7 @@ exports.addBrasseur = async (req, res) => {
 
         const brewerajout = await queryAsync("INSERT INTO `brewersfrench`(`brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, `created_at`) VALUES ('" + brewer_id + "', '" + nameBrass + "', '" + address + "', '" + nameCp + "', '" + nameTown + "', '" + nameWeb + "', '" + nameFacebook + +"', '" + email + "', '" + phone + "', '" + logo + "', '" + content + "', '" + listBeer + "', '" + created_at + "')")
         // console.log("result :", brewerajout);
-        res.render('admin/brasseuradd', {
+        res.render('admin/brasseurone', {
             message,
             title: "Ajouter un brasseur",
             breweradd: brewerajout
@@ -72,6 +73,7 @@ exports.editBrasseur = async (req, res) => {
         const brewermodif = await queryAsync("UPDATE `players` SET `nameBrass` = '" + nameBrass + "', `address` = '" + address + "', `nameCp` = '" + nameCp + "', `nameTown` = '" + nameTown + "' , `nameWeb` = '" + nameWeb + "' , `nameFacebook` = '" + nameFacebook + "' , `email` = '" + email + "' , `phone` = '" + phone + "' , `logo` = '" + logo + "' , `content` = '" + content + "' , `listBeer` = '" + listBeer + "' , `created_at` = '" + created_at + "' WHERE `brewersfrench`.`brewer_id` = '" + brewerId + "'");
 
         res.redirect('/brass/list', {
+            title:'modifier fiche brasseur',
             brewermodif: brewermodif
         });
 
