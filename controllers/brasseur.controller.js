@@ -31,7 +31,7 @@ exports.addBrasseur = async (req, res) => {
 
         const brewerajout = await queryAsync("INSERT INTO `brewersfrench`(`brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, `created_at`) VALUES ('" + brewer_id + "', '" + nameBrass + "', '" + address + "', '" + nameCp + "', '" + nameTown + "', '" + nameWeb + "', '" + nameFacebook + +"', '" + email + "', '" + phone + "', '" + logo + "', '" + content + "', '" + listBeer + "', '" + created_at + "')")
         // console.log("result :", brewerajout);
-        res.render('admin/brasseurone', {
+        res.render('admin/brasseuradd', {
             message,
             title: "Ajouter un brasseur",
             breweradd: brewerajout

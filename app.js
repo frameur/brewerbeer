@@ -78,6 +78,7 @@ app.get('/brasseurs',(req, res) =>{
 app.get('/gallery',(req, res) =>{
     res.render('gallery')
 })
+
 //Page erreur
 app.get('*', function(req, res){
   res.status(404);
