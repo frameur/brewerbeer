@@ -37,6 +37,8 @@
 
     <form method="POST" action="/brass/list" enctype="multipart/form-data">
         <div class="form-group input-group-lg">
+
+            <% brewersfrench.forEach((brewer, index) =>{ %>
             <label for="nameBrass">
                 <h4>Nom du brasseur</h4>
             </label>
@@ -106,15 +108,7 @@
             </label><br>
             <input type="file" id="file" name="file">
             <br><br>
-            <!-- <div class="form-group">
-                {% for type in types %}
-                <label>
-                    <input type="checkbox" name="types[]" value="{{type._id}}"
-                        {% if recette.types.indexOf(type._id) != -1 %}checked{% endif %}>
-                    {{type.name}}
-                </label>
-                {% endfor %}
-            </div> -->
+            <% }) %>
             <input type="submit" class="btn btn-primary" value="Ajouter un brasseur">
         </div>
     </form>
