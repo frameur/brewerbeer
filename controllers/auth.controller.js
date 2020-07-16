@@ -66,6 +66,7 @@ exports.register = (req, res) => {
 
 // Login
 exports.login = (req, res) => {
+const userId = req.session.user_id
   const {
     email,
     password

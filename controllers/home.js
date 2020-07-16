@@ -1,5 +1,8 @@
 exports.getHomePage = (req, res) => {
-    res.render('index.ejs',
-
-    )
+    const userId = req.session.id
+    
+    res.render('index.ejs',{
+        title:'Bonjour !',
+        userId
+    })
 }

@@ -20,6 +20,15 @@
         object-fit: contain;
 
     }
+    h4{
+        text-transform: capitalize;
+        font-size: 35px;
+    }
+    .form-control{
+        font-size: 20px;
+        font-weight: 600;
+    }
+
 </style>
 
 
@@ -39,17 +48,18 @@
 
         </div>
     </div><br>
-    <h1> <%= title %> </h1>
-    <% if (brewerone) { %>
+    <h1 style="text-align: center;">MODIFIER FICHE BRASSEUR </h1>
+    <br>
+    
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-lg-6 col-sm-6">
                 <form method="POST" action="#" enctype="multipart/form-data">
                     <div class="form-group input-group-lg">
                         <label for="nameBrass">
-                            <h4 style="text-align: center;" >Nom du brasseur</h4>
+                            <h4  >Nom du brasseur</h4>
                         </label>
-                        <input type="text" class="form-control one" id="nameBrass" name="nameBrass"
+                        <input type="text" class="form-control" id="nameBrass" name="nameBrass"
                             value=" <%= brewerone.nameBrass %>  ">
 
                     </div>
@@ -58,7 +68,7 @@
                         </label>
                         <h4>adresse</h4>
                         <input type="text" class="form-control" id="address" name="address"
-                            value="{<%= brewerone.address %> ">
+                            value="<%= brewerone.address %> ">
                     </div>
                     <div class="form-group">
                         <label for="nameCp">
@@ -102,36 +112,42 @@
                         </label>
                         <h4>telephone</h4>
                         <input type="text" class="form-control" id="phone" name="phone"
-                            value="<%= brewerone.phone %> }">
+                            value="<%= brewerone.phone %> ">
                     </div>
                     <div class="form-group">
-                        <label for="listbeer">
+                        <label for="listBeer">
                             <h4>nom des bieres</h4>
                         </label>
-                        <textarea class="form-control" type="text" name="listbeer" id="listbeer"
-                            value="<%= brewerone.listbeer %>"><%= brewerone.listbeer %></textarea>
+                        <input type="text" class="form-control" id="listBeer" name="listBeer"
+                        value="<%= brewerone.listBeer %> ">
                     </div>
                     <div class="form-group">
                         <label for="content">
                             <h4>contenu</h4>
                         </label>
-                        <textarea class="form-control" type="text" name="content" id="content"
-                            value="<%= brewerone.content %>"><%= brewerone.content %></textarea>
+                        <input type="text" class="form-control" id="content" name="content"
+                            value="<%= brewerone.content %> ">
                     </div>
-
                     <div class="form-group">
+                        <label for="created_at">
+                        </label>
+                        <h4>Date mise jour</h4>
+                        <input type="date" class="form-control" id="created_at" name="created_at"
+                            value="<%= brewerone.created_at %> ">
+                    </div>
+                    
+
+                    <!-- <div class="form-group">
                         <label for="file">
                             <h5>logo</h5>
                         </label><br>
-                        <input type="file" id="file" name="file">
+                        <input type="file" id="file" name="file"> -->
                         <br><br>
                     
                         <input type="submit" class="btn btn-primary" value="Modifier fiche">
                     </div>
                 </form>
-                <% } else { %>
-
-                    <% } %>
+              
             </div>
         </div>
     </div>

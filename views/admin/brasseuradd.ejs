@@ -19,11 +19,19 @@
         object-fit: contain;
 
     }
+    h4{
+        text-transform: capitalize;
+        font-size: 35px;
+    }
+    .form-control{
+        font-size: 20px;
+        font-weight: 600;
+    }
 </style>
 
 
 
-<h1> <%= title %>  </h1>
+<!-- <h1> <%= title %>  </h1> -->
 
 <body class="fix-header">
 
@@ -35,10 +43,10 @@
         </ul>
     </div>
 
-    <form method="POST" action="/brass/list" enctype="multipart/form-data">
+    <form method="POST" action="#" enctype="multipart/form-data">
         <div class="form-group input-group-lg">
 
-            <% brewersfrench.forEach((brewer, index) =>{ %>
+            <% brewersadd.forEach((brewer, index) =>{ %>
             <label for="nameBrass">
                 <h4>Nom du brasseur</h4>
             </label>
