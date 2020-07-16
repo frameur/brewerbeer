@@ -92,27 +92,20 @@ exports.editBrasseur = async (req, res) => {
 
     
 
-    try {    let brewerId = req.params.id;
+    try { 
+        let brewerId = req.params.id;
 
         let {nameBrass, address, nameCp, nameTown, nameWeb, nameFacebook, email, phone, logo, content, listBeer, created_at} = req.body;
 
         await queryAsync("UPDATE brewersfrench SET nameBrass=?, address=?, nameCp=?, nameTown=?, nameWeb=?, nameFacebook=?, email=?, phone=?, logo=?, content=?, listbeer=?, created_at=? WHERE `brewersfrench`.`brewer_id`=?",   [nameBrass, address,
         nameCp, nameTown, nameWeb, nameFacebook , email, phone, logo, content, listBeer, created_at, brewerId ])
 
-
-        //  await queryAsync("UPDATE `brewersfrench` SET  `nameBrass` = '" + nameBrass + "', `address` = '" + address + "', `nameCp` = '" + nameCp + "', `nameTown` = '" + nameTown + "' , `nameWeb` = '" + nameWeb + "' , `nameFacebook` = '" + nameFacebook + "' , `email` = '" + email + "' , `phone` = '" + phone + "' , `logo` = '" + logo + "' , `content` = '" + content + "' , `listBeer` = '" + listBeer + "' , `created_at` = '" + created_at + "' WHERE `brewersfrench`.`brewer_id` = '" + brewerId + "' ");
-         
          const fichebrewer = await queryAsync("SELECT `brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, `created_at` FROM `brewersfrench` WHERE brewer_id = '" + brewerId + "' ")
 
          
-       
-        
-         console.log("result :", fichebrewer);
-       
-        
      res.render('admin/brasseurone', {
-            title:'modifier fiche brasseur',
-            brewerone: fichebrewer
+            title:'fiche brasseur modifier',
+            brewerone: fichebrewer[0]
            
 
             
