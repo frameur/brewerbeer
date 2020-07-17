@@ -20,7 +20,7 @@ router.get('/articles', adminController.getArticle);
 router.get('/brasseurs',adminController.getListBrasseur);
 router.get('/brasseurs/edit/:id',adminController.getEditBrasseur);
 router.get('/brasseurs/add',adminController.getAddBrasseur);
-router.get('/barsseurs/:id',adminController.getSingleBrasseur);
+router.get('/brasseurs/:id',adminController.getSingleBrasseur);
 // // Post
 router.post('/brasseur/add',adminController.postAddBrasseur);
 router.post('/brasseur/edit/:id',adminController.postEditBrasseur);

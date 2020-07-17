@@ -46,8 +46,11 @@ exports.getListBrasseur = async (req, res) => {
 }
 //affichage page ajouter un brasseur
 exports.getAddBrasseur = (req, res) => {
-    res.render('admin/brasseuradd')
-
+    res.render('admin/brasseuradd', {
+      
+        title:'Ajouter un brasseur'  
+    })
+    
 }
 
 //Ajouter un brasseur
@@ -59,7 +62,7 @@ exports.postAddBrasseur = async (req, res) => {
 
         const breweradd = await queryAsync("INSERT INTO `brewersfrench`(brewer_id, nameBrass, address, nameCp, nameTown, nameWeb, nameFacebook, email, phone, logo, content, listBeer, created_at) VALUES ('" + brewer_id + "', '" + nameBrass + "', '" + address + "', '" + nameCp + "', '" + nameTown + "', '" + nameWeb + "', '" + nameFacebook + +"', '" + email + "', '" + phone + "', '" + logo + "', '" + content + "', '" + listBeer + "', '" + created_at + "')")
 
-        res.redirect('/admin/brasseur/add', {
+        res.redirect('/admin/brasseurs', {
             
             title: "Ajouter un brasseur",
             message:'fiche brasseur ajouté',
@@ -127,7 +130,6 @@ exports.postEditBrasseur = async (req, res) => {
             title:'fiche brasseur modifier',
             brewerone: fichebrewer[0]
            
-
             
         });
 
@@ -174,15 +176,15 @@ exports.getDepartementPage = async (req, res) => {
 
     res.render('admin/departement', {
 
-
         title: "liste des departements",
         departement: listdepartement,
         totalDepartements: totalDepartements[0].count
 
-
     });
 
 }
+//end affichage des departements
+
 //Affichage page des villes de France
 exports.getVilleFrancePage = async (req, res) => {
 
@@ -190,18 +192,17 @@ exports.getVilleFrancePage = async (req, res) => {
 
     const totalVilledefrance = await queryAsync("SELECT COUNT(*) AS count FROM villes_france_free")
 
-
-
     res.render('admin/villefrance', {
 
         title: "liste des villes de France",
         villes_france_free: listvilles,
         totalVilledefrance: totalVilledefrance[0].count
 
-
     });
 
 }
+//end affichage des villes de France
+
 // affichage page des articles
 exports.getArticle = async (req, res) => {
     
@@ -220,3 +221,4 @@ exports.getArticle = async (req, res) => {
     });
 
 }
+//end affichage des articles

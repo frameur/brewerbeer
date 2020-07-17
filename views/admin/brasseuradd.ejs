@@ -31,7 +31,7 @@
     }
 </style>
 
-<h1>titre </h1>
+
 
 <body class="fix-header">
 
@@ -40,91 +40,105 @@
             <li>
                 <a href="/admin/brasseurs" class="btn btn-secondary"><i class="fa fa-clock-o fa-fw"></i>Accueil</a>
             </li>
+            
         </ul>
+        
     </div>
+    <h1 style="text-align: center;">  <%= title %>  </h1>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-sm-6">
+                <form method="POST" action="/admin/brasseurs" enctype="multipart/form-data">
+                    <div class="form-group input-group-lg">
 
-    <form method="POST" action="#" enctype="multipart/form-data">
-        <div class="form-group input-group-lg">
-
-            <label for="brewer_id">
-                <h4>id</h4>
-            </label>
-            <input type="text" class="form-control one" id="brewer_id" name="brewer_id">
+                        <label for="brewer_id">
+                            <h4>id</h4>
+                        </label>
+                        <input type="text" class="form-control one" id="brewer_id" name="brewer_id">
 
 
-            <label for="nameBrass">
-                <h4>Nom du brasseur</h4>
-            </label>
-            <input type="text" class="form-control one" id="nameBrass" name="nameBrass">
+                        <label for="nameBrass">
+                            <h4>Nom du brasseur</h4>
+                        </label>
+                        <input type="text" class="form-control one" id="nameBrass" name="nameBrass">
 
-        </div>
-        <div class="form-group">
-            <label for="address">
-            </label>
-            <h4>adresse</h4>
-            <input type="text" class="form-control" id="address" name="address">
-        </div>
-        <div class="form-group">
-            <label for="nameCp">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">
+                        </label>
+                        <h4>adresse</h4>
+                        <input type="text" class="form-control" id="address" name="address">
+                    </div>
+                    <div class="form-group">
+                        <label for="nameCp">
 
-            </label>
-            <h4>code postal</h4>
-            <input type="text" class="form-control" id="nameCp" name="nameCp">
-        </div>
-        <div class="form-group">
-            <label for="nameTown">
-            </label>
-            <h4>la ville</h4>
-            <input type="text" class="form-control" id="nameTown" name="nameTown">
-        </div>
-        <div class="form-group">
-            <label for="nameWeb">
-            </label>
-            <h4>adresse web</h4>
-            <input type="text" class="form-control" id="nameWeb" name="nameWeb">
-        </div>
-        <div class="form-group">
-            <label for="nameFacebook">
-            </label>
-            <h4>adresse facebook</h4>
-            <input type="text" class="form-control" id="nameFacebook" name="nameFacebook">
-        </div>
+                        </label>
+                        <h4>code postal</h4>
+                        <input type="text" class="form-control" id="nameCp" name="nameCp">
+                    </div>
+                    <div class="form-group">
+                        <label for="nameTown">
+                        </label>
+                        <h4>la ville</h4>
+                        <input type="text" class="form-control" id="nameTown" name="nameTown">
+                    </div>
+                    <div class="form-group">
+                        <label for="nameWeb">
+                        </label>
+                        <h4>adresse web</h4>
+                        <input type="text" class="form-control" id="nameWeb" name="nameWeb">
+                    </div>
+                    <div class="form-group">
+                        <label for="nameFacebook">
+                        </label>
+                        <h4>adresse facebook</h4>
+                        <input type="text" class="form-control" id="nameFacebook" name="nameFacebook">
+                    </div>
 
-        <div class="form-group">
-            <label for="email">
-            </label>
-            <h4>email</h4>
-            <input type="text" class="form-control" id="email" name="email">
-        </div>
-        <div class="form-group">
-            <label for="phone">
-            </label>
-            <h4>telephone</h4>
-            <input type="text" class="form-control" id="phone" name="phone">
-        </div>
-        <div class="form-group">
-            <label for="listbeer">
-                <h4>nom des bieres</h4>
-            </label>
-            <textarea class="form-control" type="text" name="listbeer" id="listbeer"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="content">
-                <h4>contenu</h4>
-            </label>
-            <textarea class="form-control" type="text" name="content" id="content"></textarea>
-        </div>
-
-        <!-- <div class="form-group">
+                    <div class="form-group">
+                        <label for="email">
+                        </label>
+                        <h4>email</h4>
+                        <input type="text" class="form-control" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">
+                        </label>
+                        <h4>telephone</h4>
+                        <input type="text" class="form-control" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="listbeer">
+                            <h4>nom des bieres</h4>
+                        </label>
+                        <textarea class="form-control" type="text" name="listbeer" id="listbeer"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="content">
+                            <h4>contenu</h4>
+                        </label>
+                        <textarea class="form-control" type="text" name="content" id="content"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="created_at">
+                        </label>
+                        <h4>Date creation</h4>
+                        <input type="date" class="form-control" id="created_at" name="created_at"
+                            >
+                    </div>
+                    <!-- <div class="form-group">
             <label for="file">
                 <h5>logo</h5>
             </label><br>
             <input type="file" id="file" name="file">
             <br><br>
         </div>  -->
-        <input type="submit" class="btn btn-primary" value="Ajouter un brasseur">
-    </form>
-
+                    <input type="submit" class="btn btn-primary" value="Ajouter un brasseur">
+                </form>
+            </div>
+        </div>
+    </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
