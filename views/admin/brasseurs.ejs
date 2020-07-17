@@ -71,19 +71,19 @@
                                 aria-hidden="true"></i>Membres</a>
                     </li>
                     <li>
-                        <a href="/brass/list" class="waves-effect"><i class="fa fa-columns fa-fw"
+                        <a href="/admin/brasseurs" class="waves-effect"><i class="fa fa-columns fa-fw"
                                 aria-hidden="true"></i>Les Brasseurs</a>
                     </li>
                     <li>
-                        <a href="/depart/departement" class="waves-effect"><i class="fa fa-columns fa-fw"
+                        <a href="/admin/departement" class="waves-effect"><i class="fa fa-columns fa-fw"
                                 aria-hidden="true"></i>Les Departements</a>
                     </li>
                     <li>
-                        <a href="/townfrench/villefrance" class="waves-effect"><i class="fa fa-columns fa-fw"
+                        <a href="/admin/villefrance" class="waves-effect"><i class="fa fa-columns fa-fw"
                                 aria-hidden="true"></i>Les villes de France</a>
                     </li>
                     <li>
-                        <a href="/actu/article" class="waves-effect"><i class="fa fa-table fa-fw"
+                        <a href="/admin/articles" class="waves-effect"><i class="fa fa-table fa-fw"
                                 aria-hidden="true"></i>Actualités</a>
                     </li>
                     <li>
@@ -130,7 +130,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="/brass/add" class="btn btn-primary ">Ajouter un Brasseur</a>
+                <a href="/admin/brasseurs/add" class="btn btn-primary ">Ajouter un Brasseur</a>
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12">
                         <div class="white-box">
@@ -159,7 +159,7 @@
                                         <% brewersfrench.forEach((brewer, index) =>{ %>
                                         <tr>
                                             <td><%= brewer.brewer_id %></td>
-                                            <td><a href="/brass/<%= brewer.brewer_id  %>">Brasseur <%= brewer.nameBrass %></a></td>
+                                            <td><a href="/admin/brasseurs/edit/<%= brewer.brewer_id  %>">Brasseur <%= brewer.nameBrass %></a></td>
                                             <td><%= brewer.address %></td>
                                             <td><%= brewer.nameCp %></td> 
                                             <td><%= brewer.nameTown %></td>

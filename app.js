@@ -50,35 +50,26 @@ app.use(session({
     cookie: { maxAge: 60000 }
   }));
   
-
 // Controller
 const homeRoutes = require('./routes/home');
 const adminRoutes = require('./routes/admin');
 const authRoutes = require('./routes/auth');
 const auth = require("./middleware/auth.middleware");
-const brassRoutes = require('./routes/brasseur');
-const departementRoutes = require('./routes/departement');
-const villesDeFranceRoutes = require('./routes/villefrance');
-const articleRoutes = require('./routes/article');
 
 // Dashboard
 app.use('/admin', adminRoutes);
-app.use('/brass',  brassRoutes);
-app.use('/depart', departementRoutes);
-app.use('/townfrench', villesDeFranceRoutes);
-app.use('/actu', articleRoutes);
-
 // Authentification 
 app.use('/auth',  authRoutes);
-// Routes
-app.use('/', homeRoutes);
+// affiche page brasseurs
 app.get('/brasseurs',(req, res) =>{
     res.render('brasseurs')
 })
+//affiche page gallery
 app.get('/gallery',(req, res) =>{
     res.render('gallery')
 })
-
+//page index
+app.use('/', homeRoutes);
 //Page erreur
 app.get('*', function(req, res){
   res.status(404);

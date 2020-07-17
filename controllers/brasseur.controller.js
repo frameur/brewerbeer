@@ -1,7 +1,6 @@
-// const fs = require('fs');
 
 //affiche les brasseurs
-exports.listBrasseurPage = async (req, res) => {
+exports.getListBrasseur = async (req, res) => {
 
     try {
 
@@ -23,31 +22,26 @@ exports.listBrasseurPage = async (req, res) => {
 
 }
 //affichage page ajouter un brasseur
-exports.addBrasseurPage = (req, res) => {
-
+exports.getAddBrasseur = (req, res) => {
     res.render('admin/brasseuradd')
 
 }
 
 //Ajouter un brasseur
-exports.addBrasseur = async (req, res) => {
+exports.postAddBrasseur = async (req, res) => {
 
     try {
-        let brewerId = req.params.id;
-        
+               
         let {brewer_id, nameBrass, address, nameCp, nameTown, nameWeb, nameFacebook, email, phone, logo, content, listBeer, created_at} = req.body;
 
         const breweradd = await queryAsync("INSERT INTO `brewersfrench`(brewer_id, nameBrass, address, nameCp, nameTown, nameWeb, nameFacebook, email, phone, logo, content, listBeer, created_at) VALUES ('" + brewer_id + "', '" + nameBrass + "', '" + address + "', '" + nameCp + "', '" + nameTown + "', '" + nameWeb + "', '" + nameFacebook + +"', '" + email + "', '" + phone + "', '" + logo + "', '" + content + "', '" + listBeer + "', '" + created_at + "')")
 
-        const fichebrewer = await queryAsync("SELECT `brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, `created_at` FROM `brewersfrench` WHERE brewer_id = '" + brewerId + "' ")
-
-        
-        res.render('admin/brasseurone', {
+        res.redirect('/brass/add', {
             
             title: "Ajouter un brasseur",
             message:'fiche brasseur ajouté',
-            breweradd: breweradd,
-            brewerone: fichebrewer[0]
+            breweradd: breweradd
+            
         });
         
     } catch (err) {
@@ -56,7 +50,7 @@ exports.addBrasseur = async (req, res) => {
 }
 
 //affiche la page un brasseur
-exports.singleBrasseurPage = async (req, res) => {
+exports.getSingleBrasseur = async (req, res) => {
 
     try {
 
@@ -75,7 +69,7 @@ exports.singleBrasseurPage = async (req, res) => {
 
 }
 //affiche la page modifier une fiche brasseur
-exports.editBrasseurPage = async (req, res) => {
+exports.getEditBrasseur = async (req, res) => {
 
     try {
 
@@ -93,7 +87,7 @@ exports.editBrasseurPage = async (req, res) => {
 
 }
 //modifier une fiche brasseur
-exports.editBrasseur = async (req, res) => {
+exports.postEditBrasseur = async (req, res) => {
 
     try { 
         let brewerId = req.params.id;
@@ -119,7 +113,7 @@ exports.editBrasseur = async (req, res) => {
     }
 }
 //supprimer un fichier brasseur
-exports.deleteBrasseur = async (req, res) => {
+exports.postDeleteBrasseur = async (req, res) => {
     
     try{ 
         let brewerId = req.params.id;
@@ -131,9 +125,10 @@ exports.deleteBrasseur = async (req, res) => {
      const totalBrewers = await queryAsync("SELECT COUNT(*) AS count FROM brewersfrench")
      
         
-     res.render('admin/brasseurs', {
-
-            message: 'fiche brasseur supprimer',
+     res.render('admin/brasseurone', {
+            
+            message:'fichier supprimé',
+            title:'supprimer fiche',
             brewersfrench: listbrewer,
             totalBrewers: totalBrewers[0].count
             
