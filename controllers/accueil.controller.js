@@ -1,4 +1,4 @@
-exports.getHomePage = (req, res) => {
+exports.getAccueil = (req, res) => {
     const userId = req.session.user_id
     
     res.render('index.ejs',{

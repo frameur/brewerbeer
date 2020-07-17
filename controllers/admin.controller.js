@@ -167,7 +167,7 @@ exports.postDeleteBrasseur = async (req, res) => {
 //end administration brasseurs
 
 //affichage page des départements
-exports.getDepartementPage = async (req, res) => {
+exports.getDepartement = async (req, res) => {
 
     const listdepartement = await queryAsync("SELECT `departement_id`, `departement_code`, `departement_nom`, `departement_nom_uppercase`, `departement_slug`, `departement_nom_soundex` FROM `departement`  ORDER BY departement_id ASC LIMIT 25")
 
@@ -186,7 +186,7 @@ exports.getDepartementPage = async (req, res) => {
 //end affichage des departements
 
 //Affichage page des villes de France
-exports.getVilleFrancePage = async (req, res) => {
+exports.getVilleFrance = async (req, res) => {
 
     const listvilles = await queryAsync("SELECT `ville_id`, `ville_departement`, `ville_slug`, `ville_nom`, `ville_nom_simple`, `ville_nom_reel`, `ville_nom_soundex`, `ville_nom_metaphone`, `ville_code_postal`, `ville_commune`, `ville_code_commune`, `ville_arrondissement`, `ville_canton`, `ville_longitude_deg`, `ville_latitude_deg` FROM `villes_france_free` ORDER BY ville_id ASC LIMIT 25")
 

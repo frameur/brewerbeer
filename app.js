@@ -51,7 +51,7 @@ app.use(session({
   }));
   
 // Controller
-const homeRoutes = require('./routes/home');
+const homeRoutes = require('./routes/accueil');
 const adminRoutes = require('./routes/admin');
 const authRoutes = require('./routes/auth');
 const auth = require("./middleware/auth.middleware");
