@@ -1,3 +1,5 @@
+
+//affiche les utilisateurs
 exports.getAdminPage = async (req, res) => {
 
     const listmembers = await queryAsync("SELECT `user_id`, `firstname`, `lastname`, `email`, `age`, `password`, `role_id` FROM users ORDER BY firstname ASC LIMIT 10")
@@ -19,6 +21,7 @@ exports.getAdminPage = async (req, res) => {
 }
 
 // administration des brasseurs
+
 //affiche les brasseurs
 exports.getListBrasseur = async (req, res) => {
 
