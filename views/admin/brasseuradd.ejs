@@ -19,19 +19,19 @@
         object-fit: contain;
 
     }
-    h4{
+
+    h4 {
         text-transform: capitalize;
         font-size: 35px;
     }
-    .form-control{
+
+    .form-control {
         font-size: 20px;
         font-weight: 600;
     }
 </style>
 
-
-
-<!-- <h1> <%= title %>  </h1> -->
+<h1> <%= title %>  </h1>
 
 <body class="fix-header">
 
@@ -46,7 +46,12 @@
     <form method="POST" action="#" enctype="multipart/form-data">
         <div class="form-group input-group-lg">
 
-            <% brewersadd.forEach((brewer, index) =>{ %>
+            <label for="brewer_id">
+                <h4>id</h4>
+            </label>
+            <input type="text" class="form-control one" id="brewer_id" name="brewer_id">
+
+
             <label for="nameBrass">
                 <h4>Nom du brasseur</h4>
             </label>
@@ -57,20 +62,20 @@
             <label for="address">
             </label>
             <h4>adresse</h4>
-            <input type="text" class="form-control" id="address" name="address" >
+            <input type="text" class="form-control" id="address" name="address">
         </div>
         <div class="form-group">
             <label for="nameCp">
 
             </label>
             <h4>code postal</h4>
-            <input type="text" class="form-control" id="nameCp" name="nameCp" >
+            <input type="text" class="form-control" id="nameCp" name="nameCp">
         </div>
         <div class="form-group">
             <label for="nameTown">
             </label>
             <h4>la ville</h4>
-            <input type="text" class="form-control" id="nameTown" name="nameTown" >
+            <input type="text" class="form-control" id="nameTown" name="nameTown">
         </div>
         <div class="form-group">
             <label for="nameWeb">
@@ -110,16 +115,16 @@
             <textarea class="form-control" type="text" name="content" id="content"></textarea>
         </div>
 
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label for="file">
                 <h5>logo</h5>
             </label><br>
             <input type="file" id="file" name="file">
             <br><br>
-            <% }) %>
-            <input type="submit" class="btn btn-primary" value="Ajouter un brasseur">
-        </div>
+        </div>  -->
+        <input type="submit" class="btn btn-primary" value="Ajouter un brasseur">
     </form>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
