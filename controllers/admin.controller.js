@@ -51,11 +51,13 @@ exports.getListBrasseur = async (req, res) => {
 //affiche page ajouter un brasseur
 exports.getAddBrasseur = async(req, res) => {
 
-    const ajoutfiche = await queryAsync("SELECT `brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, `created_at` FROM `brewersfrench`")
+  
+   
+    
     res.render('admin/brasseuradd', {
       
         title:'Ajouter un brasseur',
-        ajoutfiche  
+         
     })
     
 }
@@ -65,17 +67,17 @@ exports.postAddBrasseur = async (req, res) => {
 
     try {
            
-        let { nameBrass, address, nameCp, nameTown, nameWeb, nameFacebook, email, phone, logo, content, listBeer, created_at} = req.body;
+        let { brewer_id, nameBrass, address, nameCp, nameTown, nameWeb, nameFacebook, email, phone, logo, content, listBeer, created_at} = req.body;
         
-        const breweradd = await queryAsync("INSERT INTO `brewersfrench`( nameBrass, address, nameCp, nameTown, nameWeb, nameFacebook, email, phone, logo, content, listBeer, created_at) VALUES ( '" + nameBrass + "', '" + address + "', '" + nameCp + "', '" + nameTown + "', '" + nameWeb + "', '" + nameFacebook +"', '" + email + "', '" + phone + "', '"  +  logo + "', '"  + content + "', '"  + listBeer + "', '"  + created_at + "')")
+        const breweradd = await queryAsync("INSERT INTO `brewersfrench`( brewer_id, nameBrass, address, nameCp, nameTown, nameWeb, nameFacebook, email, phone, logo, content, listBeer, created_at) VALUES ( '" + brewer_id + "', '" + nameBrass + "', '" + address + "', '" + nameCp + "', '" + nameTown + "', '" + nameWeb + "', '" + nameFacebook +"', '" + email + "', '" + phone + "', '"  +  logo + "', '"  + content + "', '"  + listBeer + "', '"  + created_at + "')")
         
-        const totalBrewers = await queryAsync("SELECT COUNT(*) AS count FROM brewersfrench")
-        res.render('admin/brasseuredit', {
+        console.log("result: ", breweradd);
+        res.render('admin/brasseuradd', {
             
             title:'Ajout fiche brasseur',
             message:'fiche brasseur ajouté',
-            breweradd:breweradd,
-            totalBrewers: totalBrewers[0].count
+            breweradd:breweradd
+            
             
            
         });
@@ -160,7 +162,7 @@ exports.postDeleteBrasseur = async (req, res) => {
      const totalBrewers = await queryAsync("SELECT COUNT(*) AS count FROM brewersfrench")
      
         
-     res.redirect('/admin/brasseurs', {
+     res.render('admin/brasseurs', {
             
             message:'fichier supprimé',
             title:'supprimer fiche',

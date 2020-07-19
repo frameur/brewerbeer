@@ -22,8 +22,8 @@ router.get('/brasseurs/edit/:id',adminController.getEditBrasseur);
 router.get('/brasseurs/add',adminController.getAddBrasseur);
 router.get('/brasseurs/:id',adminController.getSingleBrasseur);
 // Post
-router.post('/brasseurs/edit/:id',adminController.postEditBrasseur);
 router.post('/brasseurs/add',adminController.postAddBrasseur);
+router.post('/brasseurs/edit/:id',adminController.postEditBrasseur);
 router.post('/brasseurs/delete/:id',adminController.postDeleteBrasseur);
 
 module.exports = router;
