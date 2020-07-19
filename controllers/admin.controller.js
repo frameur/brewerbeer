@@ -27,7 +27,7 @@ exports.getListBrasseur = async (req, res) => {
 
     try {
 
-        const listbrewer = await queryAsync("SELECT `brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, `created_at` FROM `brewersfrench` ORDER BY brewer_id ASC LIMIT 50")
+        const listbrewer = await queryAsync("SELECT `brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, `created_at` FROM `brewersfrench` ORDER BY brewer_id ASC LIMIT 25")
         
         const totalBrewers = await queryAsync("SELECT COUNT(*) AS count FROM brewersfrench")
         
@@ -150,23 +150,23 @@ exports.postEditBrasseur = async (req, res) => {
     }
 }
 //supprimer un fichier brasseur
-exports.postDeleteBrasseur = async (req, res) => {
+exports.getDeleteBrasseur = async (req, res) => {
     
     try{ 
         let brewerId = req.params.id;
 
      await queryAsync('DELETE FROM brewersfrench WHERE brewer_id = "' + brewerId + '"')
      
-     const listbrewer = await queryAsync("SELECT `brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, `created_at` FROM `brewersfrench` ORDER BY brewer_id ASC LIMIT 50")
+     const listbrewer = await queryAsync("SELECT `brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, `created_at` FROM `brewersfrench`")
      
      const totalBrewers = await queryAsync("SELECT COUNT(*) AS count FROM brewersfrench")
-     
+    // console.log("result: ", listbrewer);
         
-     res.render('admin/brasseurs', {
+     res.render('admin/brasseuradd', {
             
             message:'fichier supprimé',
-            title:'supprimer fiche',
-            brewersfrench: listbrewer,
+            title:'fichier supprimé',
+            brewersfrench: listbrewer[0],
             totalBrewers: totalBrewers[0].count
             
         });
