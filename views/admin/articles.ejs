@@ -147,7 +147,7 @@
                                     <div id="sparklinedash"></div>
                                 </li>
                                 <li class="text-right"><i class="ti-arrow-up text-success"></i> <span
-                                        class="counter text-success"> <%= totalActubeers  %>   </span></li>
+                                        class="counter text-success"> <%= totalActubeers  %> </span></li>
                             </ul>
                         </div>
                     </div>
@@ -191,8 +191,10 @@
                                             <td><%= actu.image %></td>
                                             <td><%= actu.Date %></td>
                                             <td><%= actu.created_at %></td>
-                                            <td><a method="POST" href="/admin/articles/edit/<%= actu.actu_id %>  " class="btn btn-success">Editer</a></td>
-                                            <td><a href="/admin/articles/delete/ <%= actu.actu_id  %>   " class="btn btn-danger">Supprimer</a></td>
+                                            <td><a method="POST" href="/admin/articles/edit/<%= actu.actu_id %>  "
+                                                    class="btn btn-success">Editer</a></td>
+                                            <td><a href="/admin/articles/delete/ <%= actu.actu_id  %>   "
+                                                    class="btn btn-danger">Supprimer</a></td>
                                         </tr>
                                         <% }) %>
                                     </tbody>
@@ -201,10 +203,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- chat-listing & recent comments -->
-                <!-- ============================================================== -->
-              
 
+               
 
                 <%- include('../partial/admin/footer.ejs') %>
