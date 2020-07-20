@@ -9,7 +9,7 @@ router.get('/departement', adminController.getDepartement);
 router.get('/villefrance', adminController.getVilleFrance);
 //page actualites
 router.get('/articles', adminController.getArticle);
-// router.get('/edit/:id', adminController.getEditArticlePage);
+// router.get('/edit/:id', adminController.getEditArticle);
 // // Post
 // router.post('/article/add', adminController.postAddArticle);
 // router.post('/article/edit/:id', adminController.postEditArticle);
