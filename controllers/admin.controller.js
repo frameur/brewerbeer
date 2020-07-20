@@ -249,7 +249,7 @@ exports.postAddArticle = async (req, res) => {
            
         let { actu_id, actuTitle, actuContent, author, image, Date, created_at} = req.body;
         
-        const actuadd = await queryAsync("INSERT INTO `brewersfrench`( actu_id, actuTitle, actuContent, author, image, Date,  created_at) VALUES ( '" + actu_id + "', '" + actuTitle + "', '" + actuContent + "', '" + author + "', '" + image + "', '" + Date + "', '" + created_at + "')")
+        const actuadd = await queryAsync("INSERT INTO `actubeer`( actu_id, actuTitle, actuContent, author, image, Date,  created_at) VALUES ( '" + actu_id + "', '" + actuTitle + "', '" + actuContent + "', '" + author + "', '" + image + "', '" + Date + "', '" + created_at + "')")
         
         console.log("result: ", actuadd);
         
