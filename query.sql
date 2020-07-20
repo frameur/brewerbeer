@@ -10,6 +10,10 @@ ADD CONSTRAINT fkFeedbackuser foreign key (user_id) references  users(user_id);
     -- <%} else { %>
     -- <p> Not Allowed </p>
     -- <% } %>
+
+     ("UPDATE `actubeer`SET `actuTitle`=?, `actuContent`=?, `author`=?, `image`=?, `Date`=?, `created_at`=? WHERE `brewersfrench`.`brewer_id`=?",   [actuTitle, actuContent, author, image, Date, created_at, actuId ])
+
+
 ("UPDATE `actubeer` SET  `actuTitle` = '" + actuTitle + "', `actuContent` = '" + actuContent + "', `author` = '" + author + "', `image` = '" + image+ "' , `Date` = '" + Date + "' , `created_at` = '" + created_at + "' WHERE `actubeer`.`actu_id` = '" + actuId + "' ");
 
 SELECT `departement_code`, `departement_nom_uppercase` FROM `departement` WHERE 1

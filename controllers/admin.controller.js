@@ -132,6 +132,7 @@ exports.postEditBrasseur = async (req, res) => {
 
         await queryAsync("UPDATE brewersfrench SET nameBrass=?, address=?, nameCp=?, nameTown=?, nameWeb=?, nameFacebook=?, email=?, phone=?, logo=?, content=?, listbeer=?, created_at=? WHERE `brewersfrench`.`brewer_id`=?",   [nameBrass, address,
         nameCp, nameTown, nameWeb, nameFacebook , email, phone, logo, content, listBeer, created_at, brewerId ])
+        
 
         const fichebrewer = await queryAsync("SELECT `brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, `created_at` FROM `brewersfrench` WHERE brewer_id = '" + brewerId + "' ")
 
@@ -294,7 +295,7 @@ exports.postEditArticle = async (req, res) => {
 
         let {actuTitle, actuContent, author, image, Date, created_at} = req.body;
 
-        await queryAsync("UPDATE `actubeer` SET  `actuTitle` = '" + actuTitle + "', `actuContent` = '" + actuContent + "', `author` = '" + author + "', `image` = '" + image+ "' , `Date` = '" + Date + "' , `created_at` = '" + created_at + "' WHERE `actubeer`.`actu_id` = '" + actuId + "' ")
+        await queryAsync("UPDATE `actubeer`SET `actuTitle`=?, `actuContent`=?, `author`=?, `image`=?, `Date`=?, `created_at`=? WHERE `actubeer`.`actu_id`=?",   [actuTitle, actuContent, author, image, Date, created_at, actuId ])
 
         const ficheArticle = await queryAsync("SELECT `actu_id`, `actuTitle`, `actuContent`, `author`, `image`, `Date`, `created_at` FROM `actubeer` WHERE actu_id = '" + actuId + "' ")
 
