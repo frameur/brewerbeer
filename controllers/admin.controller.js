@@ -213,7 +213,7 @@ exports.getVilleFrance = async (req, res) => {
 }
 //end affichage des villes de France
 
-// gestion page des articles
+// affiche page des articles
 exports.getArticle = async (req, res) => {
     
     const listarticles = await queryAsync("SELECT `actu_id`, `actuTitle`, `actuContent`, `author`,`image`,`Date`, `created_at` FROM `actubeer` ORDER BY actu_id ASC LIMIT 10")
@@ -231,6 +231,7 @@ exports.getArticle = async (req, res) => {
     });
 
 }
+
 //affiche page ajouter un article
 exports.getAddArticle = async(req, res) => {
 
@@ -267,5 +268,31 @@ exports.postAddArticle = async (req, res) => {
     }
 }
 
+//supprimer un article
+exports.getDeleteArticle = async (req, res) => {
+    
+    try{ 
+        let actuId = req.params.id;
 
+     await queryAsync('DELETE FROM actubeer WHERE actu_id = "' + actuId + '"')
+     
+     const listarticles = await queryAsync("SELECT actu_id, actuTitle, actuContent, author, image, Date,  created_at FROM actubeer")
+     
+     const totalActubeers = await queryAsync("SELECT COUNT(*) AS count FROM actubeer")
+    console.log("result: ", totalActubeers );
+        
+     res.render('admin/articlesadd', {
+            
+            message:'fichier supprimé',
+            title:'fichier supprimé',
+            actubeer: listarticles[0],
+            totalActubeers: totalActubeers[0].count
+            
+        });
+
+    }catch (err) {
+        console.log(err.message);
+    }
+
+}
 //end destion des articles
