@@ -1,9 +1,10 @@
 <%- include('../partial/admin/head.ejs') %>
 <style>
-    td{
+    td {
         font-weight: 700;
     }
-    th{
+
+    th {
         font-size: 15px;
         text-transform: uppercase;
     }
@@ -43,24 +44,26 @@
                             <img src="../dashboard/plugins/images/admin-text.png" alt="home" class="dark-logo" />
                             <!--This is light logo text-->
                             <img src="../dashboard/plugins/images/admin-text-dark.png" alt="home" class="light-logo" />
-                        </span> 
+                        </span>
                     </a>
                 </div>
                 <!-- /Logo -->
                 <ul class="nav navbar-top-links navbar-right pull-right">
                     <li>
-                        <a class="nav-toggler open-close waves-effect waves-light hidden-md hidden-lg" href="javascript:void(0)"><i class="fa fa-bars"></i></a>
+                        <a class="nav-toggler open-close waves-effect waves-light hidden-md hidden-lg"
+                            href="javascript:void(0)"><i class="fa fa-bars"></i></a>
                     </li>
                     <li>
                         <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
-                            <input type="text" placeholder="Search..." class="form-control"> 
+                            <input type="text" placeholder="Search..." class="form-control">
                             <a href="">
                                 <i class="fa fa-search"></i>
-                            </a> 
+                            </a>
                         </form>
                     </li>
                     <li>
-                        <a class="profile-pic" href="#"> <img src="../dashboard/plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">François</b></a>
+                        <a class="profile-pic" href="#"> <img src="../dashboard/plugins/images/users/varun.jpg"
+                                alt="user-img" width="36" class="img-circle"><b class="hidden-xs">François</b></a>
                     </li>
                 </ul>
             </div>
@@ -75,7 +78,8 @@
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav slimscrollsidebar">
                 <div class="sidebar-head">
-                    <h3><span class="fa-fw open-close"><i class="ti-close ti-menu"></i></span> <span class="hide-menu">Navigation</span></h3>
+                    <h3><span class="fa-fw open-close"><i class="ti-close ti-menu"></i></span> <span
+                            class="hide-menu">Navigation</span></h3>
                 </div>
                 <ul class="nav" id="side-menu">
                     <li style="padding: 70px 0 0;">
@@ -104,10 +108,10 @@
                     </li>
 
                 </ul>
-               
-               
+
+
             </div>
-            
+
         </div>
         <!-- ============================================================== -->
         <!-- End Left Sidebar -->
@@ -119,9 +123,10 @@
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Dashboard</h4> </div>
+                        <h4 class="page-title">Dashboard</h4>
+                    </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                      
+
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
                         </ol>
@@ -141,16 +146,17 @@
                                 <li>
                                     <div id="sparklinedash"></div>
                                 </li>
-                                <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter text-success">  <%= totalActubeers %>  </span></li>
+                                <li class="text-right"><i class="ti-arrow-up text-success"></i> <span
+                                        class="counter text-success"> <%= totalActubeers %> </span></li>
                             </ul>
                         </div>
                     </div>
-                   
+
                 </div>
                 <!--/.row -->
                 <!--row -->
                 <!-- /.row -->
-             
+
                 <!-- ============================================================== -->
                 <!-- table -->
                 <!-- ============================================================== -->
@@ -158,7 +164,7 @@
                     <div class="col-md-12 col-lg-12 col-sm-12">
                         <div class="white-box">
                             <div class="col-md-3 col-sm-4 col-xs-6 pull-right">
-                             
+
                             </div>
                             <h3 class="box-title">Utilisateurs</h3>
                             <div class="table-responsive">
@@ -184,7 +190,7 @@
                                             <td><%= actu.created_at %></td>
                                         </tr>
                                         <% }) %>
-                                    </tbody> 
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -193,107 +199,73 @@
                 <!-- ============================================================== -->
                 <!-- chat-listing & recent comments -->
                 <!-- ============================================================== -->
-                <div class="row">
-                    <!-- .col -->
-                    <div class="col-md-12 col-lg-8 col-sm-12">
-                        <div class="white-box">
-                            <h3 class="box-title">Commentaire</h3>
-                            <div class="comment-center p-t-10">
-                                <div class="comment-body">
-                                    <div class="user-img"> <img src="../dashboard/plugins/images/users/pawandeep.jpg" alt="user" class="img-circle">
-                                    </div>
-                                    <div class="mail-contnet">
-                                        <h5>Pavan kumar</h5><span class="time">10:20 AM   20  may 2016</span>
-                                        <br/><span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat. Aenean commodo dui pellentesque molestie feugiat</span> <a href="javacript:void(0)" class="btn btn btn-rounded btn-default btn-outline m-r-5"><i class="ti-check text-success m-r-5"></i>Approve</a><a href="javacript:void(0)" class="btn-rounded btn btn-default btn-outline"><i class="ti-close text-danger m-r-5"></i> Reject</a>
+                <!-- formulaire pour ajouter un article -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6 col-sm-6">
+                            <form method="POST" action="#" enctype="multipart/form-data">
+                                <div class="form-group input">
+                                    <label for="actu_id">
+                                        <h4>id</h4>
+                                    </label>
+                                    <input type="text" class="form-control" id="actu_id" name="actu_id">
+                                </div>
+
+                                <div class="form-group input">
+                                    <label for="actuTitle">
+                                        <h4>Titre de l'article</h4>
+                                    </label>
+                                    <input type="text" class="form-control" id="actuTitle" name="actuTitle">
+                                </div>
+                                <div class="form-group">
+                                    <label for="actuContent">
+                                    </label>
+                                    <h4>Contenu de l'article</h4>
+                                    <div id="summernote" id="actuContent" name="actuContent">
+                                    
                                     </div>
                                 </div>
-                                <div class="comment-body">
-                                    <div class="user-img"> <img src="../dashboard/plugins/images/users/sonu.jpg" alt="user" class="img-circle">
-                                    </div>
-                                    <div class="mail-contnet">
-                                        <h5>Sonu Nigam</h5><span class="time">10:20 AM   20  may 2016</span>
-                                        <br/><span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat. Aenean commodo dui pellentesque molestie feugiat</span>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="author">
+                                        <h4>Auteur de l'article</h4>
+                                    </label>
+                                    <input class="form-control" type="text" name="author" id="author"></input>
                                 </div>
-                                <div class="comment-body b-none">
-                                    <div class="user-img"> <img src="../dashboard/plugins/images/users/arijit.jpg" alt="user" class="img-circle">
-                                    </div>
-                                    <div class="mail-contnet">
-                                        <h5>Arijit singh</h5><span class="time">10:20 AM   20  may 2016</span>
-                                        <br/><span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat. Aenean commodo dui pellentesque molestie feugiat</span>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="Date">
+
+                                    </label>
+                                    <h4>Date de article</h4>
+                                    <input type="date" class="form-control" id="Date" name="Date">
                                 </div>
-                            </div>
+
+                                <div class="form-group">
+                                    <label for="created_at">
+                                    </label>
+                                    <h4>Date de publication</h4>
+                                    <input type="date" class="form-control" id="created_at" name="created_at">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="file">
+                                        <h5>Image</h5>
+                                    </label><br>
+                                    <input type="file" id="file" name="file">
+                                    <br><br>
+                                </div>
+                                <input type="submit" class="btn btn-primary" value="Ajouter un article">
+                            </form>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="panel">
-                            <div class="sk-chat-widgets">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        CHAT LISTING
-                                    </div>
-                                    <div class="panel-body">
-                                        <ul class="chatonline">
-                                            <li>
-                                                <div class="call-chat">
-                                                    <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
-                                                    <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
-                                                </div>
-                                                <a href="javascript:void(0)"><img src="../dashboard/plugins/images/users/varun.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
-                                            </li>
-                                            <li>
-                                                <div class="call-chat">
-                                                    <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
-                                                    <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
-                                                </div>
-                                                <a href="javascript:void(0)"><img src="../dashboard/plugins/images/users/genu.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
-                                            </li>
-                                            <li>
-                                                <div class="call-chat">
-                                                    <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
-                                                    <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
-                                                </div>
-                                                <a href="javascript:void(0)"><img src="../dashboard/plugins/images/users/ritesh.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
-                                            </li>
-                                            <li>
-                                                <div class="call-chat">
-                                                    <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
-                                                    <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
-                                                </div>
-                                                <a href="javascript:void(0)"><img src="../dashboard/plugins/images/users/arijit.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
-                                            </li>
-                                            <li>
-                                                <div class="call-chat">
-                                                    <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
-                                                    <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
-                                                </div>
-                                                <a href="javascript:void(0)"><img src="../dashboard/plugins/images/users/govinda.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
-                                            </li>
-                                            <li>
-                                                <div class="call-chat">
-                                                    <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
-                                                    <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
-                                                </div>
-                                                <a href="javascript:void(0)"><img src="../dashboard/plugins/images/users/hritik.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
-                                            </li>
-                                            <li>
-                                                <div class="call-chat">
-                                                    <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
-                                                    <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
-                                                </div>
-                                                <a href="javascript:void(0)"><img src="../dashboard/plugins/images/users/varun.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.col -->
                 </div>
-            </div>
+                <script>
+                    $('#summernote').summernote({
+                        placeholder: 'contenu article',
+                        tabsize: 2,
+                        height: 100
+                    });
+                </script>
 
 
 
-<%- include('../partial/admin/footer.ejs') %>
+                <%- include('../partial/admin/footer.ejs') %>

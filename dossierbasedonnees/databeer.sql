@@ -94,8 +94,10 @@ ADD CONSTRAINT fkUserfeed foreign key (user_id) references users(user_id);
 
 CREATE TABLE IF NOT EXISTS actubeer(
         actu_id INT AUTO_INCREMENT,
-        actuTitle VARCHAR(255) NOT NULL,
+        actuTitle VARCHAR(50) NOT NULL,
         actuContent VARCHAR(255) NOT NULL,
+        author VARCHAR(20) NOT NULL,
+        image VARCHAR(255) NOT NULL,
         Date DATE NOT NULL,
         created_at TIMESTAMP DEFAULT NOW(),
         CONSTRAINT pkActu PRIMARY KEY(actu_id)
