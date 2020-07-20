@@ -213,7 +213,7 @@ exports.getVilleFrance = async (req, res) => {
 }
 //end affichage des villes de France
 
-// gestion page des articles
+// affiche page des articles
 exports.getArticle = async (req, res) => {
     
     const listarticles = await queryAsync("SELECT `actu_id`, `actuTitle`, `actuContent`, `author`,`image`,`Date`, `created_at` FROM `actubeer` ORDER BY actu_id ASC LIMIT 10")
@@ -231,6 +231,7 @@ exports.getArticle = async (req, res) => {
     });
 
 }
+
 //affiche page ajouter un article
 exports.getAddArticle = async(req, res) => {
 
@@ -249,7 +250,7 @@ exports.postAddArticle = async (req, res) => {
            
         let { actu_id, actuTitle, actuContent, author, image, Date, created_at} = req.body;
         
-        const actuadd = await queryAsync("INSERT INTO `brewersfrench`( actu_id, actuTitle, actuContent, author, image, Date,  created_at) VALUES ( '" + actu_id + "', '" + actuTitle + "', '" + actuContent + "', '" + author + "', '" + image + "', '" + Date + "', '" + created_at + "')")
+        const actuadd = await queryAsync("INSERT INTO `actubeer`( actu_id, actuTitle, actuContent, author, image, Date,  created_at) VALUES ( '" + actu_id + "', '" + actuTitle + "', '" + actuContent + "', '" + author + "', '" + image + "', '" + Date + "', '" + created_at + "')")
         
         console.log("result: ", actuadd);
         
@@ -266,6 +267,74 @@ exports.postAddArticle = async (req, res) => {
         console.log(err.message);
     }
 }
+//affiche la page modifier une fiche brasseur
+exports.getEditArticle = async (req, res) => {
 
+    try {
 
+        let actuId = req.params.id;
+
+        const ficheArticle = await queryAsync("SELECT actu_id, actuTitle, actuContent, author, image, Date, created_at FROM actubeer WHERE actu_id = '" + actuId + "' ")
+        
+            res.render('admin/articlesedit', { 
+            title: "fiche article",
+            actuone: ficheArticle[0]
+        })
+    } catch (err) {
+        console.log(err.message);
+    }
+
+}
+//modifier une fiche brasseur
+exports.postEditArticle = async (req, res) => {
+
+    try { 
+        let actuId = req.params.id;
+
+        let {actuTitle, actuContent, author, image, Date, created_at} = req.body;
+
+        await queryAsync("UPDATE actubeer SET actuTitle =?, actuContent =?, author =?, image =?, Date =?, created_at =? WHERE  actubeer. actu_id=?",   [actuTitle, actuContent, author, image, Date, created_at ])
+
+        const ficheArticle = await queryAsync("SELECT actu_id, actuTitle, actuContent, author, image, Date, created_at FROM actubeer WHERE actu_id = '" + actuId + "' ")
+
+        console.log("result :", ficheArticle);
+     res.render('admin/articlesedit', {
+            title:'fiche article modifier',
+            articleone: ficheArticle[0]
+           
+            
+        });
+
+    } catch (err) {
+        console.log(err.message);
+    }
+}
+
+//supprimer un article
+exports.getDeleteArticle = async (req, res) => {
+    
+    try{ 
+        let actuId = req.params.id;
+
+     await queryAsync('DELETE FROM actubeer WHERE actu_id = "' + actuId + '"')
+     
+     const listarticles = await queryAsync("SELECT actu_id, actuTitle, actuContent, author, image, Date,  created_at FROM actubeer")
+     
+     const totalActubeers = await queryAsync("SELECT COUNT(*) AS count FROM actubeer")
+    console.log("result: ", totalActubeers );
+        
+     res.render('admin/articlesadd', {
+            
+            message:'fichier supprimé',
+            title:'fichier supprimé',
+            actubeer: listarticles[0],
+            totalActubeers: totalActubeers[0].count
+            
+        });
+
+    }catch (err) {
+        console.log(err.message);
+    }
+
+}
 //end destion des articles

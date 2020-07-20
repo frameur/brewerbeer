@@ -16,18 +16,21 @@ router.get('/brasseurs/delete/:id',adminController.getDeleteBrasseur);
 
 //page accueil dashboard
 router.get('/dashboard', adminController.getAdminPage);
+
 //page base de données departement
 router.get('/departement', adminController.getDepartement); 
+
 //page base de données villede france
 router.get('/villefrance', adminController.getVilleFrance);
+
 //page actualites
 router.get('/articles', adminController.getArticle);
 router.get('/articles/add', adminController.getAddArticle)
-// router.get('/articles/edit/:id', adminController.getEditArticle);
+router.get('/articles/edit/:id', adminController.getEditArticle);
 // // Post
 router.post('/articles/add', adminController.postAddArticle);
-// router.post('/articles/edit/:id', adminController.postEditArticle);
-// router.post('/articles/delete/:id', adminController.postDeleteArticle);
+router.post('/articles/edit/:id', adminController.postEditArticle);
+router.get('/articles/delete/:id', adminController.getDeleteArticle);
 
 module.exports = router;
 

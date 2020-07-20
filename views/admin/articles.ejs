@@ -11,21 +11,15 @@
 </style>
 
 <body class="fix-header">
-    <!-- ============================================================== -->
-    <!-- Preloader -->
-    <!-- ============================================================== -->
+    
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
             <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
         </svg>
     </div>
-    <!-- ============================================================== -->
-    <!-- Wrapper -->
-    <!-- ============================================================== -->
+   
     <div id="wrapper">
-        <!-- ============================================================== -->
-        <!-- Topbar header - style you can find in pages.scss -->
-        <!-- ============================================================== -->
+      
         <nav class="navbar navbar-default navbar-static-top m-b-0">
             <div class="navbar-header">
                 <div class="top-left-part">
@@ -147,7 +141,7 @@
                                     <div id="sparklinedash"></div>
                                 </li>
                                 <li class="text-right"><i class="ti-arrow-up text-success"></i> <span
-                                        class="counter text-success"> <%= totalActubeers  %>   </span></li>
+                                        class="counter text-success"> <%= totalActubeers  %> </span></li>
                             </ul>
                         </div>
                     </div>
@@ -191,8 +185,10 @@
                                             <td><%= actu.image %></td>
                                             <td><%= actu.Date %></td>
                                             <td><%= actu.created_at %></td>
-                                            <td><a method="POST" href="/admin/articles/edit/<%= actu.actu_id %>  " class="btn btn-success">Editer</a></td>
-                                            <td><a href="/admin/articles/delete/ <%= actu.actu_id  %>   " class="btn btn-danger">Supprimer</a></td>
+                                            <td><a method="POST" href="/admin/articles/edit/<%= actu.actu_id %>  "
+                                                    class="btn btn-success">Editer</a></td>
+                                            <td><a href="/admin/articles/delete/ <%= actu.actu_id  %>   "
+                                                    class="btn btn-danger">Supprimer</a></td>
                                         </tr>
                                         <% }) %>
                                     </tbody>
@@ -201,10 +197,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- chat-listing & recent comments -->
-                <!-- ============================================================== -->
-              
 
+               
 
                 <%- include('../partial/admin/footer.ejs') %>

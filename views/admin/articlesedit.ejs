@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>modifier fiche brasseur de biere</title>
+</head>
+
+<style>
+    body {
+
+        width: 100%;
+        height: 100vh;
+        overflow-x: hidden;
+        object-fit: contain;
+
+    }
+
+    h4 {
+        text-transform: capitalize;
+        font-size: 35px;
+    }
+
+    .form-control {
+        font-size: 20px;
+        font-weight: 600;
+    }
+</style>
+
+
+<body class="fix-header">
+
+    <div class="row justify-content-center">
+        <ul class="nav" id="side-menu">
+            <li>
+                <a href="/admin/articles" class="btn btn-secondary"><i></i>Retour liste</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-sm-5 ">
+            <img src="" alt="" style="width: 100%;">
+       </div>
+    </div>
+    <br>
+    <h1 style="text-align: center;">MODIFIER FICHE ARTICLE</h1>
+    <br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-sm-6">
+                <form method="POST" action="#" enctype="multipart/form-data">
+                    <div class="form-group input-group-lg">
+                        <label for="actuTitle">
+                            <h4>Titre de l'article</h4>
+                        </label>
+                        <input type="text" class="form-control" id="actuTitle" name="actuTitle"
+                            value=" <%= actuone.actuTitle %>  ">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="actuContent">
+                        </label>
+                        <h4>contenu de l'article</h4>
+                        <input type="text" class="form-control" id="actuContent" name="actuContent"
+                            value="<%= actuone.actuContent %> ">
+                    </div>
+                    <div class="form-group">
+                        <label for="author">
+
+                        </label>
+                        <h4>Auteur de l'article</h4>
+                        <input type="text" class="form-control" id="author" name="author"
+                            value="<%= actuone.author %> ">
+                    </div>
+                    <div class="form-group">
+                        <label for="image">
+                        </label>
+                        <h4>image</h4>
+                        <input type="text" class="form-control" id="image" name="image"
+                            value="<%= actuone.image %> ">
+                    </div>
+                   
+                    <div class="form-group">
+                        <label for="Date">
+                        </label>
+                        <h4>Date de l'article</h4>
+                        <input type="date" class="form-control" id="Date" name="Date"
+                            value="<%= actuone.Date %> ">
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="created_at">
+                        </label>
+                        <h4>Date de publication</h4>
+                        <input type="date" class="form-control" id="created_at" name="created_at"
+                            value="<%= actuone.created_at %> ">
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="file">
+                            <h5>logo</h5>
+                        </label><br>
+                        <input type="file" id="file" name="file"> -->
+                    <br><br>
+
+                    <input type="submit" class="btn btn-primary" value="Modifier fiche">
+            </div>
+            </form>
+        </div>
+    </div>
+    
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
