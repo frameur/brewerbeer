@@ -267,6 +267,48 @@ exports.postAddArticle = async (req, res) => {
         console.log(err.message);
     }
 }
+//affiche la page modifier une fiche brasseur
+exports.getEditArticle = async (req, res) => {
+
+    try {
+
+        let actuId = req.params.id;
+
+        const ficheArticle = await queryAsync("SELECT actu_id, actuTitle, actuContent, author, image, Date, created_at FROM actubeer WHERE actu_id = '" + actuId + "' ")
+        
+            res.render('admin/articlesedit', { 
+            title: "fiche article",
+            actuone: ficheArticle[0]
+        })
+    } catch (err) {
+        console.log(err.message);
+    }
+
+}
+//modifier une fiche brasseur
+exports.postEditArticle = async (req, res) => {
+
+    try { 
+        let actuId = req.params.id;
+
+        let {actuTitle, actuContent, author, image, Date, created_at} = req.body;
+
+        await queryAsync("UPDATE actubeer SET actuTitle =?, actuContent =?, author =?, image =?, Date =?, created_at =? WHERE  actubeer. actu_id=?",   [actuTitle, actuContent, author, image, Date, created_at ])
+
+        const ficheArticle = await queryAsync("SELECT actu_id, actuTitle, actuContent, author, image, Date, created_at FROM actubeer WHERE actu_id = '" + actuId + "' ")
+
+        console.log("result :", ficheArticle);
+     res.render('admin/articlesedit', {
+            title:'fiche article modifier',
+            articleone: ficheArticle[0]
+           
+            
+        });
+
+    } catch (err) {
+        console.log(err.message);
+    }
+}
 
 //supprimer un article
 exports.getDeleteArticle = async (req, res) => {
