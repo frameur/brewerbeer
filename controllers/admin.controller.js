@@ -285,6 +285,7 @@ exports.getEditArticle = async (req, res) => {
     }
 
 }
+
 //modifier une fiche brasseur
 exports.postEditArticle = async (req, res) => {
 
@@ -293,12 +294,12 @@ exports.postEditArticle = async (req, res) => {
 
         let {actuTitle, actuContent, author, image, Date, created_at} = req.body;
 
-        await queryAsync("UPDATE actubeer SET actuTitle =?, actuContent =?, author =?, image =?, Date =?, created_at =? WHERE  actubeer. actu_id=?",   [actuTitle, actuContent, author, image, Date, created_at ])
+        await queryAsync("UPDATE `actubeer` SET  `actuTitle` = '" + actuTitle + "', `actuContent` = '" + actuContent + "', `author` = '" + author + "', `image` = '" + image+ "' , `Date` = '" + Date + "' , `created_at` = '" + created_at + "' WHERE `actubeer`.`actu_id` = '" + actuId + "' ")
 
-        const ficheArticle = await queryAsync("SELECT actu_id, actuTitle, actuContent, author, image, Date, created_at FROM actubeer WHERE actu_id = '" + actuId + "' ")
+        const ficheArticle = await queryAsync("SELECT `actu_id`, `actuTitle`, `actuContent`, `author`, `image`, `Date`, `created_at` FROM `actubeer` WHERE actu_id = '" + actuId + "' ")
 
         console.log("result :", ficheArticle);
-     res.render('admin/articlesedit', {
+     res.render('admin/articlesadd', {
             title:'fiche article modifier',
             articleone: ficheArticle[0]
            
