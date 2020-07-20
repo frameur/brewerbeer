@@ -52,8 +52,6 @@ exports.getListBrasseur = async (req, res) => {
 exports.getAddBrasseur = async(req, res) => {
 
   
-   
-    
     res.render('admin/brasseuradd', {
       
         title:'Ajouter un brasseur',
@@ -215,7 +213,7 @@ exports.getVilleFrance = async (req, res) => {
 }
 //end affichage des villes de France
 
-// affichage page des articles
+// gestion page des articles
 exports.getArticle = async (req, res) => {
     
     const listarticles = await queryAsync("SELECT `actu_id`, `actuTitle`, `actuContent`, `Date`, `created_at` FROM `actubeer` ORDER BY actu_id ASC LIMIT 10")
@@ -233,4 +231,30 @@ exports.getArticle = async (req, res) => {
     });
 
 }
-//end affichage des articles
+//Ajouter un brasseur
+exports.postAddArticle = async (req, res) => {
+
+    try {
+           
+        let { actu_id, actuTitle, actuContent, author, image, Date, created_at} = req.body;
+        
+        const actuadd = await queryAsync("INSERT INTO `brewersfrench`( actu_id, actuTitle, actuContent, author, image, Date,  created_at) VALUES ( '" + actu_id + "', '" + actuTitle + "', '" + actuContent + "', '" + author + "', '" + image + "', '" + Date + "', '" + created_at + "')")
+        
+        // console.log("result: ", actuadd);
+        
+        res.render('admin/articles', {
+            
+           title:'ajouter article',
+           acticle:actuadd
+            
+            
+           
+        });
+        
+    } catch (err) {
+        console.log(err.message);
+    }
+}
+
+
+//end destion des articles

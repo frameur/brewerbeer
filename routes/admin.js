@@ -11,9 +11,9 @@ router.get('/villefrance', adminController.getVilleFrance);
 router.get('/articles', adminController.getArticle);
 // router.get('/edit/:id', adminController.getEditArticle);
 // // Post
-// router.post('/article/add', adminController.postAddArticle);
-// router.post('/article/edit/:id', adminController.postEditArticle);
-// router.post('/article/delete/:id', adminController.postDeleteArticle);
+router.post('/articles/add', adminController.postAddArticle);
+// router.post('/articles/edit/:id', adminController.postEditArticle);
+// router.post('/articles/delete/:id', adminController.postDeleteArticle);
 
 //page administration des brasseurs
 // Get
