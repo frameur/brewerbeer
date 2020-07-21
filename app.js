@@ -54,6 +54,7 @@ app.use(session({
 const homeRoutes = require('./routes/accueil');
 const adminRoutes = require('./routes/admin');
 const authRoutes = require('./routes/auth');
+const brasseursRoutes = require('./routes/brasseurs')
 const auth = require("./middleware/auth.middleware");
 
 // Dashboard
@@ -63,9 +64,7 @@ app.use('/auth', authRoutes);
 //page index
 app.use('/', homeRoutes);
 // affiche page brasseurs
-app.get('/brasseurs',(req, res) =>{
-    res.render('brasseurs')
-})
+app.use('/brasseurs', brasseursRoutes)
 //affiche page gallery
 app.get('/gallery',(req, res) =>{
     res.render('gallery')

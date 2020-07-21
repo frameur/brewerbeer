@@ -21,4 +21,4 @@ SELECT `departement_code`, `departement_nom_uppercase` FROM `departement` WHERE 
 
 SELECT  `ville_departement`, `ville_nom`, `ville_nom_simple`, `ville_nom_reel`, `ville_code_postal`,  `ville_longitude_deg`, `ville_latitude_deg`  FROM `villes_france_free` WHERE 1
 
-SELECT brewersfrench, DATE_FORMAT(created_at, "% m /% d /% Y% T") FROM created_at
+SELECT DATE_FORMAT(A.created_at, "% m /% d /% Y% T") AS created_at

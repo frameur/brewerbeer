@@ -218,7 +218,7 @@ exports.getVilleFrance = async (req, res) => {
 exports.getArticle = async (req, res) => {
     
     const listarticles = await queryAsync("SELECT `actu_id`, `actuTitle`, `actuContent`, `author`,`image`,`Date`, `created_at` FROM `actubeer` ORDER BY actu_id ASC LIMIT 5")
-
+    
     const totalActubeers = await queryAsync("SELECT COUNT(*) AS count FROM actubeer")
 
 
