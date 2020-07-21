@@ -108,60 +108,32 @@
                 </div>
             </section>
             <!-- Want To work End -->
+            <% actubeer.forEach((actu, index) => { %>
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="row ">
+                    
+                    <div class="col-lg-8 col-md-8 col-sm-10">
+                        
                         <div class="single-cat text-center mb-50">
                             <div class="cat-icon">
                                 <i class=""></i>
-                            </div>
-                            <div class="cat-cap">
-                                <h1 style="text-transform: uppercase;">biere artisanal</h1>
-                                <p>les produits utilisées, bio ou pas bio, les methodes de fabrications donnent des
-                                    resultats trés interéssant.</p>
-                            </div>
-                            <div class="img-cap">
-                                <h2 style="text-transform: uppercase;">christian lemoine <i
-                                        style="font-size: 15px;">20/07/2020</i></h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6">
-                        <div class="single-cat text-center mb-50">
-                            <div class="cat-icon">
-
-                                <i class=""></i>
-                            </div>
-                            <div class="cat-cap">
-                                <h1 style="text-transform: uppercase;">biere industriel</h1>
-                                <p>pour les biéres dites de soif les industriels sont les champions, ce qui donne des
-                                    biéres plutot banal.</p>
+                                <div class="cat-cap">
+                                </div>
+                                <h1 style="text-transform: uppercase;"><%= actu.actuTitle %></h1>
+                                <p> <%= actu.actuContent %></p>
                             </div>
                             <div class="img-cap">
-                                <h2 style="text-transform: uppercase;">christian lemoine <i
-                                        style="font-size: 15px;">20/07/2020</i></h2>
+                                <h2 style="text-transform: uppercase;"><%= actu.author %><i
+                                        style="font-size: 15px;"><%= actu.Date %></h2>
                             </div>
+                            
                         </div>
+                        
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6">
-                        <div class="single-cat text-center mb-50">
-                            <div class="cat-icon">
-                                <i class=""></i>
-                            </div>
-                            <div class="cat-cap">
-                                <h1 style="text-transform: uppercase;">biere du monde</h1>
-                                <p>Chaque pays nous offre des biéres avec des parfums différents qui nous transporte
-                                    loin loin loin!.</p>
-                            </div>
-                            <div class="img-cap">
-                                <h2 style="text-transform: uppercase;">christian lemoine <i
-                                        style="font-size: 15px;">20/07/2020</i></h2>
-
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
+            <% }) %>
         </section>
         <!-- Services Area End -->
         <!--? About-2 Area Start -->
@@ -444,24 +416,24 @@
                                     <div class="col-lg-6 col-md-6">
                                         <h1> <label for="">name</label></h1>
                                         <div class="form-box user-icon mb-30">
-                                            <input type="text" name="name" >
+                                            <input type="text" name="name">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <h1> <label for="">phone</label></h1>
                                         <div class="form-box email-icon mb-30">
-                                            <input type="text" name="phone" >
+                                            <input type="text" name="phone">
                                         </div>
                                     </div>
-                                
+
                                     <div class="col-lg-6 col-md-6">
                                         <h1> <label for="">email</label></h1>
                                         <div class="form-box subject-icon mb-30">
-                                            <input type="Email" name="subject" >
+                                            <input type="Email" name="subject">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
-                                       <h1> <label for="">message</label></h1>
+                                        <h1> <label for="">message</label></h1>
                                         <div class="form-box message-icon mb-65">
                                             <textarea name="message" id="message"></textarea>
                                         </div>

@@ -177,7 +177,7 @@ exports.getDeleteBrasseur = async (req, res) => {
 }
 //end administration brasseurs
 
-//affichage page des départements
+//affiche page des départements
 exports.getDepartement = async (req, res) => {
 
     const listdepartement = await queryAsync("SELECT `departement_id`, `departement_code`, `departement_nom`, `departement_nom_uppercase`, `departement_slug`, `departement_nom_soundex` FROM `departement`  ORDER BY departement_id ASC LIMIT 25")
@@ -194,9 +194,9 @@ exports.getDepartement = async (req, res) => {
     });
 
 }
-//end affichage des departements
+//end affiche les departements
 
-//Affichage page des villes de France
+//Affiche page des villes de France
 exports.getVilleFrance = async (req, res) => {
 
     const listvilles = await queryAsync("SELECT `ville_id`, `ville_departement`, `ville_slug`, `ville_nom`, `ville_nom_simple`, `ville_nom_reel`, `ville_nom_soundex`, `ville_nom_metaphone`, `ville_code_postal`, `ville_commune`, `ville_code_commune`, `ville_arrondissement`, `ville_canton`, `ville_longitude_deg`, `ville_latitude_deg` FROM `villes_france_free` ORDER BY ville_id ASC LIMIT 25")
@@ -212,12 +212,12 @@ exports.getVilleFrance = async (req, res) => {
     });
 
 }
-//end affichage des villes de France
+//end affiche les villes de France
 
 // affiche page des articles
 exports.getArticle = async (req, res) => {
     
-    const listarticles = await queryAsync("SELECT `actu_id`, `actuTitle`, `actuContent`, `author`,`image`,`Date`, `created_at` FROM `actubeer` ORDER BY actu_id ASC LIMIT 10")
+    const listarticles = await queryAsync("SELECT `actu_id`, `actuTitle`, `actuContent`, `author`,`image`,`Date`, `created_at` FROM `actubeer` ORDER BY actu_id ASC LIMIT 5")
 
     const totalActubeers = await queryAsync("SELECT COUNT(*) AS count FROM actubeer")
 
@@ -339,4 +339,4 @@ exports.getDeleteArticle = async (req, res) => {
     }
 
 }
-//end destion des articles
+//end gestion des articles
