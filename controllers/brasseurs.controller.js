@@ -1,7 +1,7 @@
 //affiche nom des départements
 exports.getBrasseur = async (req, res) => {
 
-    const listdepartement = await queryAsync("SELECT `departement_id`, `departement_code`, `departement_nom`, `departement_nom_uppercase`, `departement_slug`, `departement_nom_soundex` FROM `departement`  ORDER BY departement_id  ASC LIMIT 5")
+    const listdepartement = await queryAsync("SELECT `departement_id`, `departement_code`, `departement_nom`, `departement_nom_uppercase`, `departement_slug`, `departement_nom_soundex` FROM `departement`  ORDER BY departement_id ")
 
     
     res.render('brasseurs.ejs', {

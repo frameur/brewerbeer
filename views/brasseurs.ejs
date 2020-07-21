@@ -1,176 +1,86 @@
 <%- include('partial/head.ejs')%>
-<body>
-    <!--? Preloader Start -->
-    <div id="preloader-active">
-       <div class="preloader d-flex align-items-center justify-content-center">
-           <div class="preloader-inner position-relative">
-               <div class="preloader-circle"></div>
-               <div class="preloader-img pere-text">
-                   <img src="assets/img/logo/loder.png" alt="">
-               </div>
-           </div>
-       </div>
-    </div>
-    <!-- Preloader Start -->
-    <%- include('partial/header.ejs')%>
-    <main>
-       <!--? Hero Start -->
-       <div class="slider-area2">
-          <div class="slider-height2 d-flex align-items-center">
-                <div class="container">
-                   <div class="row">
-                      <div class="col-xl-12">
-                            <div class="hero-cap hero-cap2 pt-70 text-center">
-                               <h2>Les Brasseurs</h2>
-                            </div>
-                      </div>
-                   </div>
-                </div>
-          </div>
-       </div>
-       <!-- Hero End -->
-       <!--? Blog Area Start -->
-      
-       <section class="blog_area single-post-area section-padding">
-          <div class="container">
-             <div class="row">
-                <div class="col-lg-8 posts-list">
-                   <div class="single-post">
-                      <div class="feature-img">
-                         <img class="img-fluid" src="" alt="">
-                      </div>
-<br><br><br>
-                        <!-- formulaire de recherche -->
-        <div class="container">
-         <div class="row">
-             <div class="col-xl-2 col-lg-2 col-md-3">
-                 <form class="needs-validation" novalidate>
-                     <select class="mdb-select validate md-form" searchable="Search here..">
-                         <option value="" disabled selected>choisir votre departement</option>
-                         <% departement.forEach((departement, index) => { %>
-                         <option value="<%= departement.departement_id %>"><%= departement.departement_nom_uppercase %></option>
-                         <% }) %>
-                     </select>
-                  
-                     <button style="margin-top: 30px;" class="btn btn-default btn-sm">Submit</button>
-                 </form>
-             </div>
-         </div>
-     </div>
-       
-     <!-- end formulaire de recherche
-                   
-                   
-                 <!-- formulaire commentaire -->
-                   <div class="comment-form">
-                      <h4>Leave a Reply</h4>
-                      <form class="form-contact comment_form" action="#" id="commentForm">
-                         <div class="row">
-                            <div class="col-12">
-                               <div class="form-group">
-                                  <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
-                                     placeholder="Write Comment"></textarea>
-                               </div>
-                            </div>
-                            <div class="col-sm-6">
-                               <div class="form-group">
-                                  <input class="form-control" name="name" id="name" type="text" placeholder="Name">
-                               </div>
-                            </div>
-                            <div class="col-sm-6">
-                               <div class="form-group">
-                                  <input class="form-control" name="email" id="email" type="email" placeholder="Email">
-                               </div>
-                            </div>
-                            <div class="col-12">
-                               <div class="form-group">
-                                  <input class="form-control" name="website" id="website" type="text" placeholder="Website">
-                               </div>
-                            </div>
-                         </div>
-                         <div class="form-group">
-                            <button type="submit" class="button button-contactForm btn_1 boxed-btn">Post Comment</button>
-                         </div>
-                      </form>
-                   </div>
-                </div>
-                <div class="col-lg-4">
-                   <div class="blog_right_sidebar">
-                      <aside class="single_sidebar_widget search_widget">
-                         <form action="#">
-                            <div class="form-group">
-                               <div class="input-group mb-3">
-                                  <input type="text" class="form-control" placeholder='Search Keyword'
-                                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
-                                  <div class="input-group-append">
-                                     <button class="btns" type="button"><i class="ti-search"></i></button>
-                                  </div>
-                               </div>
-                            </div>
-                            <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                               type="submit">Search</button>
-                         </form>
-                      </aside>
-                      <aside class="single_sidebar_widget post_category_widget">
-                         <h4 class="widget_title" style="color: #2d2d2d;">Category</h4>
-                         <ul class="list cat-list">
-                            <li>
-                               <a href="#" class="d-flex">
-                                  <p>Resaurant food</p>
-                                  <p>(37)</p>
-                               </a>
-                            </li>
-                            <li>
-                               <a href="#" class="d-flex">
-                                  <p>Travel news</p>
-                                  <p>(10)</p>
-                               </a>
-                            </li>
-                            <li>
-                               <a href="#" class="d-flex">
-                                  <p>Modern technology</p>
-                                  <p>(03)</p>
-                               </a>
-                            </li>
-                            <li>
-                               <a href="#" class="d-flex">
-                                  <p>Product</p>
-                                  <p>(11)</p>
-                               </a>
-                            </li>
-                            <li>
-                               <a href="#" class="d-flex">
-                                  <p>Inspiration</p>
-                                  <p>(21)</p>
-                               </a>
-                            </li>
-                            <li>
-                               <a href="#" class="d-flex">
-                                  <p>Health Care</p>
-                                  <p>(21)</p>
-                               </a>
-                            </li>
-                         </ul>
-                      </aside>
-                  
-                      <aside class="single_sidebar_widget newsletter_widget">
-                         <h4 class="widget_title" style="color: #2d2d2d;">Newsletter</h4>
-                         <form action="#">
-                            <div class="form-group">
-                               <input type="email" class="form-control" onfocus="this.placeholder = ''"
-                                  onblur="this.placeholder = 'Enter email'" placeholder='Enter email' required>
-                            </div>
-                            <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                               type="submit">Subscribe</button>
-                         </form>
-                      </aside>
-                   </div>
-                </div>
-             </div>
-          </div>
-       </section>
-       <!-- Blog Area End -->
-    </main>
-  
 
-<%- include('partial/footer.ejs')%>
+<style>
+   div.ex3 {
+      background-color: lightblue;
+      width: 110px;
+      height: 110px;
+      overflow: auto;
+   }
+</style>
+
+<body>
+   <!--? Preloader Start -->
+   <div id="preloader-active">
+      <div class="preloader d-flex align-items-center justify-content-center">
+         <div class="preloader-inner position-relative">
+            <div class="preloader-circle"></div>
+            <div class="preloader-img pere-text">
+               <img src="assets/img/logo/loder.png" alt="">
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- Preloader Start -->
+   <%- include('partial/header.ejs')%>
+   <main>
+      <!--? Hero Start -->
+      <div class="slider-area2">
+         <div class="slider-height2 d-flex align-items-center">
+            <div class="container">
+               <div class="row">
+                  <div class="col-xl-12">
+                     <div class="hero-cap hero-cap2 pt-70 text-center">
+                        <h2>LES BRASSEURS</h2>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   
+<!-- formulaire de recherche -->
+      <section class="blog_area single-post-area section-padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-8 posts-list">
+                  <div class="single-post">
+                     <div class="feature-img">
+                        <img class="img-fluid" src="" alt="">
+                     </div>
+                     
+                     <div class="container ">
+                        <div class="row ">
+                           <div class="col-xl-5 col-lg-5 col-md-6 ">
+                              <form>
+                                 <select class="mdb-select validate md-form  searchable=" Search here..">
+                                    <option value="" disabled selected>choisir votre departement</option>
+                                    <% departement.forEach((departement, index) => { %>
+                                    <option value="<%= departement.departement_id %>">
+                                       <%= departement.departement_nom_uppercase %></option>
+                                    <% }) %>
+                                 </select>
+                                 <button style="margin-top: 30px;" class="btn btn-default btn-sm">Submit</button>
+                              </form>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+      </section>
+   </main>
+
+   <!-- end formulaire de recherche
+                 
+
+
+
+
+
+                            
+      
+   
+
+
+   <%- include('partial/footer.ejs')%>
