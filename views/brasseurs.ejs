@@ -31,7 +31,7 @@
       
      
       position: relative;
-      width: 500px;
+      width: 700px;
       height: 500px;
       /* margin-bottom: 30px; */
       margin-left: 400px;
@@ -123,8 +123,25 @@
               
       </section>
 
-
       <script>
+         var map = L.map('map').setView([40.91, -96.63], 4);
+       
+         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+           attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
+         }).addTo(map);
+       
+         var searchControl = L.esri.Geocoding.geosearch().addTo(map);
+       
+         var results = L.layerGroup().addTo(map);
+       
+         searchControl.on('results', function (data) {
+           results.clearLayers();
+           for (var i = data.results.length - 1; i >= 0; i--) {
+             results.addLayer(L.marker(data.results[i].latlng));
+           }
+         });
+       </script>
+      <!-- <script>
          // https://esri.github.io/esri-leaflet/examples/geocoding-control.html
 
          const coordsParis = {
@@ -190,7 +207,7 @@
                map.setZoom(15);
             }, 1000);
          }
-      </script>
+      </script> -->
    </main>
 
    <%- include('partial/footer.ejs')%>
