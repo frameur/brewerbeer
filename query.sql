@@ -91,10 +91,11 @@ DATE_FORMAT(b.created_at, "% m /% d /% Y% T") AS created_at
          }
       </script> -->
 
-      DATE_FORMAT(b.created_at, '" + "%d/%m/%Y" + "') AS created_at, DATE_FORMAT(p.date_end, '" + "%d/%m/%Y" + "') AS date_end
+      DATE_FORMAT(created_at, '" + "%d/%m/%Y" + "') AS created_at, DATE_FORMAT(p.date_end, '" + "%d/%m/%Y" + "') AS date_end
 
-      DATE_FORMAT(b.created_at, "%d/%m/%Y") AS created_at
+      DATE_FORMAT(created_at, "%d/%m/%Y") AS created_at
 
       SELECT * ,
-DATE_FORMAT(b.created_at, '%d/%m/%Y') AS created_at
-from brewersfrench
+    
+    DATE_FORMAT(created_at, '%d/%m/%Y') AS created_at
+    from brewersfrench

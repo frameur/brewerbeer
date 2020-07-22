@@ -27,7 +27,7 @@ exports.getListBrasseur = async (req, res) => {
 
     try {
 
-        const listbrewer = await queryAsync("SELECT `brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, DATE_FORMAT(created_at, '%d/%m/%Y') AS created_at FROM `brewersfrench` ORDER BY brewer_id ASC LIMIT 25")
+        const listbrewer = await queryAsync("SELECT `brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, DATE_FORMAT(created_at, '%d/%m/%Y %T') AS created_at FROM `brewersfrench` ORDER BY brewer_id ASC LIMIT 25")
         
         const totalBrewers = await queryAsync("SELECT COUNT(*) AS count FROM brewersfrench")
         
@@ -92,7 +92,7 @@ exports.getSingleBrasseur = async (req, res) => {
 
         let brewerId = req.params.id;
 
-        const fichebrewer = await queryAsync("SELECT `brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, DATE_FORMAT(created_at, '%d/%m/%Y') AS created_at FROM `brewersfrench` WHERE brewer_id = '" + brewerId + "' ")
+        const fichebrewer = await queryAsync("SELECT `brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, DATE_FORMAT(created_at, '%d/%m/%Y %T') AS created_at FROM `brewersfrench` WHERE brewer_id = '" + brewerId + "' ")
 
         res.render('admin/brasseurone', {
             
@@ -134,7 +134,7 @@ exports.postEditBrasseur = async (req, res) => {
         nameCp, nameTown, nameWeb, nameFacebook , email, phone, logo, content, listBeer, created_at, brewerId ])
         
 
-        const fichebrewer = await queryAsync("SELECT `brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, DATE_FORMAT(created_at, '%d/%m/%Y') AS created_at FROM `brewersfrench` WHERE brewer_id = '" + brewerId + "' ")
+        const fichebrewer = await queryAsync("SELECT `brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, DATE_FORMAT(created_at, '%d/%m/%Y %T') AS created_at FROM `brewersfrench` WHERE brewer_id = '" + brewerId + "' ")
 
         console.log("result :", fichebrewer);
      res.render('admin/brasseurone', {
