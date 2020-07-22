@@ -27,7 +27,7 @@ exports.getListBrasseur = async (req, res) => {
 
     try {
 
-        const listbrewer = await queryAsync("SELECT `brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, `created_at` FROM `brewersfrench` ORDER BY brewer_id ASC LIMIT 25")
+        const listbrewer = await queryAsync("SELECT `brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, DATE_FORMAT(created_at, '%d/%m/%Y') AS created_at FROM `brewersfrench` ORDER BY brewer_id ASC LIMIT 25")
         
         const totalBrewers = await queryAsync("SELECT COUNT(*) AS count FROM brewersfrench")
         
@@ -217,16 +217,18 @@ exports.getVilleFrance = async (req, res) => {
 // affiche page des articles
 exports.getArticle = async (req, res) => {
     
-    const listarticles = await queryAsync("SELECT `actu_id`, `actuTitle`, `actuContent`, `author`,`image`,`Date`, `created_at` FROM `actubeer` ORDER BY actu_id ASC LIMIT 5")
+    const listarticles = await queryAsync("SELECT `actu_id`, `actuTitle`, `actuContent`, `author`,`image`, DATE_FORMAT(Date, '%d/%m/%Y') AS Date, DATE_FORMAT(created_at, '%d/%m/%Y') AS created_at FROM `actubeer` ORDER BY actu_id ASC LIMIT 5")
     
     const totalActubeers = await queryAsync("SELECT COUNT(*) AS count FROM actubeer")
+    
 
 
     res.render('admin/articles', {
 
         title: "liste des articles",
         actubeer: listarticles,
-        totalActubeers: totalActubeers[0].count
+        totalActubeers: totalActubeers[0].count,
+        
 
 
     });
@@ -277,9 +279,11 @@ exports.getEditArticle = async (req, res) => {
 
         const ficheArticle = await queryAsync("SELECT actu_id, actuTitle, actuContent, author, image, Date, created_at FROM actubeer WHERE actu_id = '" + actuId + "' ")
         
+        
             res.render('admin/articlesedit', { 
             title: "fiche article",
-            actuone: ficheArticle[0]
+            actuone: ficheArticle[0],
+            
         })
     } catch (err) {
         console.log(err.message);
@@ -298,11 +302,14 @@ exports.postEditArticle = async (req, res) => {
         await queryAsync("UPDATE `actubeer`SET `actuTitle`=?, `actuContent`=?, `author`=?, `image`=?, `Date`=?, `created_at`=? WHERE `actubeer`.`actu_id`=?",   [actuTitle, actuContent, author, image, Date, created_at, actuId ])
 
         const ficheArticle = await queryAsync("SELECT `actu_id`, `actuTitle`, `actuContent`, `author`, `image`, `Date`, `created_at` FROM `actubeer` WHERE actu_id = '" + actuId + "' ")
+        
 
         console.log("result :", ficheArticle);
      res.render('admin/articlesadd', {
             title:'fiche article modifier',
-            articleone: ficheArticle[0]
+            articleone: ficheArticle[0],
+            
+
            
             
         });

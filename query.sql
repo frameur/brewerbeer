@@ -21,7 +21,7 @@ SELECT `departement_code`, `departement_nom_uppercase` FROM `departement` WHERE 
 
 SELECT  `ville_departement`, `ville_nom`, `ville_nom_simple`, `ville_nom_reel`, `ville_code_postal`,  `ville_longitude_deg`, `ville_latitude_deg`  FROM `villes_france_free` WHERE 1
 
-SELECT DATE_FORMAT(A.created_at, "% m /% d /% Y% T") AS created_at
+DATE_FORMAT(b.created_at, "% m /% d /% Y% T") AS created_at
 
  <!-- <script>
          // https://esri.github.io/esri-leaflet/examples/geocoding-control.html
@@ -90,3 +90,11 @@ SELECT DATE_FORMAT(A.created_at, "% m /% d /% Y% T") AS created_at
             }, 1000);
          }
       </script> -->
+
+      DATE_FORMAT(b.created_at, '" + "%d/%m/%Y" + "') AS created_at, DATE_FORMAT(p.date_end, '" + "%d/%m/%Y" + "') AS date_end
+
+      DATE_FORMAT(b.created_at, "%d/%m/%Y") AS created_at
+
+      SELECT * ,
+DATE_FORMAT(b.created_at, '%d/%m/%Y') AS created_at
+from brewersfrench
