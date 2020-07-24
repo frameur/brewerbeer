@@ -13,6 +13,14 @@ exports.getBrasseur = async (req, res) => {
     });
 
 }
+
+exports.getBrasseurAPI = async (req, res) => {
+    const listdepartement = await queryAsync("SELECT `departement_id`, `departement_code`, `departement_nom`, `departement_nom_uppercase`, `departement_slug`, `departement_nom_soundex` FROM `departement`  ORDER BY departement_id ")
+
+    res.json(listdepartement)
+
+}
+
 // exports.getListBrasseur = async (req, res) => {
 
 //     try {

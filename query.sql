@@ -11,6 +11,11 @@ ADD CONSTRAINT fkFeedbackuser foreign key (user_id) references  users(user_id);
     -- <p> Not Allowed </p>
     -- <% } %>
 
+
+    <% if(userId){ %>
+      <% } else{ %>
+         <% } %>
+
      ("UPDATE `actubeer`SET `actuTitle`=?, `actuContent`=?, `author`=?, `image`=?, `Date`=?, `created_at`=? WHERE `brewersfrench`.`brewer_id`=?",   [actuTitle, actuContent, author, image, Date, created_at, actuId ])
 
 
@@ -99,3 +104,29 @@ DATE_FORMAT(b.created_at, "% m /% d /% Y% T") AS created_at
     
     DATE_FORMAT(created_at, '%d/%m/%Y') AS created_at
     from brewersfrench
+
+exos trigger
+   CREATE TABLE Customer ( id INTEGER PRIMARY KEY AUTO_INCREMENT, name TEXT, last_order_id INT );
+CREATE TABLE Sale ( id INTEGER PRIMARY KEY, item_id INT, customer_id INT, price INT );
+INSERT INTO Customer (name) VALUES ('Bob'), ('Sally'), ('Fred');
+SELECT * FROM Customer;
+CREATE TRIGGER newSale AFTER INSERT ON Sale
+    FOR EACH ROW
+      UPDATE Customer SET last_order_id = NEW.id WHERE Customer.id = NEW.customer_id;
+;
+SHOW triggers;
+INSERT INTO Sale (item_id, customer_id, price) VALUES (1, 3,  1995);
+SELECT * FROM Sale;
+SELECT * FROM Customer;
+SHOW TRIGGERS;
+DROP TRIGGER newSale
+
+CREATE TABLE Clients ( id INTEGER PRIMARY KEY AUTO_INCREMENT, nom TEXT, derniere_commande_id INT );
+CREATE TABLE Ventes ( id INTEGER PRIMARY KEY AUTO_INCREMENT, ref INT, client_id INT, prix INT );
+INSERT INTO Clients (nom) VALUES ('François'), ('Julien'), ('Sarah');
+CREATE TRIGGER nouvelleVente
+AFTER INSERT ON Ventes
+FOR EACH ROW
+UPDATE Clients SET derniere_commande_id = NEW.id WHERE Clients.id = NEW.client_id;
+SHOW TRIGGERS;
+INSERT INTO Ventes (ref, client_id, prix) VALUES (3, 1, 1500);

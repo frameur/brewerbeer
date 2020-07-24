@@ -127,64 +127,63 @@
                         <img class="img-fluid" src="" alt="">
                      </div>
 
-                     <div class="container ">
-                        <div class="row ">
-                           <div class="col-xl-5 col-lg-5 col-md-6 ">
-
-                              <form>
-                                 <select class="mdb-select validate md-form  searchable=" Search here..">
-                                    <option value="" disabled selected>choisir votre departement</option>
-                                    <% departement.forEach((departement, index) => { %>
-                                    <option value="<%= departement.departement_id %>">
-                                       <%= departement.departement_nom_uppercase %></option>
-                                    <% }) %>
-
-                                 </select>
-                                 <!-- <div class="submit-info">
-                                    <button class="btn" type="submit">valider</button>
-                                </div> -->
-
-
-
-
-                              </form>
-
-                           </div>
-                        </div>
-                        
-                     </div>
-                  
+                     <h1>votre recherche</h1>
+                     <form method="get" id="searchform" action="http://localhost:1998/">
+                       <input type="text" value="Search..." name="s" id="searchinput" />
+                       <!-- <input type="image" alt="Submit" src="http://localhost:1998/" id="searchsubmit" /> -->
+                     </form>
+                     
                   </div>
                </div>
             </div>
 
-  <div class="container">
-         <div class="row">
-            <div class="col-xl-8 col-lg-8 col-md-8 " id="map"></div>
-         </div>
-      </div>
+
 
       </section>
     
-      <script>
-         const map = L.map('map').setView([46.81, -1.40], 12);
+    <script>
+const search_input = document.getElementById('search')
+const results = document.getElementById('results')
+let search_term = ''
+let countries
+const showCountries = async () => {
+  // clearHTML
+  results.innerHTML = ''
+  // getting the data
+  countries = await fetch('http://localhost:1998/brasseurs/brasseurs-api').then(res =>
+    res.json()
+  )
+  // creating the structure
+  const ul = document.createElement('ul')
+  countries
+    .filter(country =>
+      country.name.toLowerCase().includes(search_term.toLowerCase())
+    )
+    .forEach(country => {
+      const li = document.createElement('li')
+      let country_name = document.createElement('a')
+      country_name.innerText = country.name 
+      country_name.href = '/homepays/' + country.id
+    //   country_name.classList.add('country-name')
+      li.appendChild(country_name)
+      ul.appendChild(li)
+    })
+  results.appendChild(ul)
+}
+// display initial countries
+// showCountries();
+search_input.addEventListener('input', e => {
+  search_term = e.target.value
+  // re-display countries again based on the new search_term
+  showCountries()
+})
 
-         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
-         }).addTo(map);
 
-         const searchControl = L.esri.Geocoding.geosearch().addTo(map);
 
-         let results = L.layerGroup().addTo(map);
 
-         searchControl.on('results', function (data) {
-            results.clearLayers();
-            for (var i = data.results.length - 1; i >= 0; i--) {
-               results.addLayer(L.marker(data.results[i].latlng));
-            }
-         });
-      </script>
 
+
+</script>
    </main>
 
    <%- include('partial/footer.ejs')%>
