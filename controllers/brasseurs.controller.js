@@ -2,12 +2,14 @@
 exports.getBrasseur = async (req, res) => {
 
     const listdepartement = await queryAsync("SELECT `departement_id`, `departement_code`, `departement_nom`, `departement_nom_uppercase`, `departement_slug`, `departement_nom_soundex` FROM `departement`  ORDER BY departement_id ")
-
+   
+    const listbrewer = await queryAsync("SELECT `brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, `created_at` FROM `brewersfrench` ORDER BY brewer_id ASC LIMIT 25")
     
     res.render('brasseurs.ejs', {
 
         title: "liste des departements",
         departement: listdepartement,
+        brewersfrench: listbrewer
        
 
     });

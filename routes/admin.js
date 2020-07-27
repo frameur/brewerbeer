@@ -1,8 +1,6 @@
 const router = require('express').Router()
 const adminController = require('../controllers/admin.controller')
 
-
-
 //page administration des brasseurs
 // Get
 router.get('/brasseurs',adminController.getListBrasseur)
@@ -27,7 +25,7 @@ router.get('/villefrance', adminController.getVilleFrance)
 router.get('/articles', adminController.getArticle)
 router.get('/articles/add', adminController.getAddArticle)
 router.get('/articles/edit/:id', adminController.getEditArticle)
-// // Post
+// Post
 router.post('/articles/add', adminController.postAddArticle)
 router.post('/articles/edit/:id', adminController.postEditArticle)
 router.get('/articles/delete/:id', adminController.getDeleteArticle)

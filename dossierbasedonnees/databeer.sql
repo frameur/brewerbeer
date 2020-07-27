@@ -51,6 +51,12 @@ CREATE TABLE IF NOT EXISTS productbeer(
 ALTER table productbeer
 ADD CONSTRAINT fkProductbrewer foreign key (brewer_id) references  brewersfrench(brewer_id);
 
+CREATE TABLE role(
+      role_id INT,
+      name VARCHAR(10) NOT NULL,
+      CONSTRAINT pkRole PRIMARY KEY(role_id)
+);
+
 CREATE TABLE IF NOT EXISTS users(
       user_id INT AUTO_INCREMENT,
       firstname VARCHAR(50) NOT NULL,
@@ -61,14 +67,6 @@ CREATE TABLE IF NOT EXISTS users(
       role_id int,
       foreign key (role_id) references  role(role_id),
       CONSTRAINT pkUser PRIMARY KEY(user_id)
-);
-
-
-
-CREATE TABLE role(
-      role_id INT,
-      name VARCHAR(10) NOT NULL,
-      CONSTRAINT pkRole PRIMARY KEY(role_id)
 );
 
 

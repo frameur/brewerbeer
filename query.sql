@@ -130,3 +130,42 @@ FOR EACH ROW
 UPDATE Clients SET derniere_commande_id = NEW.id WHERE Clients.id = NEW.client_id;
 SHOW TRIGGERS;
 INSERT INTO Ventes (ref, client_id, prix) VALUES (3, 1, 1500);
+
+  <script>
+const search_input = document.getElementById('search')
+const results = document.getElementById('results')
+let search_term = ''
+let departements
+const showCountries = async () => {
+  // clearHTML
+  results.innerHTML = ''
+  // getting the data
+  departements = await fetch('http://localhost:1998/brasseurs/brasseurs-api').then(res =>
+    res.json()
+  )
+  // creating the structure
+  const ul = document.createElement('ul')
+  departements
+    .filter(departement =>
+      country.name.toLowerCase().includes(search_term.toLowerCase())
+    )
+    .forEach(departement => {
+      const li = document.createElement('li')
+      let country_name = document.createElement('a')
+      country_name.innerText = country.name 
+      country_name.href = '/homepays/' + country.id
+    //   country_name.classList.add('country-name')
+      li.appendChild(country_name)
+      ul.appendChild(li)
+    })
+  results.appendChild(ul)
+}
+// display initial countries
+// showCountries();
+search_input.addEventListener('input', e => {
+  search_term = e.target.value
+  // re-display countries again based on the new search_term
+  showCountries()
+})
+
+</script>
