@@ -71,18 +71,25 @@
             </div>
          </div>
       </div>
-      <div class="listedepartement">
-         <form name="listedepartement" method="get">
-            <select name="menu"
-               onChange="window.document.location.href=this.options[this.selectedIndex].value;" value="GO">
-               <option selected="selected">Choisissez un département</option>
-               <% brewersfrench.forEach((brewer, index) => { %>
-               <option value="<%= brewer.nameBrass %>"><%= brewer.nameBrass %>
-                  </option>
-                  <% }) %>
-            </select>
-         </form>
-      </div>
+      <hr>
+      
+   
+       <!-- Search -->
+<section class="section bg-light-2">
+   
+   <div class="container">
+     <div class="row">
+       <div class="col-md-12">
+          <h1 >choisir son département</h1>
+         <input type="text" id="search" placeholder="Search for a Departement" />
+         <div id="results"></div>
+       </div>
+     </div>
+   </div>
+ </section>
+<hr>
+     
+
       <!-- formulaire de recherche -->
       <section class="blog_area single-post-area section-padding">
          <div class="container">
@@ -636,5 +643,13 @@
 
 
    </main>
+   <script src="/search.js"></script>
+
+<script>
+   
+
+
+</script>
+
 
    <%- include('partial/footer.ejs')%>

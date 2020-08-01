@@ -153,7 +153,7 @@ const showCountries = async () => {
       const li = document.createElement('li')
       let country_name = document.createElement('a')
       country_name.innerText = country.name 
-      country_name.href = '/homepays/' + country.id
+      country_name.href = '/brasseurs/' + departement.id
     //   country_name.classList.add('country-name')
       li.appendChild(country_name)
       ul.appendChild(li)
@@ -169,3 +169,16 @@ search_input.addEventListener('input', e => {
 })
 
 </script>
+
+   <div class="container">
+         <div class="row">
+            <div class="col-md-6">
+               <div class="five columns">
+                  <% brewersfrench.forEach((brewer, index) => { %>
+                  <h4>Brasseur <%= brewer.nameBrass %></h4>
+                  <p><%= brewer.address %></p>
+                  <% }) %>
+               </div>
+            </div>
+         </div>
+      </div> 

@@ -1,14 +1,25 @@
+exports.getBrasseurAPI = async (req, res) => {
+    const listdepartement = await queryAsync("SELECT `departement_id`, `departement_code`, `departement_nom`, `departement_nom_uppercase` FROM `departement`  ORDER BY   departement_id ")
+    
+
+
+
+    res.json( listdepartement)
+
+}
+
 //affiche nom des départements
 exports.getBrasseur = async (req, res) => {
 
-    const listdepartement = await queryAsync("SELECT `departement_id`, `departement_code`, `departement_nom`, `departement_nom_uppercase`, `departement_slug`, `departement_nom_soundex` FROM `departement`  ORDER BY departement_id ")
-   
-    const listbrewer = await queryAsync("SELECT `brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, `created_at` FROM `brewersfrench` ORDER BY brewer_id ASC LIMIT 25")
+    // const listdepartement = await queryAsync("SELECT `departement_id`, `departement_code`, `departement_nom`, `departement_nom_uppercase`, `departement_slug`, `departement_nom_soundex` FROM `departement`  ORDER BY departement_id ")
+    
+    // const listbrewer = await queryAsync("SELECT `brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, `created_at` FROM `brewersfrench` ORDER BY brewer_id ASC LIMIT 25")
+    const listbrewer = await queryAsync("SELECT nameBrass, address FROM brewersfrench WHERE nameCp LIKE '85%'")
     
     res.render('brasseurs.ejs', {
 
         title: "liste des departements",
-        departement: listdepartement,
+        
         brewersfrench: listbrewer
        
 
@@ -16,12 +27,7 @@ exports.getBrasseur = async (req, res) => {
 
 }
 
-exports.getBrasseurAPI = async (req, res) => {
-    const listdepartement = await queryAsync("SELECT `departement_id`, `departement_code`, `departement_nom`, `departement_nom_uppercase`, `departement_slug`, `departement_nom_soundex` FROM `departement`  ORDER BY departement_id ")
 
-    res.json(listdepartement)
-
-}
 
 // exports.getListBrasseur = async (req, res) => {
 
