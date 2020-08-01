@@ -1,43 +1,21 @@
 <%- include('partial/head.ejs')%>
-<!-- Load Leaflet from CDN -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-   crossorigin="" />
-<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-   crossorigin=""></script>
 
-<!-- Load Esri Leaflet from CDN -->
-<script src="https://unpkg.com/esri-leaflet@2.3.3/dist/esri-leaflet.js"
-   integrity="sha512-cMQ5e58BDuu1pr9BQ/eGRn6HaR6Olh0ofcHFWe5XesdCITVuSBiBZZbhCijBe5ya238f/zMMRYIMIIg1jxv4sQ=="
-   crossorigin=""></script>
-
-<!-- Load Esri Leaflet Geocoder from CDN -->
-<link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@2.3.2/dist/esri-leaflet-geocoder.css"
-   integrity="sha512-IM3Hs+feyi40yZhDH6kV8vQMg4Fh20s9OzInIIAc4nx7aMYMfo+IenRUekoYsHZqGkREUgx0VvlEsgm7nCDW9g=="
-   crossorigin="" />
-<script src="https://unpkg.com/esri-leaflet-geocoder@2.3.2/dist/esri-leaflet-geocoder.js"
-   integrity="sha512-8twnXcrOGP3WfMvjB0jS5pNigFuIWj4ALwWEgxhZ+mxvjF5/FBPVd5uAxqT8dd2kUmTVK9+yQJ4CmTmSg/sXAQ=="
-   crossorigin=""></script>
-
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+<script src="https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css" rel="stylesheet" />
 <style>
    body {
       margin: 0;
       padding: 0;
-      overflow-x: hidden;
    }
 
-   .submit-info {
-      margin-left: 220px;
-
-   }
-
-   @media (max-width: 1280px) {
-      .btn.header-btn {
-         width: 110px;
-         height: 30px;
-
-      }
+   #map {
+      
+      position: relative;
+      margin-left: 300px;
+      width: 1000px;
+      height: 800px;
+    
    }
 </style>
 
@@ -72,378 +50,409 @@
          </div>
       </div>
       <hr>
-      
-   
-       <!-- Search -->
-<section class="section bg-light-2">
-   
-   <div class="container">
-     <div class="row">
-       <div class="col-md-12">
-          <h1 >choisir son département</h1>
-         <input type="text" id="search" placeholder="Search for a Departement" />
-         <div id="results"></div>
-       </div>
-     </div>
-   </div>
- </section>
-<hr>
-     
 
-      <!-- formulaire de recherche -->
-      <section class="blog_area single-post-area section-padding">
+
+      <!-- Search -->
+      <section class="section bg-light-2">
+
          <div class="container">
             <div class="row">
-               <div class="col-lg-8 posts-list">
-                  <div class="single-post">
-                     <div class="feature-img">
-                        <img class="img-fluid" src="" alt="">
-                     </div>
+               <div class="col-md-12">
+                  <h1>choisir son département</h1>
+                  <input type="text" id="search" placeholder="Search for a Departement" />
+                  <div id="results"></div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <hr>
 
-                     <!-- <h1>votre recherche</h1>
-                     <form method="get" id="searchform" action="http://localhost:1998/">
-                       <input type="text" value="Search..." name="s" id="searchinput" /> -->
-                     <!-- <input type="image" alt="Submit" src="http://localhost:1998/" id="searchsubmit" /> -->
-                     <!-- </form> -->
+      <style>
+         .mapboxgl-popup {
+            max-width: 100px;
+            font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+         }
+      </style>
+      <div class="container justify-content-end">
+         <div class="row">
+            <div class="col-md-6">
+               <div id="map"></div>
+            </div>
+         </div>
+      </div>
+      <script>
+         mapboxgl.accessToken =
+            'pk.eyJ1IjoiYnVudGhlYXIiLCJhIjoiY2tkYTdnOHpmMGI3NDJxbXpoc2QwMXc3MyJ9.nu-giQ821MNuH64prgx2yg';
+         var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [-1.426442, 46.670511],
+            zoom: 8
+         });
 
+         map.on('load', function () {
+            map.addSource('places', {
+               'type': 'geojson',
+               'data': {
+                  'type': 'FeatureCollection',
+                  'features': [{
+                        'type': 'Feature',
+                        'properties': {
+                           'description': '<strong>Make it Mount Pleasant</strong><p><a href="http://www.mtpleasantdc.com/makeitmtpleasant" target="_blank" title="Opens in a new window">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>',
+                           'icon': 'bar'
+                        },
+                        'geometry': {
+                           'type': 'Point',
+                           'coordinates': [-0.806500, 46.465972]
+                        }
+                     },
+                     {
+                        'type': 'Feature',
+                        'properties': {
+                           'description': '<strong>Mad Men Season Five Finale Watch Party</strong><p>Head to Lounge 201 (201 Massachusetts Avenue NE) Sunday for a <a href="http://madmens5finale.eventbrite.com/" target="_blank" title="Opens in a new window">Mad Men Season Five Finale Watch Party</a>, complete with 60s costume contest, Mad Men trivia, and retro food and drink. 8:00-11:00 p.m. $10 general admission, $20 admission and two hour open bar.</p>',
+                           'icon': 'bar'
+                        },
+                        'geometry': {
+                           'type': 'Point',
+                           'coordinates': [-1.777210, 46.497825]
+                        }
+                     },
+                     {
+                        'type': 'Feature',
+                        'properties': {
+                           'description': '<strong>Big Backyard Beach Bash and Wine Fest</strong><p>EatBar (2761 Washington Boulevard Arlington VA) is throwing a <a href="http://tallulaeatbar.ticketleap.com/2012beachblanket/" target="_blank" title="Opens in a new window">Big Backyard Beach Bash and Wine Fest</a> on Saturday, serving up conch fritters, fish tacos and crab sliders, and Red Apron hot dogs. 12:00-3:00 p.m. $25.grill hot dogs.</p>',
+                           'icon': 'bar'
+                        },
+                        'geometry': {
+                           'type': 'Point',
+                           'coordinates': [-2.346954, 46.712749]
+                        }
+                     },
+
+                  ]
+               }
+            });
+            // Add a layer showing the places.
+            map.addLayer({
+               'id': 'places',
+               'type': 'symbol',
+               'source': 'places',
+               'layout': {
+                  'icon-image': '{icon}-15',
+                  'icon-allow-overlap': true
+               }
+            });
+
+            // When a click event occurs on a feature in the places layer, open a popup at the
+            // location of the feature, with description HTML from its properties.
+            map.on('click', 'places', function (e) {
+               var coordinates = e.features[0].geometry.coordinates.slice();
+               var description = e.features[0].properties.description;
+
+               // Ensure that if the map is zoomed out such that multiple
+               // copies of the feature are visible, the popup appears
+               // over the copy being pointed to.
+               while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                  coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+               }
+
+               new mapboxgl.Popup()
+                  .setLngLat(coordinates)
+                  .setHTML(description)
+                  .addTo(map);
+            });
+
+            // Change the cursor to a pointer when the mouse is over the places layer.
+            map.on('mouseenter', 'places', function () {
+               map.getCanvas().style.cursor = 'pointer';
+            });
+
+            // Change it back to a pointer when it leaves.
+            map.on('mouseleave', 'places', function () {
+               map.getCanvas().style.cursor = '';
+            });
+         });
+      </script>
+ 
+      <div class="whole-wrap">
+         <div class="container box_1170">
+            <div class="section-top-border">
+               <h3 class="mb-30">Left Aligned</h3>
+               <div class="row">
+                  <div class="col-md-3">
+                     <img src="../assets/img/elements/d.jpg" alt="" class="img-fluid">
+                  </div>
+                  <div class="col-md-9 mt-sm-20">
+                     <p>Recently, the US Federal government banned online casinos from operating in America by
+                        making
+                        it illegal to
+                        transfer money to them through any US bank or payment system. As a result of this law,
+                        most
+                        of the popular
+                        online casino networks such as Party Gaming and PlayTech left the United States.
+                        Overnight,
+                        online casino
+                        players found themselves being chased by the Federal government. But, after a fortnight,
+                        the
+                        online casino
+                        industry came up with a solution and new online casinos started taking root. These began
+                        to
+                        operate under a
+                        different business umbrella, and by doing that, rendered the transfer of money to and from
+                        them legal. A major
+                        part of this was enlisting electronic banking systems that would accept this new
+                        clarification and start doing
+                        business with me. Listed in this article are the electronic banking systems that accept
+                        players from the United
+                        States that wish to play in online casinos.</p>
                   </div>
                </div>
             </div>
-            <div class="whole-wrap">
-               <div class="container box_1170">
-                  <div class="section-top-border">
-                     <h3 class="mb-30">Left Aligned</h3>
-                     <div class="row">
-                        <div class="col-md-3">
-                           <img src="../assets/img/elements/d.jpg" alt="" class="img-fluid">
-                        </div>
-                        <div class="col-md-9 mt-sm-20">
-                           <p>Recently, the US Federal government banned online casinos from operating in America by
-                              making
-                              it illegal to
-                              transfer money to them through any US bank or payment system. As a result of this law,
-                              most
-                              of the popular
-                              online casino networks such as Party Gaming and PlayTech left the United States.
-                              Overnight,
-                              online casino
-                              players found themselves being chased by the Federal government. But, after a fortnight,
-                              the
-                              online casino
-                              industry came up with a solution and new online casinos started taking root. These began
-                              to
-                              operate under a
-                              different business umbrella, and by doing that, rendered the transfer of money to and from
-                              them legal. A major
-                              part of this was enlisting electronic banking systems that would accept this new
-                              clarification and start doing
-                              business with me. Listed in this article are the electronic banking systems that accept
-                              players from the United
-                              States that wish to play in online casinos.</p>
-                        </div>
+            <div class="section-top-border text-right">
+               <h3 class="mb-30">Right Aligned</h3>
+               <div class="row">
+                  <div class="col-md-9">
+                     <p class="text-right">Over time, even the most sophisticated, memory packed computer can
+                        begin
+                        to run slow if we
+                        don’t do something to prevent it. The reason why has less to do with how computers are
+                        made
+                        and how they age and
+                        more to do with the way we use them. You see, all of the daily tasks that we do on our PC
+                        from running programs
+                        to downloading and deleting software can make our computer sluggish. To keep this from
+                        happening, you need to
+                        understand the reasons why your PC is getting slower and do something to keep your PC
+                        running at its best. You
+                        can do this through regular maintenance and PC performance optimization programs</p>
+                     <p class="text-right">Before we discuss all of the things that could be affecting your PC’s
+                        performance, let’s
+                        talk a little about what symptoms</p>
+                  </div>
+                  <div class="col-md-3">
+                     <img src="../assets/img/elements/d.jpg" alt="" class="img-fluid">
+                  </div>
+               </div>
+            </div>
+            <div class="section-top-border">
+               <h3 class="mb-30">Definition</h3>
+               <div class="row">
+                  <div class="col-md-4">
+                     <div class="single-defination">
+                        <h4 class="mb-20">Definition 01</h4>
+                        <p>Recently, the US Federal government banned online casinos from operating in America by
+                           making it illegal to
+                           transfer money to them through any US bank or payment system. As a result of this law,
+                           most of the popular
+                           online casino networks</p>
                      </div>
                   </div>
-                  <div class="section-top-border text-right">
-                     <h3 class="mb-30">Right Aligned</h3>
-                     <div class="row">
-                        <div class="col-md-9">
-                           <p class="text-right">Over time, even the most sophisticated, memory packed computer can
-                              begin
-                              to run slow if we
-                              don’t do something to prevent it. The reason why has less to do with how computers are
-                              made
-                              and how they age and
-                              more to do with the way we use them. You see, all of the daily tasks that we do on our PC
-                              from running programs
-                              to downloading and deleting software can make our computer sluggish. To keep this from
-                              happening, you need to
-                              understand the reasons why your PC is getting slower and do something to keep your PC
-                              running at its best. You
-                              can do this through regular maintenance and PC performance optimization programs</p>
-                           <p class="text-right">Before we discuss all of the things that could be affecting your PC’s
-                              performance, let’s
-                              talk a little about what symptoms</p>
-                        </div>
-                        <div class="col-md-3">
-                           <img src="../assets/img/elements/d.jpg" alt="" class="img-fluid">
-                        </div>
+                  <div class="col-md-4">
+                     <div class="single-defination">
+                        <h4 class="mb-20">Definition 02</h4>
+                        <p>Recently, the US Federal government banned online casinos from operating in America by
+                           making it illegal to
+                           transfer money to them through any US bank or payment system. As a result of this law,
+                           most of the popular
+                           online casino networks</p>
                      </div>
                   </div>
-                  <div class="section-top-border">
-                     <h3 class="mb-30">Definition</h3>
-                     <div class="row">
-                        <div class="col-md-4">
-                           <div class="single-defination">
-                              <h4 class="mb-20">Definition 01</h4>
-                              <p>Recently, the US Federal government banned online casinos from operating in America by
-                                 making it illegal to
-                                 transfer money to them through any US bank or payment system. As a result of this law,
-                                 most of the popular
-                                 online casino networks</p>
-                           </div>
-                        </div>
-                        <div class="col-md-4">
-                           <div class="single-defination">
-                              <h4 class="mb-20">Definition 02</h4>
-                              <p>Recently, the US Federal government banned online casinos from operating in America by
-                                 making it illegal to
-                                 transfer money to them through any US bank or payment system. As a result of this law,
-                                 most of the popular
-                                 online casino networks</p>
-                           </div>
-                        </div>
-                        <div class="col-md-4">
-                           <div class="single-defination">
-                              <h4 class="mb-20">Definition 03</h4>
-                              <p>Recently, the US Federal government banned online casinos from operating in America by
-                                 making it illegal to
-                                 transfer money to them through any US bank or payment system. As a result of this law,
-                                 most of the popular
-                                 online casino networks</p>
+                  <div class="col-md-4">
+                     <div class="single-defination">
+                        <h4 class="mb-20">Definition 03</h4>
+                        <p>Recently, the US Federal government banned online casinos from operating in America by
+                           making it illegal to
+                           transfer money to them through any US bank or payment system. As a result of this law,
+                           most of the popular
+                           online casino networks</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="section-top-border">
+               <h3 class="mb-30">Block Quotes</h3>
+               <div class="row">
+                  <div class="col-lg-12">
+                     <blockquote class="generic-blockquote">
+                        “Recently, the US Federal government banned online casinos from operating in America by
+                        making it illegal to
+                        transfer money to them through any US bank or payment system. As a result of this law,
+                        most
+                        of the popular
+                        online casino networks such as Party Gaming and PlayTech left the United States.
+                        Overnight,
+                        online casino
+                        players found themselves being chased by the Federal government. But, after a fortnight,
+                        the
+                        online casino
+                        industry came up with a solution and new online casinos started taking root. These began
+                        to
+                        operate under a
+                        different business umbrella, and by doing that, rendered the transfer of money to and from
+                        them legal. A major
+                        part of this was enlisting electronic banking systems that would accept this new
+                        clarification and start doing
+                        business with me. Listed in this article are the electronic banking”
+                     </blockquote>
+                  </div>
+               </div>
+            </div>
+            <div class="section-top-border">
+               <h3 class="mb-30">Table</h3>
+               <div class="progress-table-wrap">
+                  <div class="progress-table">
+                     <div class="table-head">
+                        <div class="serial">#</div>
+                        <div class="country">Countries</div>
+                        <div class="visit">Visits</div>
+                        <div class="percentage">Percentages</div>
+                     </div>
+                     <div class="table-row">
+                        <div class="serial">01</div>
+                        <div class="country"> <img src="../assets/img/elements/f1.jpg" alt="flag">Canada</div>
+                        <div class="visit">645032</div>
+                        <div class="percentage">
+                           <div class="progress">
+                              <div class="progress-bar color-1" role="progressbar" style="width: 80%" aria-valuenow="80"
+                                 aria-valuemin="0" aria-valuemax="100"></div>
                            </div>
                         </div>
                      </div>
-                  </div>
-                  <div class="section-top-border">
-                     <h3 class="mb-30">Block Quotes</h3>
-                     <div class="row">
-                        <div class="col-lg-12">
-                           <blockquote class="generic-blockquote">
-                              “Recently, the US Federal government banned online casinos from operating in America by
-                              making it illegal to
-                              transfer money to them through any US bank or payment system. As a result of this law,
-                              most
-                              of the popular
-                              online casino networks such as Party Gaming and PlayTech left the United States.
-                              Overnight,
-                              online casino
-                              players found themselves being chased by the Federal government. But, after a fortnight,
-                              the
-                              online casino
-                              industry came up with a solution and new online casinos started taking root. These began
-                              to
-                              operate under a
-                              different business umbrella, and by doing that, rendered the transfer of money to and from
-                              them legal. A major
-                              part of this was enlisting electronic banking systems that would accept this new
-                              clarification and start doing
-                              business with me. Listed in this article are the electronic banking”
-                           </blockquote>
+                     <div class="table-row">
+                        <div class="serial">02</div>
+                        <div class="country"> <img src="../assets/img/elements/f2.jpg" alt="flag">Canada</div>
+                        <div class="visit">645032</div>
+                        <div class="percentage">
+                           <div class="progress">
+                              <div class="progress-bar color-2" role="progressbar" style="width: 30%" aria-valuenow="30"
+                                 aria-valuemin="0" aria-valuemax="100"></div>
+                           </div>
                         </div>
                      </div>
-                  </div>
-                  <div class="section-top-border">
-                     <h3 class="mb-30">Table</h3>
-                     <div class="progress-table-wrap">
-                        <div class="progress-table">
-                           <div class="table-head">
-                              <div class="serial">#</div>
-                              <div class="country">Countries</div>
-                              <div class="visit">Visits</div>
-                              <div class="percentage">Percentages</div>
+                     <div class="table-row">
+                        <div class="serial">03</div>
+                        <div class="country"> <img src="../assets/img/elements/f3.jpg" alt="flag">Canada</div>
+                        <div class="visit">645032</div>
+                        <div class="percentage">
+                           <div class="progress">
+                              <div class="progress-bar color-3" role="progressbar" style="width: 55%" aria-valuenow="55"
+                                 aria-valuemin="0" aria-valuemax="100"></div>
                            </div>
-                           <div class="table-row">
-                              <div class="serial">01</div>
-                              <div class="country"> <img src="../assets/img/elements/f1.jpg" alt="flag">Canada</div>
-                              <div class="visit">645032</div>
-                              <div class="percentage">
-                                 <div class="progress">
-                                    <div class="progress-bar color-1" role="progressbar" style="width: 80%"
-                                       aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                 </div>
-                              </div>
+                        </div>
+                     </div>
+                     <div class="table-row">
+                        <div class="serial">04</div>
+                        <div class="country"> <img src="../assets/img/elements/f4.jpg" alt="flag">Canada</div>
+                        <div class="visit">645032</div>
+                        <div class="percentage">
+                           <div class="progress">
+                              <div class="progress-bar color-4" role="progressbar" style="width: 60%" aria-valuenow="60"
+                                 aria-valuemin="0" aria-valuemax="100"></div>
                            </div>
-                           <div class="table-row">
-                              <div class="serial">02</div>
-                              <div class="country"> <img src="../assets/img/elements/f2.jpg" alt="flag">Canada</div>
-                              <div class="visit">645032</div>
-                              <div class="percentage">
-                                 <div class="progress">
-                                    <div class="progress-bar color-2" role="progressbar" style="width: 30%"
-                                       aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-                                 </div>
-                              </div>
+                        </div>
+                     </div>
+                     <div class="table-row">
+                        <div class="serial">05</div>
+                        <div class="country"> <img src="../assets/img/elements/f5.jpg" alt="flag">Canada</div>
+                        <div class="visit">645032</div>
+                        <div class="percentage">
+                           <div class="progress">
+                              <div class="progress-bar color-5" role="progressbar" style="width: 40%" aria-valuenow="40"
+                                 aria-valuemin="0" aria-valuemax="100"></div>
                            </div>
-                           <div class="table-row">
-                              <div class="serial">03</div>
-                              <div class="country"> <img src="../assets/img/elements/f3.jpg" alt="flag">Canada</div>
-                              <div class="visit">645032</div>
-                              <div class="percentage">
-                                 <div class="progress">
-                                    <div class="progress-bar color-3" role="progressbar" style="width: 55%"
-                                       aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                                 </div>
-                              </div>
+                        </div>
+                     </div>
+                     <div class="table-row">
+                        <div class="serial">06</div>
+                        <div class="country"> <img src="../assets/img/elements/f6.jpg" alt="flag">Canada</div>
+                        <div class="visit">645032</div>
+                        <div class="percentage">
+                           <div class="progress">
+                              <div class="progress-bar color-6" role="progressbar" style="width: 70%" aria-valuenow="70"
+                                 aria-valuemin="0" aria-valuemax="100"></div>
                            </div>
-                           <div class="table-row">
-                              <div class="serial">04</div>
-                              <div class="country"> <img src="../assets/img/elements/f4.jpg" alt="flag">Canada</div>
-                              <div class="visit">645032</div>
-                              <div class="percentage">
-                                 <div class="progress">
-                                    <div class="progress-bar color-4" role="progressbar" style="width: 60%"
-                                       aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                 </div>
-                              </div>
+                        </div>
+                     </div>
+                     <div class="table-row">
+                        <div class="serial">07</div>
+                        <div class="country"> <img src="../assets/img/elements/f7.jpg" alt="flag">Canada</div>
+                        <div class="visit">645032</div>
+                        <div class="percentage">
+                           <div class="progress">
+                              <div class="progress-bar color-7" role="progressbar" style="width: 30%" aria-valuenow="30"
+                                 aria-valuemin="0" aria-valuemax="100"></div>
                            </div>
-                           <div class="table-row">
-                              <div class="serial">05</div>
-                              <div class="country"> <img src="../assets/img/elements/f5.jpg" alt="flag">Canada</div>
-                              <div class="visit">645032</div>
-                              <div class="percentage">
-                                 <div class="progress">
-                                    <div class="progress-bar color-5" role="progressbar" style="width: 40%"
-                                       aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="table-row">
-                              <div class="serial">06</div>
-                              <div class="country"> <img src="../assets/img/elements/f6.jpg" alt="flag">Canada</div>
-                              <div class="visit">645032</div>
-                              <div class="percentage">
-                                 <div class="progress">
-                                    <div class="progress-bar color-6" role="progressbar" style="width: 70%"
-                                       aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="table-row">
-                              <div class="serial">07</div>
-                              <div class="country"> <img src="../assets/img/elements/f7.jpg" alt="flag">Canada</div>
-                              <div class="visit">645032</div>
-                              <div class="percentage">
-                                 <div class="progress">
-                                    <div class="progress-bar color-7" role="progressbar" style="width: 30%"
-                                       aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="table-row">
-                              <div class="serial">08</div>
-                              <div class="country"> <img src="../assets/img/elements/f8.jpg" alt="flag">Canada</div>
-                              <div class="visit">645032</div>
-                              <div class="percentage">
-                                 <div class="progress">
-                                    <div class="progress-bar color-8" role="progressbar" style="width: 60%"
-                                       aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                 </div>
-                              </div>
+                        </div>
+                     </div>
+                     <div class="table-row">
+                        <div class="serial">08</div>
+                        <div class="country"> <img src="../assets/img/elements/f8.jpg" alt="flag">Canada</div>
+                        <div class="visit">645032</div>
+                        <div class="percentage">
+                           <div class="progress">
+                              <div class="progress-bar color-8" role="progressbar" style="width: 60%" aria-valuenow="60"
+                                 aria-valuemin="0" aria-valuemax="100"></div>
                            </div>
                         </div>
                      </div>
                   </div>
-                  <div class="section-top-border">
-                     <h3>Image Gallery</h3>
-                     <div class="row gallery-item">
-                        <div class="col-md-4">
-                           <a href="../assets/img/elements/g1.jpg" class="img-pop-up">
-                              <div class="single-gallery-image" style="background: url(../assets/img/elements/g1.jpg);">
-                              </div>
-                           </a>
+               </div>
+            </div>
+            <div class="section-top-border">
+               <h3>Image Gallery</h3>
+               <div class="row gallery-item">
+                  <div class="col-md-4">
+                     <a href="../assets/img/elements/g1.jpg" class="img-pop-up">
+                        <div class="single-gallery-image" style="background: url(../assets/img/elements/g1.jpg);">
                         </div>
-                        <div class="col-md-4">
-                           <a href="../assets/img/elements/g2.jpg" class="img-pop-up">
-                              <div class="single-gallery-image" style="background: url(../assets/img/elements/g2.jpg);">
-                              </div>
-                           </a>
-                        </div>
-                        <div class="col-md-4">
-                           <a href="../assets/img/elements/g3.jpg" class="img-pop-up">
-                              <div class="single-gallery-image" style="background: url(../assets/img/elements/g3.jpg);">
-                              </div>
-                           </a>
-                        </div>
-                        <div class="col-md-6">
-                           <a href="../assets/img/elements/g4.jpg" class="img-pop-up">
-                              <div class="single-gallery-image" style="background: url(../assets/img/elements/g4.jpg);">
-                              </div>
-                           </a>
-                        </div>
-                        <div class="col-md-6">
-                           <a href="../assets/img/elements/g5.jpg" class="img-pop-up">
-                              <div class="single-gallery-image" style="background: url(../assets/img/elements/g5.jpg);">
-                              </div>
-                           </a>
-                        </div>
-                        <div class="col-md-4">
-                           <a href="../assets/img/elements/g6.jpg" class="img-pop-up">
-                              <div class="single-gallery-image" style="background: url(../assets/img/elements/g6.jpg);">
-                              </div>
-                           </a>
-                        </div>
-                        <div class="col-md-4">
-                           <a href="../assets/img/elements/g7.jpg" class="img-pop-up">
-                              <div class="single-gallery-image" style="background: url(../assets/img/elements/g7.jpg);">
-                              </div>
-                           </a>
-                        </div>
-                        <div class="col-md-4">
-                           <a href="../assets/img/elements/g8.jpg" class="img-pop-up">
-                              <div class="single-gallery-image" style="background: url(../assets/img/elements/g8.jpg);">
-                              </div>
-                           </a>
-                        </div>
-                     </div>
+                     </a>
                   </div>
-                  <div class="section-top-border">
-                     <div class="row">
-                        <div class="col-md-4">
-                           <h3 class="mb-20">Image Gallery</h3>
-                           <div class="typography">
-                              <h1>This is header 01</h1>
-                              <h2>This is header 02</h2>
-                              <h3>This is header 03</h3>
-                              <h4>This is header 04</h4>
-                              <h5>This is header 01</h5>
-                              <h6>This is header 01</h6>
-                           </div>
+                  <div class="col-md-4">
+                     <a href="../assets/img/elements/g2.jpg" class="img-pop-up">
+                        <div class="single-gallery-image" style="background: url(../assets/img/elements/g2.jpg);">
                         </div>
-                        <div class="col-md-4 mt-sm-30">
-                           <h3 class="mb-20">Unordered List</h3>
-                           <div class="">
-                              <ul class="unordered-list">
-                                 <li>Fta Keys</li>
-                                 <li>For Women Only Your Computer Usage</li>
-                                 <li>Facts Why Inkjet Printing Is Very Appealing
-                                    <ul>
-                                       <li>Addiction When Gambling Becomes
-                                          <ul>
-                                             <li>Protective Preventative Maintenance</li>
-                                          </ul>
-                                       </li>
-                                    </ul>
-                                 </li>
-                                 <li>Dealing With Technical Support 10 Useful Tips</li>
-                                 <li>Make Myspace Your Best Designed Space</li>
-                                 <li>Cleaning And Organizing Your Computer</li>
-                              </ul>
-                           </div>
-                        </div>
-                        <div class="col-md-4 mt-sm-30">
-                           <h3 class="mb-20">Ordered List</h3>
-                           <div class="">
-                              <ol class="ordered-list">
-                                 <li><span>Fta Keys</span></li>
-                                 <li><span>For Women Only Your Computer Usage</span></li>
-                                 <li><span>Facts Why Inkjet Printing Is Very Appealing</span>
-                                    <ol class="ordered-list-alpha">
-                                       <li><span>Addiction When Gambling Becomes</span>
-                                          <ol class="ordered-list-roman">
-                                             <li><span>Protective Preventative Maintenance</span></li>
-                                          </ol>
-                                       </li>
-                                    </ol>
-                                 </li>
-                                 <li><span>Dealing With Technical Support 10 Useful Tips</span></li>
-                                 <li><span>Make Myspace Your Best Designed Space</span></li>
-                                 <li><span>Cleaning And Organizing Your Computer</span></li>
-                              </ol>
-                           </div>
-                        </div>
-                     </div>
+                     </a>
                   </div>
-                  <div class="section-top-border">
+                  <div class="col-md-4">
+                     <a href="../assets/img/elements/g3.jpg" class="img-pop-up">
+                        <div class="single-gallery-image" style="background: url(../assets/img/elements/g3.jpg);">
+                        </div>
+                     </a>
+                  </div>
+                  <div class="col-md-6">
+                     <a href="../assets/img/elements/g4.jpg" class="img-pop-up">
+                        <div class="single-gallery-image" style="background: url(../assets/img/elements/g4.jpg);">
+                        </div>
+                     </a>
+                  </div>
+                  <div class="col-md-6">
+                     <a href="../assets/img/elements/g5.jpg" class="img-pop-up">
+                        <div class="single-gallery-image" style="background: url(../assets/img/elements/g5.jpg);">
+                        </div>
+                     </a>
+                  </div>
+                  <div class="col-md-4">
+                     <a href="../assets/img/elements/g6.jpg" class="img-pop-up">
+                        <div class="single-gallery-image" style="background: url(../assets/img/elements/g6.jpg);">
+                        </div>
+                     </a>
+                  </div>
+                  <div class="col-md-4">
+                     <a href="../assets/img/elements/g7.jpg" class="img-pop-up">
+                        <div class="single-gallery-image" style="background: url(../assets/img/elements/g7.jpg);">
+                        </div>
+                     </a>
+                  </div>
+                  <div class="col-md-4">
+                     <a href="../assets/img/elements/g8.jpg" class="img-pop-up">
+                        <div class="single-gallery-image" style="background: url(../assets/img/elements/g8.jpg);">
+                        </div>
+                     </a>
+                  </div>
+               </div>
+            </div>
+
+            <!-- <div class="section-top-border">
                      <div class="row">
                         <div class="col-lg-8 col-md-8">
                            <h3 class="mb-30">Form Element</h3>
@@ -634,9 +643,9 @@
                            </div>
                         </div>
                      </div>
-                  </div>
-               </div>
-            </div>
+                  </div> -->
+         </div>
+      </div>
 
 
       </section>
@@ -645,11 +654,11 @@
    </main>
    <script src="/search.js"></script>
 
-<script>
-   
+   <script>
 
 
-</script>
+
+   </script>
 
 
    <%- include('partial/footer.ejs')%>
