@@ -18,9 +18,9 @@ const showDepartement = async () => {
     .forEach(departement => {
       const li = document.createElement('li')
       let departement_nom_uppercase  = document.createElement('a')
-      departement_nom_uppercase.innerText = departement.departement_nom_uppercase 
+      departement_nom_uppercase.innerText = departement.departement_nom_uppercase
       departement_nom_uppercase.href = '/brasseurs/' + departement.id
-    //   departement_nom.classList.add('country-name')
+    //   departement_nom_uppercase.classList.add('country-name')
       li.appendChild(departement_nom_uppercase)
       ul.appendChild(li)
     })

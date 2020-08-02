@@ -7,15 +7,28 @@
    body {
       margin: 0;
       padding: 0;
+      overflow-x: hidden;
    }
 
    #map {
-      
+
       position: relative;
       margin-left: 300px;
       width: 1000px;
       height: 800px;
-    
+      
+   }
+   #results{
+      position: absolute; 
+      z-index: 1; 
+      font-size: 15px;
+      color: black;
+   }
+   ul li a{
+      color: black;
+   }
+   ul li a:hover{
+      color: black;
    }
 </style>
 
@@ -53,19 +66,27 @@
 
 
       <!-- Search -->
-      <section class="section bg-light-2">
 
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12">
-                  <h1>choisir son département</h1>
-                  <input type="text" id="search" placeholder="Search for a Departement" />
-                  <div id="results"></div>
+
+      <div class="container box_1170">
+         <div class="row">
+            <div class="col-md-6">
+               <h1>choisir son département</h1>
+               <input type="text" id="search" placeholder="Search for a Departement" />
+               <div  id="results"></div>
+               <div class="row">
+                  <div class="col-md-6">
+                     <div id="map"></div>
+                  </div>
                </div>
             </div>
          </div>
-      </section>
+      </div>
+
+      </div>
       <hr>
+
+
 
       <style>
          .mapboxgl-popup {
@@ -73,13 +94,7 @@
             font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
          }
       </style>
-      <div class="container justify-content-end">
-         <div class="row">
-            <div class="col-md-6">
-               <div id="map"></div>
-            </div>
-         </div>
-      </div>
+
       <script>
          mapboxgl.accessToken =
             'pk.eyJ1IjoiYnVudGhlYXIiLCJhIjoiY2tkYTdnOHpmMGI3NDJxbXpoc2QwMXc3MyJ9.nu-giQ821MNuH64prgx2yg';
@@ -98,7 +113,7 @@
                   'features': [{
                         'type': 'Feature',
                         'properties': {
-                           'description': '<strong>Make it Mount Pleasant</strong><p><a href="http://www.mtpleasantdc.com/makeitmtpleasant" target="_blank" title="Opens in a new window">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>',
+                           'description': '<h1>Make it Mount Pleasant</h1><p><a href="http://www.mtpleasantdc.com/makeitmtpleasant" target="_blank" title="Opens in a new window">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>',
                            'icon': 'bar'
                         },
                         'geometry': {
@@ -109,7 +124,7 @@
                      {
                         'type': 'Feature',
                         'properties': {
-                           'description': '<strong>Mad Men Season Five Finale Watch Party</strong><p>Head to Lounge 201 (201 Massachusetts Avenue NE) Sunday for a <a href="http://madmens5finale.eventbrite.com/" target="_blank" title="Opens in a new window">Mad Men Season Five Finale Watch Party</a>, complete with 60s costume contest, Mad Men trivia, and retro food and drink. 8:00-11:00 p.m. $10 general admission, $20 admission and two hour open bar.</p>',
+                           'description': '<h1>Mad Men Season Five Finale Watch Party</h1><p>Head to Lounge 201 (201 Massachusetts Avenue NE) Sunday for a <a href="http://madmens5finale.eventbrite.com/" target="_blank" title="Opens in a new window">Mad Men Season Five Finale Watch Party</a>, complete with 60s costume contest, Mad Men trivia, and retro food and drink. 8:00-11:00 p.m. $10 general admission, $20 admission and two hour open bar.</p>',
                            'icon': 'bar'
                         },
                         'geometry': {
@@ -120,7 +135,7 @@
                      {
                         'type': 'Feature',
                         'properties': {
-                           'description': '<strong>Big Backyard Beach Bash and Wine Fest</strong><p>EatBar (2761 Washington Boulevard Arlington VA) is throwing a <a href="http://tallulaeatbar.ticketleap.com/2012beachblanket/" target="_blank" title="Opens in a new window">Big Backyard Beach Bash and Wine Fest</a> on Saturday, serving up conch fritters, fish tacos and crab sliders, and Red Apron hot dogs. 12:00-3:00 p.m. $25.grill hot dogs.</p>',
+                           'description': '<h1>Big Backyard Beach Bash and Wine Fest</h1><p>EatBar (2761 Washington Boulevard Arlington VA) is throwing a <a href="http://tallulaeatbar.ticketleap.com/2012beachblanket/" target="_blank" title="Opens in a new window">Big Backyard Beach Bash and Wine Fest</a> on Saturday, serving up conch fritters, fish tacos and crab sliders, and Red Apron hot dogs. 12:00-3:00 p.m. $25.grill hot dogs.</p>',
                            'icon': 'bar'
                         },
                         'geometry': {
@@ -173,7 +188,7 @@
             });
          });
       </script>
- 
+
       <div class="whole-wrap">
          <div class="container box_1170">
             <div class="section-top-border">
