@@ -96,17 +96,11 @@ DATE_FORMAT(b.created_at, "% m /% d /% Y% T") AS created_at
          }
       </script> -->
 
-      DATE_FORMAT(created_at, '" + "%d/%m/%Y" + "') AS created_at, DATE_FORMAT(p.date_end, '" + "%d/%m/%Y" + "') AS date_end
-
-      DATE_FORMAT(created_at, "%d/%m/%Y") AS created_at
-
-      SELECT * ,
     
-    DATE_FORMAT(created_at, '%d/%m/%Y') AS created_at
-    from brewersfrench
+DATE_FORMAT(created_at, '%d/%m/%Y') AS created_at from brewersfrench
 
 exos trigger
-   CREATE TABLE Customer ( id INTEGER PRIMARY KEY AUTO_INCREMENT, name TEXT, last_order_id INT );
+CREATE TABLE Customer ( id INTEGER PRIMARY KEY AUTO_INCREMENT, name TEXT, last_order_id INT );
 CREATE TABLE Sale ( id INTEGER PRIMARY KEY, item_id INT, customer_id INT, price INT );
 INSERT INTO Customer (name) VALUES ('Bob'), ('Sally'), ('Fred');
 SELECT * FROM Customer;
@@ -131,44 +125,8 @@ UPDATE Clients SET derniere_commande_id = NEW.id WHERE Clients.id = NEW.client_i
 SHOW TRIGGERS;
 INSERT INTO Ventes (ref, client_id, prix) VALUES (3, 1, 1500);
 
-  <script>
-const search_input = document.getElementById('search')
-const results = document.getElementById('results')
-let search_term = ''
-let departements
-const showCountries = async () => {
-  // clearHTML
-  results.innerHTML = ''
-  // getting the data
-  departements = await fetch('http://localhost:1998/brasseurs/brasseurs-api').then(res =>
-    res.json()
-  )
-  // creating the structure
-  const ul = document.createElement('ul')
-  departements
-    .filter(departement =>
-      country.name.toLowerCase().includes(search_term.toLowerCase())
-    )
-    .forEach(departement => {
-      const li = document.createElement('li')
-      let country_name = document.createElement('a')
-      country_name.innerText = country.name 
-      country_name.href = '/brasseurs/' + departement.id
-    //   country_name.classList.add('country-name')
-      li.appendChild(country_name)
-      ul.appendChild(li)
-    })
-  results.appendChild(ul)
-}
-// display initial countries
-// showCountries();
-search_input.addEventListener('input', e => {
-  search_term = e.target.value
-  // re-display countries again based on the new search_term
-  showCountries()
-})
 
-</script>
+
 
    <div class="container">
          <div class="row">
@@ -182,3 +140,5 @@ search_input.addEventListener('input', e => {
             </div>
          </div>
       </div> 
+
+      SELECT nameBrass, nameTown, ville_nom, ville_longitude_deg, ville_latitude_deg FROM `brewersfrench`INNER JOIN villes_france_free ON nameTown = ville_nom

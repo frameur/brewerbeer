@@ -3,27 +3,27 @@ USE brewerbeer;
 
 CREATE TABLE IF NOT EXISTS brewersfrench(
        brewer_id INT AUTO_INCREMENT,
-       nameBrass VARCHAR(255) NOT NULL,
-       address VARCHAR(255) NOT NULL,
-       nameCp VARCHAR(255) NOT NULL,
-       nameTown VARCHAR(255) NOT NULL,
-       nameWeb VARCHAR(255) NOT NULL,
-       nameFacebook VARCHAR(255) NOT NULL,
-       email VARCHAR(255) NOT NULL,
-       phone VARCHAR(255) NOT NULL,
+       nameBrass VARCHAR(30) NOT NULL,
+       address VARCHAR(50) NOT NULL,
+       nameCp VARCHAR(10) NOT NULL,
+       nameTown VARCHAR(50) NOT NULL,
+       nameWeb VARCHAR(50) NOT NULL,
+       nameFacebook VARCHAR(50) NOT NULL,
+       email VARCHAR(50) NOT NULL,
+       phone VARCHAR(12) NOT NULL,
        logo VARCHAR(255) NOT NULL,
        content VARCHAR(255) NOT NULL,
-       listBeer VARCHAR(255) NOT NULL,
+       listBeer VARCHAR(30) NOT NULL,
        created_at TIMESTAMP DEFAULT NOW(),
        CONSTRAINT pkBrewer PRIMARY KEY(brewer_id)
 );
 
 CREATE TABLE IF NOT EXISTS productbeer(
         product_id INT AUTO_INCREMENT,
-        nameBeer VARCHAR(255) NOT NULL,
-        alcoolBeer VARCHAR(255) NOT NULL,
+        nameBeer VARCHAR(30) NOT NULL,
+        alcoolBeer VARCHAR(10) NOT NULL,
         content VARCHAR(255) NOT NULL,
-        categoryBeer VARCHAR(255) NOT NULL,
+        categoryBeer VARCHAR(30) NOT NULL,
         brewer_id INT NOT NULL,
         CONSTRAINT pkProduct PRIMARY KEY(product_id)
       
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS productbeer(
 
 CREATE TABLE IF NOT EXISTS categorybeer(
         category_id INT AUTO_INCREMENT,
-        nameCategory VARCHAR(255) NOT NULL,
+        nameCategory VARCHAR(30) NOT NULL,
         product_id INT NOT NULL,
         CONSTRAINT pkCategory PRIMARY KEY(category_id)     
 );
@@ -40,10 +40,10 @@ ADD CONSTRAINT fkCategorybeer foreign key (product_id) references productbeer (p
 
 CREATE TABLE IF NOT EXISTS productbeer(
         product_id INT AUTO_INCREMENT,
-        nameBeer VARCHAR(255) NOT NULL,
-        alcoolBeer VARCHAR(255) NOT NULL,
+        nameBeer VARCHAR(30) NOT NULL,
+        alcoolBeer VARCHAR(10) NOT NULL,
         content VARCHAR(255) NOT NULL,
-        categoryBeer VARCHAR(255) NOT NULL,
+        categoryBeer VARCHAR(30) NOT NULL,
         brewer_id INT NOT NULL,
         CONSTRAINT pkProduct PRIMARY KEY(product_id)
         
@@ -156,4 +156,6 @@ CREATE TABLE IF NOT EXISTS `departement` (
   KEY `departement_code` (`departement_code`),
   KEY `departement_nom_soundex` (`departement_nom_soundex`)
 ) ENGINE=innoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=102 ;
+
+const listbrewer = await queryAsync("SELECT brewer_id, nameBrass, address FROM brewersfrench WHERE nameCp LIKE '85%'")
 

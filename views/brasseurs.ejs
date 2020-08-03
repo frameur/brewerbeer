@@ -1,4 +1,5 @@
 <%- include('partial/head.ejs')%>
+<!-- <META HTTP-EQUIV="Refresh" CONTENT="10; URL=http://localhost:1998/brasseurs/brasseurs"> -->
 
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.js"></script>
@@ -16,20 +17,28 @@
       margin-left: 300px;
       width: 1000px;
       height: 800px;
-      
+
    }
-   #results{
-      position: absolute; 
-      z-index: 1; 
+
+   #results {
+      position: absolute;
+      z-index: 1;
       font-size: 15px;
       
+      
+
    }
-   ul li a{
+  
+
+   ul li a {
       color: black;
+      scroll-behavior: smooth;
    }
-   ul li a:hover{
+
+   ul li a:hover {
       color: black;
       font-weight: 700;
+      
    }
 </style>
 
@@ -68,22 +77,23 @@
 
       <!-- Search -->
 
-
-      <div class="container box_1170">
-         <div class="row">
-            <div class="col-md-6">
-               <h1>choisir son département</h1>
-               <input type="text" id="search" placeholder="Search for a Departement" />
-               <div  id="results"></div>
-               <div class="row">
-                  <div class="col-md-6">
-                     <div id="map"></div>
-                  </div>
+      
+         <div class="container ">
+            <div class="row">
+               <div class="col-md-6">
+                  <h1>choisir son département</h1>              
+                  <input  type="text" id="search" placeholder="Search for a Departement" />                
+                  <div  id="results"></div>
                </div>
             </div>
          </div>
-      </div>
-
+     
+      <div class="container ">
+         <div class="row">
+            <div class="col-md-6">
+               <div id="map"></div>
+            </div>
+         </div>
       </div>
       <hr>
 
@@ -92,7 +102,7 @@
       <style>
          .mapboxgl-popup {
             max-width: 100px;
-            font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+            font: 12px/20px 'Barlow', Barlow;
          }
       </style>
 
@@ -102,8 +112,8 @@
          var map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v11',
-            center: [-1.426442, 46.670511],
-            zoom: 8
+            center: [2.287592, 48.862725],
+            zoom: 5
          });
 
          map.on('load', function () {
@@ -113,13 +123,16 @@
                   'type': 'FeatureCollection',
                   'features': [{
                         'type': 'Feature',
+                        
                         'properties': {
-                           'description': '<h1>Make it Mount Pleasant</h1><p><a href="http://www.mtpleasantdc.com/makeitmtpleasant" target="_blank" title="Opens in a new window">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>',
+                           
+                           'description': '<% brewersfrench.forEach((brewer, index) => { %><h1>Brasseur <%= brewer.nameBrass %></h1><% }) %><p><a href="http://www.mtpleasantdc.com/makeitmtpleasant" target="_blank" title="Opens in a new window">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>',
                            'icon': 'bar'
+                           
                         },
                         'geometry': {
                            'type': 'Point',
-                           'coordinates': [-0.806500, 46.465972]
+                           'coordinates': [5.55, 46.1333]
                         }
                      },
                      {
@@ -141,7 +154,7 @@
                         },
                         'geometry': {
                            'type': 'Point',
-                           'coordinates': [-2.346954, 46.712749]
+                           'coordinates': []
                         }
                      },
 

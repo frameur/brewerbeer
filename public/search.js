@@ -6,7 +6,7 @@ const showDepartement = async () => {
   // clearHTML
   results.innerHTML = ''
   // getting the data
-  departements = await fetch('http://localhost:1998/brasseurs/brasseurs-api').then(res =>
+  departements = await fetch('http://localhost:1998/brasseurs/departements-api').then(res =>
     res.json()
   )
   // creating the structure
@@ -21,7 +21,7 @@ const showDepartement = async () => {
       departement_nom_uppercase.innerText = departement.departement_nom_uppercase
       departement_nom_uppercase.href = '/brasseurs/' + departement.id
     //   departement_nom_uppercase.classList.add('country-name')
-      li.appendChild(departement_nom_uppercase)
+      li.appendChild( departement_nom_uppercase)
       ul.appendChild(li)
     })
   results.appendChild(ul)
@@ -32,4 +32,5 @@ search_input.addEventListener('input', e => {
   search_term = e.target.value
   // re-display departement again based on the new search_term
   showDepartement()
+  
 })
