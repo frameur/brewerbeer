@@ -20,7 +20,7 @@
              * Pour chaque elt du tableay on a les coordonnÃ©es gÃ©ographiques
              * une valeur ainsi que le nom de la rÃ©gion franÃ§aise
              */
-            var departement = [
+            var regions = [
                 [48.58476, 7.750576,10,  'Alsace'],
                 [44.837912, -0.579541,7,  'Aquitaine'],
                 [45.783088, 3.082352,20,  'Auvergne'],
@@ -32,28 +32,28 @@
                 [47.24306, 6.02194,12,  'Franche-ComtÃ©'],
                 [16, -61.73334,13,  'Guadeloupe'],
                 [4.93461, -52.33033,4,  'Guyane'],
-                [48.856578, 2.351828,25,  'Ã�le-de-France'],
+                [48.856578, 2.351828,25,  'lle-de-France'],
                 [43.611944, 3.877222,32,  'Languedoc-Roussillon'],
                 [45.85, 1.25,20,  'Limousin'],
                 [49.1203, 6.1778,35,  'Lorraine'],
                 [14.6, -61.08334,4,  'Martinique'],
                 [-12.77889, 45.23151,2,  'Mayotte'],
-                [43.604482, 1.443962,7,  'Midi-PyrÃ©nÃ©es'],
+                [43.604482, 1.443962,7,  'Midi-Pyrenees'],
                 [50.637222, 3.063333,28,  'Nord-Pas-de-Calais'],
                 [49.183056, -0.369444,14,  'Basse-Normandie'],
                 [49.443889, 1.103333,18,  'Haute-Normandie'],
                 [47.21806, -1.55278,15,  'Pays de la Loire'],
                 [49.9, 2.3, 12, 'Picardie'],
                 [46.581945, 0.336112,21,  'Poitou-Charentes'],
-                [43.296346, 5.369889,32,  'Provence-Alpes-CÃ´te d\'Azur'],
-                [-20.8789, 55.4481,7,  'La RÃ©union'],
-                [45.759723, 4.842223,8,  'RhÃ´ne-Alpes'] 
+                [43.296346, 5.369889,32,  'Provence-Alpes-Cote d\'Azur'],
+                [-20.8789, 55.4481,7,  'La Reunion'],
+                [45.759723, 4.842223,8,  'Rhone-Alpes'] 
             ];
             
             /* On boucle sur le tableau pour y placer les points */
-            for (i = 0; i < departement.length; i++) {
+            for (i = 0; i < regions.length; i++) {
                 
-                var nbAnnonces = departement[i][2];
+                var nbAnnonces = regions[i][2];
                 var couleur ="green";
                 
                 if (nbAnnonces > 20000) {
@@ -66,16 +66,16 @@
                 /*
                  * On va crÃ©er un cercle sur la carte pour chaque point
                  */
-                var circleLocation = new L.LatLng(departement[i][0], departement[i][1]),
+                var circleLocation = new L.LatLng(regions[i][0], regions[i][1]),
                 circleOptions = {
                     color: couleur,
                     fillColor: couleur,
-                    fillOpacity: 0.5
+                    fillOpacity: 0.2
                 };
         
-                var marker = new L.marker(circleLocation,(7000 + (departement[i][2]/4)), circleOptions);
+                var marker = new L.marker(circleLocation,(7000 + (regions[i][2]/4)), circleOptions);
                 // on rajoute un popup sur le cercle
-                marker.bindPopup(departement[i][3]+ " : " + departement[i][2]+" Brasseurs");
+                marker.bindPopup(regions[i][3]+ " : " + regions[i][2]+" Brasseurs");
                 // on ajoute le cercle Ã  la carte
                 map.addLayer(marker);
             }
