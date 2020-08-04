@@ -142,3 +142,45 @@ INSERT INTO Ventes (ref, client_id, prix) VALUES (3, 1, 1500);
       </div> 
 
       SELECT nameBrass, nameTown, ville_nom, ville_longitude_deg, ville_latitude_deg FROM `brewersfrench`INNER JOIN villes_france_free ON nameTown = ville_nom
+
+
+      
+      <div id="brewers">
+         <!-- template clones will be rendered here -->
+      </div>
+
+      <!-- the template tag does not render in the document,
+      JS is used to populate and clone it -->
+      <template id="brewer">
+         <div>
+            <a href="">
+               <h1 style="font-weight: 700; margin-left: 50px;" class="nameBrass"></h1>
+            </a>
+            <p style=" margin-left: 50px;" class="nameTown"></p>
+
+            <!-- <img src="" alt="" class="image"> -->
+            <!-- <a href=""class="email" ></a>    -->
+         </div>
+      </template>
+       <script>
+
+         // JS
+         const brewerTemplate = document.querySelector("#brewer");
+         const brewersContainer = document.querySelector("#brewers");
+
+         async function getApi() {
+            const req = await fetch("http://localhost:1998/brasseurs/brasseurs-api");
+            const resp = await req.json();
+
+            for (const brewer of resp.data) {
+               let clone = document.importNode(brewerTemplate.content, true);
+               clone.querySelector(".nameBrass").textContent = brewer.nameBrass;
+               clone.querySelector(".nameTown").textContent = brewer.nameTown;
+               // clone.querySelector(".email").textContent = brewer.email;
+               // clone.querySelector(".image").src = person.avatar;
+               brewersContainer.appendChild(clone);
+            }
+         }
+
+         getApi();
+      </script>
