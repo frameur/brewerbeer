@@ -17,24 +17,20 @@
 
    #map {
 
-      margin-left: 400px;
       display: flex;
       align-content: center;
-      
+
       width: 800px;
       height: 600px;
       z-index: 1;
    }
 
    #results {
-     
-     position: absolute;
+
+      position: relative;
       font-size: 15px;
 
-
-
    }
-
 
    ul li a {
       color: black;
@@ -62,60 +58,51 @@
          </div>
       </div>
    </div>
+
    <!-- Preloader Start -->
    <%- include('partial/header.ejs')%>
-   
-      <!--? Hero Start -->
-      <div class="slider-area2">
-         <div class="slider-height2 d-flex align-items-center">
-            <div class="container">
-               <div class="row">
-                  <div class="col-xl-12">
-                     <div class="hero-cap hero-cap2 pt-70 text-center">
-                        <h2>LES BRASSEURS</h2>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <hr>
 
-
-      <!-- Search -->
-      <form action="">
-      <div class="container">
-         <div class="row">
-            <div class="col-md-3">
-               <h1>choisir son département</h1>
-               <input type="text" id="search" placeholder="Search for a Departement" />
-               <div id="results"></div>
-            </div>
-         </div>
-      </div>
-   </form>
-     
-      
-      
+   <!--? Hero Start -->
   
-  
-      <hr>
-
-
-
-    
-
-      
-      
-        
+   <div class="slider-area2">
+      <div class="slider-height2 d-flex align-items-center">
          <div class="container">
             <div class="row">
-               <div class="col-md-3">
-                  <div id="map"></div>
+               <div class="col-xl-12">
+                  <div class="hero-cap hero-cap2 pt-70 text-center">
+                     <h2>LES BRASSEURS</h2>
+                  </div>
+                 
                </div>
             </div>
+         
          </div>
-         <main>
+      </div>
+   </div>
+
+   <hr>
+
+
+   <!-- Search -->
+  
+   <div class="container">
+      <div class="row">
+         <div class="col-md-6">
+            <div id="map"></div>
+         </div>
+      </div>
+   </div>
+   <div class="container">
+      <div class="row">
+         <div class="col-md-9">
+            <h1 >choisir son département</h1>
+            <input type="text" id="search" placeholder="Search for a Departement" />
+            <div id="results"></div>
+         </div>
+      </div>
+   </div>
+ 
+   <main>
       <div class="whole-wrap">
          <div class="container box_1170">
             <div class="section-top-border">
@@ -394,7 +381,7 @@
                </div>
             </div>
 
-           
+
          </div>
       </div>
 
@@ -403,11 +390,11 @@
 
 
    </main>
-  
+
    <script src="/search.js"></script>
 
    <script src="/map.js"></script>
-    
-  </script>
+
+   </script>
 
    <%- include('partial/footer.ejs')%>

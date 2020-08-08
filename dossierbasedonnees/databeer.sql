@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS brewersfrench(
        nameBrass VARCHAR(30) NOT NULL,
        address VARCHAR(50) NOT NULL,
        nameCp VARCHAR(10) NOT NULL,
+       nameCode VARCHAR(10) NOT NULL,
        nameTown VARCHAR(50) NOT NULL,
        nameWeb VARCHAR(50) NOT NULL,
        nameFacebook VARCHAR(50) NOT NULL,
@@ -15,6 +16,8 @@ CREATE TABLE IF NOT EXISTS brewersfrench(
        content VARCHAR(255) NOT NULL,
        listBeer VARCHAR(30) NOT NULL,
        created_at TIMESTAMP DEFAULT NOW(),
+       departement_id int,
+       foreign key (departement_id) references  departement(departement_id),
        CONSTRAINT pkBrewer PRIMARY KEY(brewer_id)
 );
 
@@ -35,6 +38,8 @@ CREATE TABLE IF NOT EXISTS categorybeer(
         product_id INT NOT NULL,
         CONSTRAINT pkCategory PRIMARY KEY(category_id)     
 );
+
+ALTER TABLE brewersfrench ADD CONSTRAINT fkDepartbrewer FOREIGN key (departement_id) REFERENCES departement(departement_id)
 ALTER table categorybeer
 ADD CONSTRAINT fkCategorybeer foreign key (product_id) references productbeer (product_id);
 
@@ -158,4 +163,6 @@ CREATE TABLE IF NOT EXISTS `departement` (
 ) ENGINE=innoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=102 ;
 
 const listbrewer = await queryAsync("SELECT brewer_id, nameBrass, address FROM brewersfrench WHERE nameCp LIKE '85%'")
+
+SELECT nameBrass, departement_nom_uppercase FROM `brewersfrench`INNER JOIN departement ON departement_code = nameCode
 

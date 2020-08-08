@@ -27,7 +27,7 @@ exports.getListBrasseur = async (req, res) => {
 
     try {
 
-        const listbrewer = await queryAsync("SELECT `brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, DATE_FORMAT(created_at, '%d/%m/%Y ') AS created_at FROM `brewersfrench` ORDER BY brewer_id ASC LIMIT 25")
+        const listbrewer = await queryAsync("SELECT `brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`,`departement_id`, DATE_FORMAT(created_at, '%d/%m/%Y ') AS created_at FROM `brewersfrench` ORDER BY brewer_id ASC LIMIT 25")
         
         const totalBrewers = await queryAsync("SELECT COUNT(*) AS count FROM brewersfrench")
         
