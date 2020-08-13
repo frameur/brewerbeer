@@ -32,5 +32,5 @@ search_input.addEventListener('input', e => {
   search_term = e.target.value
   // re-display departement again based on the new search_term
   showDepartement()
-  
+
 })

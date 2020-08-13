@@ -230,3 +230,13 @@ INSERT INTO Ventes (ref, client_id, prix) VALUES (3, 1, 1500);
      // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
      initMap(); 
       };
+
+      "express": module pour créer un serveur local 
+      "express-fileupload": gestion de chargement de fichier 
+      "ejs": moteur de templating 
+      "express-session": gestion des sessions utilisateur 
+      "path":
+      "mysql": connection base de données
+      "dotenv":
+      "util":
+      "morgan": 
