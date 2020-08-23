@@ -1,4 +1,4 @@
- CREATE DATABASE IF NOT EXISTS brewerbeer;
+CREATE DATABASE IF NOT EXISTS brewerbeer;
 USE brewerbeer;
 
 CREATE TABLE IF NOT EXISTS brewersfrench(

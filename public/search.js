@@ -18,19 +18,32 @@ const showDepartement = async () => {
     .forEach(departement => {
       const li = document.createElement('li')
       let departement_nom_uppercase  = document.createElement('a')
+     
       departement_nom_uppercase.innerText = departement.departement_nom_uppercase
       departement_nom_uppercase.href = '/brasseurs/' + departement.id
+      
     //   departement_nom_uppercase.classList.add('country-name')
       li.appendChild( departement_nom_uppercase)
       ul.appendChild(li)
+    
     })
+    
   results.appendChild(ul)
+
 }
+
 // display initial departement
 // showDepartement();
 search_input.addEventListener('input', e => {
   search_term = e.target.value
   // re-display departement again based on the new search_term
-  showDepartement()
+if(results != ""){
+showDepartement()
+}else{
+  
+}
+  
+  
+    console.log(departement_nom_uppercase);
 
 })

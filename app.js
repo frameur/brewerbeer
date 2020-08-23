@@ -5,9 +5,10 @@ const express = require('express')
 ,     session = require('express-session')
 ,     mysql = require('mysql')
 ,     dotenv = require ('dotenv')
-,     port = 1998
 ,     app = express()
 ,     util = require('util')
+
+const  port = 1998
 
 
 //fonctionnement environnement
@@ -58,11 +59,11 @@ const brasseursRoutes = require('./routes/brasseurs')
 const auth = require("./middleware/auth.middleware");
 
 // Dashboard
-app.use('/admin', adminRoutes);
+app.use('/admin',auth, adminRoutes);
 // Authentification 
 app.use('/auth', authRoutes);
 //page index
-app.use('/', homeRoutes);
+app.use('/',  homeRoutes);
 // affiche page brasseurs
 app.use('/brasseurs', brasseursRoutes)
 //affiche page gallery
