@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
             res.send(err);
         }
         if (result == 0) {
-          res.redirect('/')
+          res.redirect('/auth/login')
         }
         next()
     });

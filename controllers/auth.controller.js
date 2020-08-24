@@ -66,7 +66,7 @@ exports.register = (req, res) => {
 
 // Login
 exports.login = (req, res) => {
-const userId = req.session.user_id
+
   const {
     email,
     password
@@ -107,8 +107,8 @@ const userId = req.session.user_id
         } else {
           console.log("result :", result);
           console.log(req.session.role_id);
-
-          res.render('index');
+          
+          res.render('brasseurs');
         }
 
       });
@@ -123,7 +123,7 @@ exports.logout = (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      res.redirect('/');
+      res.redirect('/auth/login');
     }
   });
 
