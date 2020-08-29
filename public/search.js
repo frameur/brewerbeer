@@ -1,3 +1,25 @@
+// document.querySelector('#departement').addEventListener('input', function(){
+//   if(this.value.length == 20){
+//      let url = 'http://localhost:1998/brasseurs/departements-api';
+
+//      fetch(url).then((res) =>
+//      res.json().then(() => {
+//         console.log(data);
+//         let affichage = '<ul>';
+//            for(let departement of data){
+//               affichage += '<li>${departement.departement_nom}</li>';
+//            }
+//            affichage += '</ul>';
+//            document.querySelector('#departements').innerHTML = affichage;
+//      })
+//      )
+//   }
+// })
+
+
+
+
+
 const search_input = document.getElementById('search')
 const results = document.getElementById('results')
 let search_term = ''
@@ -17,15 +39,15 @@ const showDepartement = async () => {
     )
     .forEach(departement => {
       const li = document.createElement('li')
-      let departement_nom_uppercase  = document.createElement('a')
+      let departement_nom  = document.createElement('a')
      
-      departement_nom_uppercase.innerText = departement.departement_nom_uppercase
-      departement_nom_uppercase.href = '/brasseurs/' + departement.id
+      departement_nom.innerText = departement.departement_nom
+      departement_nom.href = '/brasseurs/' + departement.id
       
     //   departement_nom_uppercase.classList.add('country-name')
-      li.appendChild( departement_nom_uppercase)
+      li.appendChild( departement_nom)
       ul.appendChild(li)
-    
+      
     })
     
   results.appendChild(ul)
@@ -37,13 +59,13 @@ const showDepartement = async () => {
 search_input.addEventListener('input', e => {
   search_term = e.target.value
   // re-display departement again based on the new search_term
-if(results != ""){
+
 showDepartement()
-}else{
+
   
-}
+
   
   
-    console.log(departement_nom_uppercase);
+    
 
 })

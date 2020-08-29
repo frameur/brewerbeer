@@ -35,6 +35,13 @@ exports.getDepartementAPI = async (req, res) => {
             res.json( listdepartement)
         
         }
+//data brasseurs et departement
+exports.getBrasseursDepartementAPI = async (req, res) => {
+
+    const lienbrasseurdepart = await queryAsync("SELECT nameBrass, departement_nom_uppercase FROM `brewersfrench`INNER JOIN departement ON departement_code = nameCode limit 25")
+
+    res.json(lienbrasseurdepart)
+}
 
 
 
