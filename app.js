@@ -1,4 +1,5 @@
 const express = require('express')
+,     morgan = require('morgan')
 ,     fileUpload = require('express-fileupload')
 ,     path = require('path')
 ,     viewsPath = path.join(__dirname, '/views') 
@@ -16,6 +17,7 @@ app.set('port', process.env.port || port);
 app.set('views', viewsPath);
 app.set('view engine', 'ejs');
 app.use(express.json());
+// app.use(morgan('combined'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload());

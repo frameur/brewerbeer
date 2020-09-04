@@ -235,8 +235,11 @@ INSERT INTO Ventes (ref, client_id, prix) VALUES (3, 1, 1500);
       "express-fileupload": gestion de chargement de fichier 
       "ejs": moteur de templating 
       "express-session": gestion des sessions utilisateur 
-      "path":
+      "path": gestion chemin fichiers
       "mysql": connection base de données
-      "dotenv":
-      "util":
-      "morgan": 
+      "dotenv": module protection données sensible
+      "util": module accés certaines fonctions utilitaires
+      "morgan": enregistreur de middleware de requete HTTP
+
+
+      SELECT `nameBrass`, `departement_nom`, GROUP_CONCAT(`departement_nom` SEPARATOR ' ') AS concat_mot FROM `brewersfrench` INNER JOIN `departement` ON `departement_code` = `nameCode` GROUP BY `departement_nom` ORDER BY `concat_mot` ASC

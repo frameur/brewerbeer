@@ -33,13 +33,13 @@
 
    #results {
 
-      position: relative;
+      position: absolute;
       font-size: 15px;
 
    }
 
    ul li a {
-      color: black;
+      color:white;
       z-index: 1;
    }
 
@@ -76,7 +76,20 @@
             <div class="row">
                <div class="col-xl-12">
                   <div class="hero-cap hero-cap2 pt-70 text-center">
-                     <h2>LES BRASSEURS</h2>
+                     <h2>&#127866;LES BRASSEURS </h2>
+                     <div class="container ">
+                        <div class="row">
+                           <div class="form-group">
+                              <h1 style="color: white;" >Sélectionnez un département</h1>
+                              <input style="font-size: 20px;" class="form-control"type="text" id="search" />
+                              <div  id="results"></div>
+                              
+                           </div>
+                        </div>
+                     </div>
+               
+<button id="redirect" style="color: black;" >Go to site</button>
+                     <!-- <h2>LES BRASSEURS</h2> --> 
                   </div>
                  
                </div>
@@ -90,7 +103,7 @@
  
 
    <!-- Search -->
-  
+ 
    <div class="container">
       <div class="row">
          <div class="col-md-6">
@@ -98,16 +111,8 @@
          </div>
       </div>
    </div>
-
-   <div class="container">
-      <div class="row">
-         <div class="form-group">
-            <h1 >choisir son département</h1>
-            <input class="form-control"type="text" id="search" placeholder="Rechercher un Departement" />
-            <div  id="results"></div>
-         </div>
-      </div>
-   </div>
+<h4  class="title"></h4>
+  
    <!-- <div class="container">
       <div class="row justify-content-center">
          <div class="col-12 col-sm-6">

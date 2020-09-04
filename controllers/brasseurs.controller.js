@@ -38,7 +38,9 @@ exports.getDepartementAPI = async (req, res) => {
 //data brasseurs et departement
 exports.getBrasseursDepartementAPI = async (req, res) => {
 
-    const lienbrasseurdepart = await queryAsync("SELECT nameBrass, departement_nom_uppercase FROM `brewersfrench`INNER JOIN departement ON departement_code = nameCode limit 25")
+    // const lienbrasseurdepart = await queryAsync("SELECT nameBrass, departement_nom, departement_code FROM `brewersfrench`INNER JOIN departement ON departement_code = nameCode ")
+    
+    const lienbrasseurdepart = await queryAsync("SELECT `departement_nom`, GROUP_CONCAT(`nameBrass` SEPARATOR ' , ') AS nameBrass FROM `brewersfrench` INNER JOIN `departement` ON `departement_code` = `nameCode` GROUP BY `departement_nom`") 
 
     res.json(lienbrasseurdepart)
 }
