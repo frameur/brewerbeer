@@ -12,8 +12,10 @@ router.post('/brasseurs/add',adminController.postAddBrasseur)
 router.post('/brasseurs/edit/:id',adminController.postEditBrasseur)
 router.get('/brasseurs/delete/:id',adminController.getDeleteBrasseur)
 
-//page accueil dashboard
-router.get('/dashboard', adminController.getAdminPage)
+//page accueil
+router.get('/accueil', adminController.getAccueilPage)
+//page utilisateurs
+router.get('/users', adminController.getUsersPage)
 
 //page base de données departement
 router.get('/departement', adminController.getDepartement)

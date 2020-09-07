@@ -8,6 +8,8 @@
         text-transform: uppercase;
     }
 </style>
+
+
 <body class="fix-header">
     <!-- ============================================================== -->
     <!-- Preloader -->
@@ -60,6 +62,7 @@
                         <a href="/admin/articles" class="waves-effect"><i class="fa fa-table fa-fw"
                                 aria-hidden="true"></i>Actualités</a>
                     </li>
+              
                  
                 </ul>
 
@@ -75,84 +78,21 @@
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title"><%= title %> </h4>
+                        <h4 class="page-title"> </h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">Brasseurs</li>
+                            <li class="active">departement</li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
-                <div class="row">
-                    <div class="col-lg-4 col-sm-6 col-xs-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">Total Brasseurs</h3>
-                            <ul class="list-inline two-part">
-                                <li>
-                                    <div id="sparklinedash"></div>
-                                </li>
-                                <li class="text-right"><i class="ti-arrow-up text-success"></i> <span
-                                        class="counter text-success"><%= totalBrewers %></span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <a href="/admin/brasseurs/add" class="btn btn-primary ">Ajouter un Brasseur</a>
-                <div class="row">
-                    <div class="col-md-12 col-lg-12 col-sm-12">
-                        <div class="white-box">
-                            <h3 class="box-title">les brasseurs</h3>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>id</th>
-                                            <th>nom brasseurs</th>
-                                            <th>adresse</th>
-                                            <th>code postal</th>
-                                            <th>nom ville</th>
-                                            <th>page web</th>
-                                            <th>page facebook</th>
-                                            <th>email</th>
-                                            <th>télèphone</th>
-                                            <th>logo</th>
-                                            <th>contenu</th>
-                                            <th>liste bieres</th>
-                                            <th>departement</th>
-                                            <th>date de creation</th>
-                                        </tr>
-
-                                    </thead>
-                                    <tbody>
-                                        <% brewersfrench.forEach((brewer, index) =>{ %>
-                                        <tr>
-                                            <td><%= brewer.brewer_id %></td>
-                                            <td><a href="/admin/brasseurs/<%= brewer.brewer_id  %>">Brasseur <%= brewer.nameBrass %></a></td>
-                                            <td><%= brewer.address %></td>
-                                            <td><%= brewer.nameCp %></td> 
-                                            <td><%= brewer.nameTown %></td>
-                                            <td><%= brewer.nameWeb %></td>
-                                            <td><%= brewer.nameFacebook %></td>
-                                            <td><%= brewer.email %></td>
-                                            <td><%= brewer.phone %></td>
-                                            <td><%= brewer.logo %></td>
-                                            <td><%= brewer.content %></td>
-                                            <td><%= brewer.listBeer %></td>
-                                            <td><%= brewer.departement_id %></td>
-                                            <td><%= brewer.created_at %></td>
-                                        </tr>
-                                        <% }) %>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              
+               
             </div>
-           
-           
-            <!-- /.container-fluid -->
+
+        
+
             <%- include('../partial/admin/footer.ejs') %>
