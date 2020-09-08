@@ -61,7 +61,7 @@ const brasseursRoutes = require('./routes/brasseurs')
 const auth = require("./middleware/auth.middleware");
 
 // Dashboard
-app.use('/admin',  adminRoutes);
+app.use('/admin',   adminRoutes);
 // Authentification 
 app.use('/auth',  authRoutes);
 //page index

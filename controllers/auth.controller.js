@@ -52,7 +52,7 @@ exports.register = (req, res) => {
         db.query(query, (err, result) => {
           if (err) {
             return res.status(500).send(err);
-            message: 'formulaire mal rempli'
+           
           } else {
             res.redirect("/auth/login");
           }
@@ -96,8 +96,9 @@ exports.login = (req, res) => {
               req.session.loggedin = true;
               req.session.firstname = result[0].firstname;
               req.session.user_id = result[0].id;
-              req.session.role = result[0].role;
-              res.redirect('/');
+              // req.session.role = result[0].role;
+             
+              res.redirect('/admin/dashboard');
 
 
             } else {
@@ -106,9 +107,10 @@ exports.login = (req, res) => {
           });
         } else {
           console.log("result :", result);
-          console.log(req.session.role_id);
+          console.log("req.session :", req.session)
+          // console.log(req.session.role_id);
           
-          res.render('brasseurs');
+          return res.redirect('/');
         }
 
       });
