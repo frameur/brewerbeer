@@ -239,7 +239,29 @@ INSERT INTO Ventes (ref, client_id, prix) VALUES (3, 1, 1500);
       "mysql": connection base de données
       "dotenv": module protection données sensible
       "util": module accés certaines fonctions utilitaires
-      "morgan": enregistreur de middleware de requete HTTP
+      "morgan": enregistreur de middleware requete HTTP
 
 
       SELECT `nameBrass`, `departement_nom`, GROUP_CONCAT(`departement_nom` SEPARATOR ' ') AS concat_mot FROM `brewersfrench` INNER JOIN `departement` ON `departement_code` = `nameCode` GROUP BY `departement_nom` ORDER BY `concat_mot` ASC
+
+
+          db.query('SELECT id, firstname, email, password, rolesite FROM users WHERE email = ? AND password = ?', [email, result[0].password], function (err, results) {
+            if (results.length) {
+              req.session.loggedin = true;
+              req.session.firstname = results[0].firstname;
+              req.session.userId = results[0].id;
+              if (results[0].rolesite === 1) {                
+                res.redirect('/admin')
+              }else{
+                res.redirect('/')
+              };
+              // console.log("req.session :", req.session)
+            } else {
+              res.send('Email ou mot de passe incorrect !');
+            }
+          });
+        } else {
+          res.send('Ajouter un email ou un mot de passe !');
+        }
+      })
+    }

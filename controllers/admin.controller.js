@@ -1,13 +1,19 @@
+//affiche accueil
+exports.getAccueilPage = async(req, res) =>{
+    res.render('admin/accueil')
+}
+
+
 
 //affiche les utilisateurs
-exports.getAdminPage = async (req, res) => {
+exports.getUsersPage = async (req, res) => {
 
     const listmembers = await queryAsync("SELECT `user_id`, `firstname`, `lastname`, `email`, `age`, `password`, `role_id` FROM users ORDER BY firstname ASC LIMIT 10")
 
     const totalUsers = await queryAsync("SELECT COUNT(*) AS count FROM users")
 
 
-    res.render('admin/dashboard', {
+    res.render('admin/users', {
 
         title: "liste des membres",
         users: listmembers,

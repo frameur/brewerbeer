@@ -63,9 +63,9 @@ const auth = require("./middleware/auth.middleware");
 // Dashboard
 app.use('/admin',   adminRoutes);
 // Authentification 
-app.use('/auth',  authRoutes);
+app.use('/auth', authRoutes);
 //page index
-app.use('/',   homeRoutes);
+app.use('/', homeRoutes);
 // affiche page brasseurs
 app.use('/brasseurs', brasseursRoutes)
 //affiche page gallery
