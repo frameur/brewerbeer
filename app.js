@@ -61,16 +61,28 @@ const brasseursRoutes = require('./routes/brasseurs')
 const auth = require("./middleware/auth.middleware");
 
 // Dashboard
-app.use('/admin',  adminRoutes);
+app.use('/admin',    adminRoutes);
 // Authentification 
-app.use('/auth', authRoutes);
+app.use('/auth',  authRoutes);
 //page index
-app.use('/', homeRoutes);
+app.use('/',  homeRoutes);
 // affiche page brasseurs
-app.use('/brasseurs', brasseursRoutes)
+app.use('/brasseurs',  brasseursRoutes)
 //affiche page gallery
-app.get('/gallery',(req, res) =>{
+app.get('/gallery',(req, res) =>{ 
     res.render('gallery')
+})
+app.get('/histoire',(req, res) =>{ 
+    res.render('histoire')
+})
+app.get('/fabrication',(req, res) =>{ 
+    res.render('fabrication')
+})
+app.get('/la_biere',(req, res) =>{ 
+    res.render('la_biere')
+})
+app.get('/contact',(req, res) =>{ 
+    res.render('contact')
 })
 
 //Page erreur
