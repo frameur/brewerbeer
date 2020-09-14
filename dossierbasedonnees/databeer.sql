@@ -166,3 +166,5 @@ const listbrewer = await queryAsync("SELECT brewer_id, nameBrass, address FROM b
 
 SELECT nameBrass, departement_nom_uppercase FROM `brewersfrench`INNER JOIN departement ON departement_code = nameCode
 
+
+

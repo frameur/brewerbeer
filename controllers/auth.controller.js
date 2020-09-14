@@ -111,12 +111,6 @@ exports.login = async (req, res) => {
             }
           });
         } else {
-<<<<<<< HEAD
-=======
-          console.log("result :", result);
-          console.log("req.session :", req.session)
-          // console.log(req.session.role_id);
->>>>>>> 7bf1ba92a77c783d2cf8d6563224241026c3f0c4
           
           console.log('results:', result);
           // console.log(req.session.role_id);
