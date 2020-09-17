@@ -9,7 +9,7 @@
                 var osmAttrib='Map data de OpenStreetMap';
                 var osm = new L.TileLayer(osmUrl, {minZoom: 2, maxZoom: 10, attribution: osmAttrib});           
                 // on centre sur la France
-                map.setView(new L.LatLng(46.85, 2.3518),6);
+                map.setView(new L.LatLng(	46.670511, -1.426442),10);
                 map.addLayer(osm);
             }
             /* on va procÃ©der Ã  l'initialisation de la carte */
@@ -21,33 +21,29 @@
              * une valeur ainsi que le nom de la rÃ©gion franÃ§aise
              */
             var regions = [
-                [48.58476, 7.750576,10,  'Alsace'],
-                [44.837912, -0.579541,7,  'Aquitaine'],
-                [45.783088, 3.082352,20,  'Auvergne'],
-                [47.32167, 5.04139,30,  'Bourgogne'],
-                [48.114722, -1.679444,30,  'Bretagne'],
-                [47.9025, 1.909,21,  'Centre'],
-                [48.9575, 4.365,32,  'Champagne-Ardenne'],
-                [41.9266, 8.73694,8,  'Corse'],
-                [47.24306, 6.02194,12,  'Franche-ComtÃ©'],
-                [16, -61.73334,13,  'Guadeloupe'],
-                [4.93461, -52.33033,4,  'Guyane'],
-                [48.856578, 2.351828,25,  'lle-de-France'],
-                [43.611944, 3.877222,32,  'Languedoc-Roussillon'],
-                [45.85, 1.25,20,  'Limousin'],
-                [49.1203, 6.1778,35,  'Lorraine'],
-                [14.6, -61.08334,4,  'Martinique'],
-                [-12.77889, 45.23151,2,  'Mayotte'],
-                [43.604482, 1.443962,7,  'Midi-Pyrenees'],
-                [50.637222, 3.063333,28,  'Nord-Pas-de-Calais'],
-                [49.183056, -0.369444,14,  'Basse-Normandie'],
-                [49.443889, 1.103333,18,  'Haute-Normandie'],
-                [47.21806, -1.55278,15,  'Pays de la Loire'],
-                [49.9, 2.3, 12, 'Picardie'],
-                [46.581945, 0.336112,21,  'Poitou-Charentes'],
-                [43.296346, 5.369889,32,  'Provence-Alpes-Cote d\'Azur'],
-                [-20.8789, 55.4481,7,  'La Reunion'],
-                [45.759723, 4.842223,8,  'Rhone-Alpes'] 
+                [46.6, -1.75,'Garatelle',  'VAIRE'],
+                [46.6667, -1.51667,'Des Chats Noirs',  'LANDERONDE'],
+                [46.7667, -1.51667,'Les Coureurs de Lune',  'LE POIRE SUR VIE'],
+                [46.5167, -1.2667,'La Bellote',  'LA COUTURE'],
+                [46.5333, -1.78333,'LaCabaude',  'OLONNE SUR MER'],
+                [46.8667, -2.01667,'De Trevarn',  'SAINT URBAIN'],
+                [46.5, -1.78333,'Opé',  "LES SABLES D'OLONNE"],
+                [46.6983, -1.93944,'Les Brasseurs de la Vie',  'SAINT-GILLES-CROIX-DE-VIE'],
+                [46.9, -2.01667,'Etienne',  'SAINT-GERVAIS'],
+                [46.9, -2.01667,'Aliénor',  'SAINT-GERVAIS'],
+                [46.9, -2.01667,'La Fourmi Bière',  'SAINT-GERVAIS'],
+                [46.3833, -0.75,'Terre de Possibles',  'SAINT-PIERRE-LE-VIEUX'],
+                [46.9167, -0.966667,'Mélusine',  'CHAMBRETAUD'],
+                [46.4167, -1.58333,'des Islattes',  'JARD-SUR-MER'],
+                [46.8333, -1.76667,'de la Motte',  'SAINT-CHRISTOPHE-DU-LIGNERON'],
+                [46.65, -0.9,'La Muette',  'BAZOGES-EN-PAREDS'],
+                [46.8667, -1.01667,'du Grand Zig',  'LES HERBIERS'],
+                [46.5167, -0.95,'Heima',  'POUILLÉ'],
+                [46.4, -0.833333,'Drum&Brass Brewery',  'MONTREUIL'],
+                [46.3425, -0.79,'La Cibulle',  'MAILLÉ'],
+                [46.9667, -2.23333,'La N O',  'LA GUÉRINIÈRE'],
+                [46.8333, -2.15,'La Petite Ramonière',  'NOTRE-DAME-DE-MONTS'],
+                
             ];
             
             /* On boucle sur le tableau pour y placer les points */
@@ -75,7 +71,7 @@
         
                 var marker = new L.marker(circleLocation,(7000 + (regions[i][2]/4)), circleOptions);
                 // on rajoute un popup sur le cercle
-                marker.bindPopup(regions[i][3]+ " : " + regions[i][2]+" Brasseurs");
+                marker.bindPopup("Brasseur " + regions[i][2]+ " - " + regions[i][3]);
                 // on ajoute le cercle Ã  la carte
                 map.addLayer(marker);
             }
