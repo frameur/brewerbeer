@@ -2,7 +2,7 @@
 //affiche les brasseurs 
 exports.getBrasseur = async (req, res) => {
     
-           const listbrewer = await queryAsync("SELECT `brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, `created_at` FROM `brewersfrench` ORDER BY brewer_id ASC LIMIT 25")
+    const listbrewer = await queryAsync("SELECT nameBrass, nameTown, nameWeb, nameFacebook FROM brewersfrench WHERE nameCp LIKE '85%' limit 5")
           
     res.render('brasseurs', {
         
@@ -47,27 +47,7 @@ exports.getBrasseursDepartementAPI = async (req, res) => {
 
 
 
-// exports.getListBrasseur = async (req, res) => {
 
-//     try {
-
-//         const listbrewer = await queryAsync("SELECT `brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`, `created_at` FROM `brewersfrench` ORDER BY brewer_id ASC LIMIT 25")
-        
-       
-//         res.render('brasseurs.ejs', {
-
-//             title: "liste des brasseurs",
-//             brewersfrench: listbrewer,
-           
-            
-//         })
-    
-//     } catch (err) {
-//         console.log(err.message);
-//     }
-
-
-// }
 // //affiche la page un brasseur
 // exports.getSingleBrasseur = async (req, res) => {
 

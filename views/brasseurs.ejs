@@ -103,16 +103,43 @@
  
 
    <!-- Search -->
- 
+  
    <div class="container">
+      
       <div class="row">
+         <div class="col-md-4 ">
+            <div class="white-box">
+                
+                <div class="card" style="width: 28rem;">
+                 <div class="card-header">
+                  <h1 style="background-color: crimson; color: whitesmoke; text-align:center;"> Brasseurs Vendée</h1>
+                 </div>
+                 <% brewersfrench.forEach((brewer, index) =>{ %>
+                 <ul class="list-group list-group-flush">
+                   <li class="list-group-item"> <h2 style="color: red;">Brasseur <%= brewer.nameBrass %></h2> </li>
+                   <li class="list-group-item"><h3 style="color: blue;" > <%= brewer.nameTown %></h3></li>
+                   <li class="list-group-item"> <a href="https://<%= brewer.nameWeb %>" target="blank"> <h3> <%= brewer.nameWeb %></h3></a></li>
+                   <li class="list-group-item"> <a href="https://<%= brewer.nameFacebook %>" target="blank"> <h3> <%= brewer.nameFacebook %></h3></a></li>
+                 </ul>
+                 <% }) %>
+               </div>
+              
+            </div>
+        </div>
          <div class="col-md-6">
             <div id="map"></div>
+           
          </div>
+         
+           
+         
       </div>
+    
    </div>
 <h4  class="title"></h4>
-  
+<div class="container">
+
+</div>
    <!-- <div class="container">
       <div class="row justify-content-center">
          <div class="col-12 col-sm-6">
