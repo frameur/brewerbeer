@@ -7,9 +7,9 @@
                 // crÃ©ation des "tiles" avec open street map
                 var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
                 var osmAttrib='Map data de OpenStreetMap';
-                var osm = new L.TileLayer(osmUrl, {minZoom: 2, maxZoom: 10, attribution: osmAttrib});           
+                var osm = new L.TileLayer(osmUrl, {minZoom: 2, maxZoom: 20, attribution: osmAttrib});           
                 // on centre sur la France
-                map.setView(new L.LatLng(	46.670511, -1.426442),10);
+                map.setView(new L.LatLng(	46.670511, -1.426442),9);
                 map.addLayer(osm);
             }
             /* on va procÃ©der Ã  l'initialisation de la carte */
