@@ -47,7 +47,7 @@ exports.register = (req, res) => {
 
       bcrypt.hash(password, 10, function (err, hash) {
 
-        let query = "INSERT INTO `users` (firstname, lastname, email, password, age, role_id) VALUES ('" + firstname + "', '" + lastname + "', '" + email + "', '" + hash + "', '" + age + "', '" + 1 + "')";
+        let query = "INSERT INTO `users` (firstname, lastname, email, password, age, role_id) VALUES ('" + firstname + "', '" + lastname + "', '" + email + "', '" + hash + "', '" + age + "', '" + 2 + "')";
 
         db.query(query, (err, result) => {
           if (err) {
@@ -65,14 +65,14 @@ exports.register = (req, res) => {
 
 
 // Login
-exports.login = (req, res) => {
+exports.login = async (req, res) => {
 
   const {
     email,
     password
   } = req.body
 
-  db.query('SELECT email, password FROM users WHERE email = ?', [email], (err, result) => {
+   db.query ('SELECT email, password FROM users WHERE email = ?', [email], (err, result) => {
 
     if (err || result.length === 0) {
 
@@ -82,37 +82,42 @@ exports.login = (req, res) => {
       });
     } else {
 
-      bcrypt.compare(password, result[0].password, (err, success) => {
+     bcrypt.compare(password, result[0].password, (err, success) => {
         if (err) {
           return res.status(401).json({
             error: `Bcrypt Auth failed`
+            
           });
+          
         }
         if (success) {
 
-          db.query('SELECT user_id, email, password FROM users WHERE email = ? AND password = ?', [email, result[0].password], function (err, result) {
+          db.query('SELECT user_id, email, password, role_id FROM users WHERE email = ? AND password = ?', [email, result[0].password], function (err, result) {
 
-            if (result.length) {
+            if (results.length) {
               req.session.loggedin = true;
               req.session.firstname = result[0].firstname;
-              req.session.user_id = result[0].user_id;
-              // req.session.role = result[0].role;
-              if(results[0].role_id === 1){
+              req.session.user_id = result[0].id;
+              req.session.role_id = result[0].role;
+              
+              if(result[0].role === 1){
                 res.redirect('/admin/accueil')
               }else{
                 res.redirect('/');
               }
-              
+              // console.log("req.session :", req.session);
             } else {
               res.send('Email ou mot de passe incorrect !');
             }
           });
         } else {
-          console.log("result :", result);
-          console.log("req.session :", req.session)
-          // console.log(req.session.role_id);
           
-          res.redirect('/');
+          console.log('results:', result);
+          // console.log(req.session.role_id);
+          console.log('req.session :', req.session);
+          
+          
+          return res.redirect('/');
         }
 
       });

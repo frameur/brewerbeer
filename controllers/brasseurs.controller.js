@@ -18,7 +18,7 @@ exports.getBrasseur = async (req, res) => {
 exports.getBrasseursAPI = async (req, res) => {
 
    
-          const listbrewer = await queryAsync ("SELECT nameBrass, nameTown, ville_departement, ville_longitude_deg, ville_latitude_deg FROM `brewersfrench`INNER JOIN villes_france_free ON nameTown = ville_nom limit 25")
+          const listbrewer = await queryAsync ("SELECT nameBrass, nameTown, ville_departement, ville_longitude_deg, ville_latitude_deg FROM `brewersfrench`INNER JOIN villes_france_free ON nameTown = ville_nom  ")
            
         
            res.json({
