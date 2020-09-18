@@ -95,14 +95,14 @@ exports.login = (req, res) => {
             if (result.length) {
               req.session.loggedin = true;
               req.session.firstname = result[0].firstname;
-              req.session.user_id = result[0].id;
+              req.session.user_id = result[0].user_id;
               // req.session.role = result[0].role;
               if(results[0].role_id === 1){
                 res.redirect('/admin/accueil')
               }else{
                 res.redirect('/');
               }
-              console.log("req.session :", req.session);
+              
             } else {
               res.send('Email ou mot de passe incorrect !');
             }

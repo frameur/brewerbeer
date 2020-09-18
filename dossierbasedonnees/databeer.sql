@@ -84,8 +84,8 @@ CREATE TABLE IF NOT EXISTS users(
 
 CREATE TABLE IF NOT EXISTS feedback(
       feed_id INT AUTO_INCREMENT,
-      nameUser VARCHAR(255) NOT NULL,
-      content VARCHAR(255) NOT NULL,
+      nameUser VARCHAR(10) NOT NULL,
+      content VARCHAR(10) NOT NULL,
       user_id INT NOT NULL,
       created_at TIMESTAMP DEFAULT NOW(),
       CONSTRAINT pkFeed PRIMARY KEY(feed_id)
