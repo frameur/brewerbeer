@@ -86,13 +86,6 @@ SHOW TRIGGERS;
       SELECT nameBrass, nameTown, ville_nom, ville_longitude_deg, ville_latitude_deg FROM `brewersfrench`INNER JOIN villes_france_free ON nameTown = ville_nom
 
 
-      
-     
-   
-
-
-  
-
       "express": module pour créer un serveur local 
       "express-fileupload": gestion de chargement de fichier 
       "ejs": moteur de templating 
