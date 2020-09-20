@@ -59,7 +59,15 @@ UPDATE Clients SET derniere_commande_id = NEW.id WHERE Clients.id = NEW.client_i
 SHOW TRIGGERS;
 INSERT INTO Ventes (ref, client_id, prix) VALUES (3, 1, 1500);
 
+CREATE TABLE Categorie ( id INTEGER PRIMARY KEY AUTO_INCREMENT, name TEXT, last_order_id INT );
+CREATE TABLE Sort ( id INTEGER PRIMARY KEY, item_id INT, categorie_id INT, alcool INT );
+INSERT INTO Categorie (name) VALUES ('Stout'), ('Ipa'), ('Langer'), ('Abbaye');
 
+CREATE TRIGGER newSort AFTER INSERT ON Sort
+FOR EACH ROW
+UPDATE Categorie SET last_order_id = NEW.id WHERE Categorie.id = NEW.categorie_id;
+
+SHOW TRIGGERS; 
 
 
    <div class="container">
@@ -119,3 +127,11 @@ INSERT INTO Ventes (ref, client_id, prix) VALUES (3, 1, 1500);
         }
       })
     }
+
+      async function insertPost(nameBrass, address, nameCp ){
+              await pool.execute('INSERT INTO brewersfrench SET nameBrass = ?, address = ?, nameCp = ?,'[ nameBrass, address, nameCp ] )
+        }
+       
+        
+
+        insertPost;
