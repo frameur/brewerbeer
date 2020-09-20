@@ -33,7 +33,7 @@ exports.getListBrasseur = async (req, res) => {
 
     try {
 
-        const listbrewer = await queryAsync("SELECT `brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`,`departement_id`, DATE_FORMAT(created_at, '%d/%m/%Y ') AS created_at FROM `brewersfrench` ORDER BY brewer_id ASC LIMIT 25")
+        const listbrewer = await queryAsync("SELECT `brewer_id`, `nameBrass`, `address`, `nameCp`, `nameTown`, `nameWeb`, `nameFacebook`, `email`, `phone`, `logo`, `content`, `listBeer`,`departement_id`, DATE_FORMAT(created_at, '%d/%m/%Y ') AS created_at FROM `brewersfrench` ORDER BY brewer_id desc LIMIT 25")
         
         const totalBrewers = await queryAsync("SELECT COUNT(*) AS count FROM brewersfrench")
         
@@ -74,6 +74,9 @@ exports.postAddBrasseur = async (req, res) => {
         let { brewer_id, nameBrass, address, nameCp, nameTown, nameWeb, nameFacebook, email, phone, logo, content, listBeer, created_at} = req.body;
         
         const breweradd = await queryAsync("INSERT INTO `brewersfrench`( brewer_id, nameBrass, address, nameCp, nameTown, nameWeb, nameFacebook, email, phone, logo, content, listBeer, created_at) VALUES ( '" + brewer_id + "', '" + nameBrass + "', '" + address + "', '" + nameCp + "', '" + nameTown + "', '" + nameWeb + "', '" + nameFacebook +"', '" + email + "', '" + phone + "', '"  +  logo + "', '"  + content + "', '"  + listBeer + "', '"  + created_at + "')")
+
+
+        // await queryAsync('INSERT INTO brewersfrench SET brewer_id = ?, nameBrass = ?, address = ?, nameCp = ?, nameTown = ?, nameWeb = ?, nameFacebook = ?, email = ?, phone = ?, logo = ?, content = ?, listBeer = ?, created_at = ?,'[brewer_id, nameBrass, address, nameCp, nameTown, nameWeb, nameFacebook, email, phone, logo, content, listBeer, created_at] )
         
         console.log("result: ", breweradd);
         res.render('admin/brasseuradd', {
