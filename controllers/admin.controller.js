@@ -75,7 +75,7 @@ exports.postAddBrasseur = async (req, res) => {
         
         const breweradd = await queryAsync("INSERT INTO `brewersfrench`( brewer_id, nameBrass, address, nameCp, nameTown, nameWeb, nameFacebook, email, phone, logo, content, listBeer, created_at) VALUES ( '" + brewer_id + "', '" + nameBrass + "', '" + address + "', '" + nameCp + "', '" + nameTown + "', '" + nameWeb + "', '" + nameFacebook +"', '" + email + "', '" + phone + "', '"  +  logo + "', '  + content + ', '"  + listBeer + "', '"  + created_at + "')")
 
-     
+        
        
        
         console.log("result: ", breweradd);

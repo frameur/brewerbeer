@@ -2,20 +2,20 @@ const bcrypt = require("bcrypt");
 
 
 // affichage page login et register
-exports.loginPage = (req, res) => {
+exports.loginPage = async (req, res) => {
   res.render('auth/login', {
     title: "Page de connexion",
   });
 };
 
-exports.registerPage = (req, res) => {
+exports.registerPage = async (req, res) => {
   res.render('auth/register', {
     title: "S'inscrire",
   });
 };
 
 // Register
-exports.register = (req, res) => {
+exports.register =  (req, res) => {
 
   let {
     firstname,
@@ -65,7 +65,7 @@ exports.register = (req, res) => {
 
 
 // Login
-exports.login = async (req, res) => {
+exports.login = (req, res) => {
 
   const {
     email,
