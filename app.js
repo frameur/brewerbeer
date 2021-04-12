@@ -95,5 +95,5 @@ app.get('*', function(req, res){
 });
 
 app.listen(port, () => {
-    console.log(`lancé sur le port ${port}`);
+    console.log(`lancé sur le port http://localhost:${port}`);
 });
