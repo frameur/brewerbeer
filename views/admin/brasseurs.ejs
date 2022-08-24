@@ -1,158 +1,187 @@
 <%- include('../partial/admin/head.ejs') %>
 <style>
-    td{
-        font-weight: 700;
-    }
-    th{
-        font-size: 15px;
-        text-transform: uppercase;
-    }
+  td {
+    font-weight: 700;
+  }
+  th {
+    font-size: 15px;
+    text-transform: uppercase;
+  }
 </style>
 <body class="fix-header">
+  <!-- ============================================================== -->
+  <!-- Preloader -->
+  <!-- ============================================================== -->
+  <div class="preloader">
+    <svg class="circular" viewBox="25 25 50 50">
+      <circle
+        class="path"
+        cx="50"
+        cy="50"
+        r="20"
+        fill="none"
+        stroke-width="2"
+        stroke-miterlimit="10"
+      />
+    </svg>
+  </div>
+  <!-- ============================================================== -->
+  <!-- Wrapper -->
+  <!-- ============================================================== -->
+  <div id="wrapper">
     <!-- ============================================================== -->
-    <!-- Preloader -->
+    <!-- Topbar header - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <div class="preloader">
-        <svg class="circular" viewBox="25 25 50 50">
-            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
-        </svg>
+    <%- include('../partial/admin/navbar.ejs') %>
+    <!-- End Top Navigation -->
+    <!-- ============================================================== -->
+    <!-- Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+    <div class="navbar-default sidebar" role="navigation">
+      <div class="sidebar-nav slimscrollsidebar">
+        <div class="sidebar-head">
+          <h3>
+            <span class="fa-fw open-close"
+              ><i class="ti-close ti-menu"></i
+            ></span>
+            <span class="hide-menu">Navigation</span>
+          </h3>
+        </div>
+        <ul class="nav" id="side-menu">
+          <li style="padding: 70px 0 0">
+            <a href="/admin/accueil" class="waves-effect"
+              ><i class="fa fa-columns fa-fw" aria-hidden="true"></i>Accueil</a
+            >
+          </li>
+          <li style="padding: 70px 0 0">
+            <a href="/admin/users" class="waves-effect"
+              ><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Membres</a
+            >
+          </li>
+          <li>
+            <a href="/admin/brasseurs" class="waves-effect"
+              ><i class="fa fa-columns fa-fw" aria-hidden="true"></i>Les
+              Brasseurs</a
+            >
+          </li>
+          <li>
+            <a href="/admin/departement" class="waves-effect"
+              ><i class="fa fa-columns fa-fw" aria-hidden="true"></i>Les
+              Departements</a
+            >
+          </li>
+          <li>
+            <a href="/admin/villefrance" class="waves-effect"
+              ><i class="fa fa-columns fa-fw" aria-hidden="true"></i>Les villes
+              de France</a
+            >
+          </li>
+          <li>
+            <a href="/admin/articles" class="waves-effect"
+              ><i class="fa fa-table fa-fw" aria-hidden="true"></i>Actualités</a
+            >
+          </li>
+        </ul>
+      </div>
     </div>
     <!-- ============================================================== -->
-    <!-- Wrapper -->
+    <!-- End Left Sidebar -->
     <!-- ============================================================== -->
-    <div id="wrapper">
-        <!-- ============================================================== -->
-        <!-- Topbar header - style you can find in pages.scss -->
-        <!-- ============================================================== -->
-        <%- include('../partial/admin/navbar.ejs') %>
-        <!-- End Top Navigation -->
-        <!-- ============================================================== -->
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav slimscrollsidebar">
-                <div class="sidebar-head">
-                    <h3><span class="fa-fw open-close"><i class="ti-close ti-menu"></i></span> <span
-                            class="hide-menu">Navigation</span></h3>
-                </div>
-                <ul class="nav" id="side-menu">
-                    <li style="padding: 70px 0 0;">
-                        <a href="/admin/accueil" class="waves-effect"><i class="fa fa-columns fa-fw"
-                                aria-hidden="true"></i>Accueil</a>
-                    </li>
-                    <li style="padding: 70px 0 0;">
-                        <a href="/admin/users" class="waves-effect"><i class="fa fa-clock-o fa-fw"
-                                aria-hidden="true"></i>Membres</a>
-                    </li>
-                    <li>
-                        <a href="/admin/brasseurs" class="waves-effect"><i class="fa fa-columns fa-fw"
-                                aria-hidden="true"></i>Les Brasseurs</a>
-                    </li>
-                    <li>
-                        <a href="/admin/departement" class="waves-effect"><i class="fa fa-columns fa-fw"
-                                aria-hidden="true"></i>Les Departements</a>
-                    </li>
-                    <li>
-                        <a href="/admin/villefrance" class="waves-effect"><i class="fa fa-columns fa-fw"
-                                aria-hidden="true"></i>Les villes de France</a>
-                    </li>
-                    <li>
-                        <a href="/admin/articles" class="waves-effect"><i class="fa fa-table fa-fw"
-                                aria-hidden="true"></i>Actualités</a>
-                    </li>
-                 
-                </ul>
-
-            </div>
+    <!-- ============================================================== -->
+    <!-- Page Content -->
+    <!-- ============================================================== -->
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <div class="row bg-title">
+          <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title"><%= title %></h4>
+          </div>
+          <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            <ol class="breadcrumb">
+              <li><a href="#">Dashboard</a></li>
+              <li class="active">Brasseurs</li>
+            </ol>
+          </div>
+          <!-- /.col-lg-12 -->
         </div>
-        <!-- ============================================================== -->
-        <!-- End Left Sidebar -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Page Content -->
-        <!-- ============================================================== -->
-        <div id="page-wrapper">
-            <div class="container-fluid">
-                <div class="row bg-title">
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title"><%= title %> </h4>
-                    </div>
-                    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-
-                        <ol class="breadcrumb">
-                            <li><a href="#">Dashboard</a></li>
-                            <li class="active">Brasseurs</li>
-                        </ol>
-                    </div>
-                    <!-- /.col-lg-12 -->
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 col-sm-6 col-xs-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">Total Brasseurs</h3>
-                            <ul class="list-inline two-part">
-                                <li>
-                                    <div id="sparklinedash"></div>
-                                </li>
-                                <li class="text-right"><i class="ti-arrow-up text-success"></i> <span
-                                        class="counter text-success"><%= totalBrewers %></span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <a href="/admin/brasseurs/add" class="btn btn-primary ">Ajouter un Brasseur</a>
-                <div class="row">
-                    <div class="col-md-12 col-lg-12 col-sm-12">
-                        <div class="white-box">
-                            <h3 class="box-title">les brasseurs</h3>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>id</th>
-                                            <th>nom brasseurs</th>
-                                            <th>adresse</th>
-                                            <th>code postal</th>
-                                            <th>nom ville</th>
-                                            <th>page web</th>
-                                            <th>page facebook</th>
-                                            <th>email</th>
-                                            <th>télèphone</th>
-                                            <th>logo</th>
-                                            <th>contenu</th>
-                                            <th>liste bieres</th>
-                                            <th>departement</th>
-                                            <th>date de creation</th>
-                                        </tr>
-
-                                    </thead>
-                                    <tbody>
-                                        <% brewersfrench.forEach((brewer, index) =>{ %>
-                                        <tr>
-                                            <td><%= brewer.brewer_id %></td>
-                                            <td><a href="/admin/brasseurs/<%= brewer.brewer_id  %>">Brasseur <%= brewer.nameBrass %></a></td>
-                                            <td><%= brewer.address %></td>
-                                            <td><%= brewer.nameCp %></td> 
-                                            <td><%= brewer.nameTown %></td>
-                                            <td><%= brewer.nameWeb %></td>
-                                            <td><%= brewer.nameFacebook %></td>
-                                            <td><%= brewer.email %></td>
-                                            <td><%= brewer.phone %></td>
-                                            <td><%= brewer.logo %></td>
-                                            <td><%= brewer.content %></td>
-                                            <td><%= brewer.listBeer %></td>
-                                            <td><%= brewer.departement_id %></td>
-                                            <td><%= brewer.created_at %></td>
-                                        </tr>
-                                        <% }) %>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="row">
+          <div class="col-lg-4 col-sm-6 col-xs-12">
+            <div class="white-box analytics-info">
+              <h3 class="box-title">Total Brasseurs</h3>
+              <ul class="list-inline two-part">
+                <li>
+                  <div id="sparklinedash"></div>
+                </li>
+                <li class="text-right">
+                  <i class="ti-arrow-up text-success"></i>
+                  <span class="counter text-success"><%= totalBrewers %></span>
+                </li>
+              </ul>
             </div>
-           
-           
-            <!-- /.container-fluid -->
-            <%- include('../partial/admin/footer.ejs') %>
+          </div>
+        </div>
+        <a href="/admin/brasseurs/add" class="btn btn-primary"
+          >Ajouter un Brasseur</a
+        >
+        <div class="row">
+          <div class="col-md-12 col-lg-12 col-sm-12">
+            <div class="white-box">
+              <h3 class="box-title">les brasseurs</h3>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>id</th>
+                      <th>nom brasseurs</th>
+                      <th>adresse</th>
+                      <th>code postal</th>
+                      <th>nom departement</th>
+                      <th>nom ville</th>
+                      <th>page web</th>
+                      <th>page facebook</th>
+                      <th>email</th>
+                      <th>télèphone</th>
+                      <!-- <th>logo</th> -->
+                      <th>contenu</th>
+                      <th>liste bieres</th>
+
+                      <th>date de creation</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% brewersfrench.forEach((brewer, index) =>{ %>
+                    <tr>
+                      <td><%= brewer.brewer_id %></td>
+                      <td>
+                        <a href="/admin/brasseurs/<%= brewer.brewer_id  %>"
+                          >Brasseur <%= brewer.nameBrass %></a
+                        >
+                      </td>
+                      <td><%= brewer.address %></td>
+                      <td><%= brewer.nameCp %></td>
+                      <td><%= brewer.nameDepartement %></td>
+                      <td><%= brewer.nameTown %></td>
+                      <td><%= brewer.nameWeb %></td>
+                      <td><%= brewer.nameFacebook %></td>
+                      <td><%= brewer.email %></td>
+                      <td><%= brewer.phone %></td>
+                      <!-- <td><%= brewer.logo %></td> -->
+                      <td><%= brewer.content %></td>
+                      <td><%= brewer.listBeer %></td>
+
+                      <td><%= brewer.created_at %></td>
+                    </tr>
+                    <% }) %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- /.container-fluid -->
+      <%- include('../partial/admin/footer.ejs') %>
+    </div>
+  </div>
+</body>
